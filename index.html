@@ -94,7 +94,7 @@ p { margin: 0; }
 .marca:hover { text-decoration: none; }
 .marca .logo { height: 19px; width: auto; display: block; }
 @media (min-width: 720px) { .marca .logo { height: 23px; } }
-.marca__pill { font-family: var(--titulo); font-weight: 700; font-size: 0.8rem; padding: 3px 9px; border-radius: 999px; background: var(--grad); color: var(--tinta); }
+.marca__pill { font-family: var(--titulo); font-weight: 700; font-size: 0.875rem; padding: 3px 9px; border-radius: 999px; background: var(--grad); color: var(--tinta); }
 .nav { display: flex; gap: 4px; margin-left: auto; }
 .nav a { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; min-height: 44px; border-radius: 12px; color: var(--muted); font-weight: 600; font-size: 0.93rem; position: relative; }
 .nav a:hover { color: var(--fg); background: var(--hover); text-decoration: none; }
@@ -105,6 +105,7 @@ p { margin: 0; }
 .yo { display: flex; align-items: center; gap: 8px; }
 .yo__nombre { font-weight: 600; font-size: 0.88rem; color: var(--muted); display: none; max-width: 140px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 @media (min-width: 980px) { .yo__nombre { display: block; } }
+@media (max-width: 420px) { .yo .avatar { display: none; } }
 @media (max-width: 819px) {
   .cab { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--bg); }
   .nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; margin: 0; justify-content: space-around; gap: 0; padding: 6px 8px calc(6px + env(safe-area-inset-bottom)); background: var(--cab); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid var(--linea); }
@@ -122,7 +123,7 @@ p { margin: 0; }
 .pila > * + * { margin-top: 22px; }
 .kicker { font-size: 0.95rem; font-weight: 700; color: var(--acento-texto); }
 .muted { color: var(--muted); }
-.peq { font-size: 0.86rem; }
+.peq { font-size: 0.875rem; }
 .migas { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 0.88rem; }
 .migas a { color: var(--muted); display: inline-flex; align-items: center; gap: 4px; min-height: 44px; }
 .migas a:hover { color: var(--fg); }
@@ -148,7 +149,7 @@ p { margin: 0; }
 .btn-icono:hover { color: var(--fg); background: var(--hover); }
 .btn-icono[disabled] { opacity: 0.3; cursor: default; }
 .acciones { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-.chip { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 700; background: var(--hover); color: var(--muted); white-space: nowrap; }
+.chip { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 999px; font-size: 0.875rem; font-weight: 700; background: var(--hover); color: var(--muted); white-space: nowrap; }
 .chip .ico { width: 14px; height: 14px; }
 .chip--ok { color: var(--ok); background: var(--ok-suave); }
 .chip--aviso { color: var(--aviso); background: var(--aviso-suave); }
@@ -164,7 +165,7 @@ a.chip { min-height: 44px; padding: 0 14px; }
 .barra > span { display: block; height: 100%; border-radius: inherit; background: var(--grad); }
 .progreso-linea { display: flex; align-items: center; gap: 12px; }
 .progreso-linea .barra { flex: 1 1 auto; }
-.progreso-linea b { font-size: 0.85rem; min-width: 40px; text-align: right; }
+.progreso-linea b { font-size: 0.875rem; min-width: 40px; text-align: right; }
 
 /* portadas de curso */
 .portada { position: relative; aspect-ratio: 16 / 7; border-radius: var(--radio) var(--radio) 0 0; overflow: hidden; display: grid; place-items: center; isolation: isolate; background: radial-gradient(120% 120% at 15% 0%, var(--color, #00B8D9) 0%, #0B1A3C 62%, #070C18 100%); }
@@ -187,7 +188,7 @@ a.chip { min-height: 44px; padding: 0 14px; }
 .datos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .dato { padding: 14px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .dato b { font-family: var(--titulo); font-size: 1.4rem; line-height: 1.1; }
-.dato span { font-size: 0.8rem; color: var(--muted); line-height: 1.3; }
+.dato span { font-size: 0.875rem; color: var(--muted); line-height: 1.3; }
 .cursos { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); }
 .curso-card { display: flex; flex-direction: column; color: var(--fg); overflow: hidden; transition: transform .15s ease, border-color .15s ease; }
 .curso-card:hover { text-decoration: none; transform: translateY(-3px); border-color: var(--linea-2); }
@@ -201,7 +202,7 @@ a.chip { min-height: 44px; padding: 0 14px; }
 .ranking__pos { width: 24px; text-align: center; font-weight: 700; color: var(--muted); font-size: 0.9rem; flex: 0 0 auto; }
 .ranking__nombre { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; line-height: 1.25; }
 .ranking__nombre > span:first-child { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.ranking__nombre small { font-size: 0.74rem; color: var(--muted); font-weight: 600; }
+.ranking__nombre small { font-size: 0.875rem; color: var(--muted); font-weight: 600; }
 .ranking__n { font-weight: 800; font-size: 0.9rem; color: var(--acento); flex: 0 0 auto; }
 .ranking__sep { height: 1px; background: var(--linea); margin: 4px 10px; padding: 0 !important; }
 
@@ -218,7 +219,7 @@ a.leccion-fila:hover { text-decoration: none; border-color: var(--linea-2); back
 .leccion-fila__n--sig { background: var(--boton); color: var(--tinta); }
 .leccion-fila__t { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
 .leccion-fila__t b { font-weight: 600; overflow-wrap: anywhere; }
-.leccion-fila__t span { font-size: 0.82rem; color: var(--muted); }
+.leccion-fila__t span { font-size: 0.875rem; color: var(--muted); }
 
 /* lección */
 .leccion { display: grid; gap: 22px; grid-template-columns: minmax(0, 1fr); }
@@ -282,14 +283,14 @@ a.leccion-fila:hover { text-decoration: none; border-color: var(--linea-2); back
 .preg__cuerpo { flex: 1 1 auto; min-width: 0; }
 .preg__cab { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
 .preg__cab b { font-weight: 700; }
-.preg__cab time, .preg__cab a { font-size: 0.8rem; color: var(--muted); }
+.preg__cab time, .preg__cab a { font-size: 0.875rem; color: var(--muted); }
 .preg__texto { margin-top: 4px; white-space: pre-wrap; overflow-wrap: anywhere; }
 .resp { margin-top: 10px; padding: 12px 14px; border-radius: 12px; background: var(--acento-suave); }
-.insignia { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 700; color: var(--tinta); background: var(--boton); padding: 3px 10px; border-radius: 999px; }
+.insignia { display: inline-flex; align-items: center; gap: 6px; font-size: 0.875rem; font-weight: 700; color: var(--tinta); background: var(--boton); padding: 3px 10px; border-radius: 999px; }
 .insignia .ico { width: 14px; height: 14px; }
 .campo { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .campo > span { font-weight: 600; font-size: 0.9rem; }
-.campo small { color: var(--muted); font-size: 0.8rem; }
+.campo small { color: var(--muted); font-size: 0.875rem; }
 .entrada { width: 100%; min-height: 44px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--linea-2); background: var(--bg); color: var(--fg); }
 textarea.entrada { min-height: 96px; resize: vertical; line-height: 1.5; }
 .entrada:focus { outline: 2px solid var(--acento); outline-offset: 1px; }
@@ -308,7 +309,7 @@ textarea.entrada { min-height: 96px; resize: vertical; line-height: 1.5; }
 .fila-admin + .fila-admin { margin-top: 8px; }
 .fila-admin__t { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
 .fila-admin__t b { overflow-wrap: anywhere; }
-.fila-admin__t span { font-size: 0.8rem; color: var(--muted); }
+.fila-admin__t span { font-size: 0.875rem; color: var(--muted); }
 .fila-admin__ico { font-size: 1.4rem; flex: 0 0 auto; width: 32px; text-align: center; }
 .fila-admin__btns { display: flex; gap: 2px; flex: 0 0 auto; }
 @media (max-width: 560px) { .fila-admin { flex-wrap: wrap; } .fila-admin__btns { width: 100%; justify-content: flex-end; border-top: 1px solid var(--linea); padding-top: 6px; } }
@@ -343,7 +344,7 @@ textarea.entrada { min-height: 96px; resize: vertical; line-height: 1.5; }
 .entrar__lema { font-size: 1.1rem; margin: 0; }
 .entrar .btn--enorme { justify-content: center; text-align: center; }
 .entrar .btn--enorme .btn__txt { flex: 0 1 auto; }
-.entrar__ayuda { list-style: none; margin: 4px auto 0; padding: 0; display: grid; gap: 12px; justify-items: start; text-align: left; font-size: 1rem; line-height: 1.4; color: var(--fg); }
+.entrar__ayuda { list-style: none; margin: 20px auto 0; padding: 0; display: grid; gap: 12px; justify-items: start; text-align: left; font-size: 1rem; line-height: 1.4; color: var(--fg); }
 .entrar__ayuda li { display: flex; align-items: center; gap: 10px; }
 .entrar__ayuda b { font-weight: 700; }
 .entrar__num { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 50%; display: inline-grid; place-items: center; background: var(--acento-suave); color: var(--fg); font-family: var(--titulo); font-weight: 800; font-size: 1rem; }
@@ -356,7 +357,7 @@ textarea.entrada { min-height: 96px; resize: vertical; line-height: 1.5; }
 .tabla tr:last-child td { border-bottom: 0; }
 .celda-pct { display: flex; align-items: center; gap: 8px; min-width: 110px; }
 .celda-pct .barra { flex: 1 1 auto; height: 6px; }
-.celda-pct b { font-size: 0.82rem; min-width: 36px; text-align: right; }
+.celda-pct b { font-size: 0.875rem; min-width: 36px; text-align: right; }
 .persona { display: flex; align-items: center; gap: 8px; min-width: 0; }
 
 .vacio { text-align: center; padding: 36px 20px; color: var(--muted); }
@@ -377,8 +378,8 @@ textarea.entrada { min-height: 96px; resize: vertical; line-height: 1.5; }
 .logros { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); }
 .logro { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; padding: 12px 6px; border-radius: 14px; background: var(--bg-3); min-width: 0; }
 .logro__ico { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-size: 1.5rem; background: var(--boton); }
-.logro b { font-size: 0.78rem; line-height: 1.2; overflow-wrap: anywhere; }
-.logro small { font-size: 0.7rem; line-height: 1.25; color: var(--muted); }
+.logro b { font-size: 0.875rem; line-height: 1.2; overflow-wrap: anywhere; }
+.logro small { font-size: 0.8125rem; line-height: 1.25; color: var(--muted); }
 .logro--no .logro__ico { background: var(--bg-4); filter: grayscale(1); opacity: 0.5; }
 .logro--no b { color: var(--muted); }
 
@@ -400,11 +401,11 @@ a.camino__tarjeta:hover { text-decoration: none; border-color: var(--linea-2); b
 .camino__tarjeta--bloq .camino__emoji { filter: grayscale(1); opacity: 0.5; }
 .camino__t { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
 .camino__t b { font-weight: 700; overflow-wrap: anywhere; line-height: 1.3; }
-.camino__t span { font-size: 0.82rem; color: var(--muted); }
+.camino__t span { font-size: 0.875rem; color: var(--muted); }
 @media (max-width: 480px) { .camino__nodo { width: 48px; height: 48px; } .camino::before { left: 24px; } .camino__tarjeta { padding: 12px; gap: 10px; } }
 
 /* ===== v3: lección ===== */
-.lbar { position: sticky; top: 70px; z-index: 20; display: flex; align-items: center; gap: 12px; padding: 8px 16px; border-radius: 999px; background: var(--bg-2); border: 1px solid var(--linea); box-shadow: var(--sombra); font-size: 0.85rem; min-width: 0; }
+.lbar { position: sticky; top: 70px; z-index: 20; display: flex; align-items: center; gap: 12px; padding: 8px 16px; border-radius: 999px; background: var(--bg-2); border: 1px solid var(--linea); box-shadow: var(--sombra); font-size: 0.875rem; min-width: 0; }
 .lbar b { white-space: nowrap; }
 .lbar .barra { flex: 1 1 auto; min-width: 40px; }
 .lbar__n { white-space: nowrap; font-weight: 800; font-size: 0.95rem; color: var(--fg); }
@@ -427,6 +428,8 @@ a.camino__tarjeta:hover { text-decoration: none; border-color: var(--linea-2); b
 .act li + li { margin-top: 0; }
 .act__cab { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
 .act__tipo { font-size: 0.92rem; font-weight: 800; color: var(--acento-texto); }
+/* Emoji delante de una etiqueta: en su propio hueco (en negrita se pegaba a la palabra). */
+.emo { display: inline-block; margin-right: 0.4em; font-weight: 400; }
 .act .act__tit { margin-top: 4px; font-size: 1.15rem; }
 .act__pie { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .act__cuerpo { display: flex; flex-direction: column; gap: 12px; }
@@ -443,7 +446,7 @@ a.camino__tarjeta:hover { text-decoration: none; border-color: var(--linea-2); b
 .flip__frente { background: var(--bg-3); border: 1px solid var(--linea); font-weight: 600; }
 .flip:hover .flip__frente { border-color: var(--linea-2); }
 .flip__dorso { transform: rotateY(180deg); background: var(--boton); color: var(--tinta); font-weight: 700; font-size: 1.05rem; justify-content: center; }
-.flip__pista { font-size: 0.76rem; font-weight: 800; color: var(--acento-texto); }
+.flip__pista { font-size: 0.875rem; font-weight: 800; color: var(--acento-texto); }
 .clas { display: flex; flex-direction: column; gap: 10px; }
 .clas__item { padding: 12px 14px; border-radius: 14px; background: var(--bg-3); display: flex; flex-direction: column; gap: 10px; }
 .clas__item--ok { background: var(--ok-suave); }
@@ -521,7 +524,7 @@ a.camino__tarjeta:hover { text-decoration: none; border-color: var(--linea-2); b
 .pdf-plegado summary { cursor: pointer; font-weight: 700; min-height: 44px; display: flex; align-items: center; color: var(--acento-texto); }
 .ejemplos { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); margin-top: 10px; }
 .ejemplo { padding: 12px; border-radius: 12px; background: var(--bg-3); display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.ejemplo pre { margin: 0; padding: 8px 10px; border-radius: 8px; background: var(--bg-2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78rem; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
+.ejemplo pre { margin: 0; padding: 8px 10px; border-radius: 8px; background: var(--bg-2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.875rem; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
 /* ---------- v3.1: tú escribes → Claude hace ---------- */
 .pide { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .pide__fila { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: stretch; gap: 10px; }
@@ -532,14 +535,14 @@ a.camino__tarjeta:hover { text-decoration: none; border-color: var(--linea-2); b
 .pide__claude .pide__etq { color: var(--acento-texto); }
 .pide__frase { font-weight: 700; font-size: 1.04rem; line-height: 1.4; overflow-wrap: anywhere; }
 .pide__acc { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: auto; }
-.pide__ok { font-size: 0.86rem; font-weight: 700; color: var(--ok); }
+.pide__ok { font-size: 0.875rem; font-weight: 700; color: var(--ok); }
 .pide__flecha { align-self: center; font-size: 1.4rem; font-weight: 800; color: var(--acento-texto); }
 .pide__fila--info .pide__tu { background: var(--bg-3); }
 @container (max-width: 520px) {
   .pide__fila { grid-template-columns: minmax(0, 1fr); gap: 6px; }
   .pide__flecha { justify-self: center; transform: rotate(90deg); line-height: 1; }
 }
-/* ---------- v3.1: pasos de «Empieza aquí» ---------- */
+/* ---------- v3.1: pasos de la primera clase ---------- */
 .act--paso { padding: 18px; }
 .paso__cab { justify-content: flex-start; flex-wrap: nowrap; gap: 14px; }
 .paso__n { flex: 0 0 auto; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: var(--boton); color: var(--tinta); font-family: var(--titulo); font-weight: 800; font-size: 1.5rem; }
@@ -583,7 +586,7 @@ a.camino__tarjeta:hover { text-decoration: none; border-color: var(--linea-2); b
 .qz__op--ok .qz__letra { background: var(--ok); color: var(--sobre-color); }
 .qz__op--mal .qz__letra { background: var(--mal); color: var(--sobre-color); }
 .qz__optxt { min-width: 0; overflow-wrap: anywhere; }
-.qz__ayuda { margin: 0; font-size: 0.86rem; color: var(--muted); }
+.qz__ayuda { margin: 0; font-size: 0.875rem; color: var(--muted); }
 .qz__acc { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 .qz__acc .btn { flex: 1 1 220px; }
 .qz__fin { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; padding: 18px 12px; border-radius: var(--radio); background: var(--bg-3); }
@@ -658,16 +661,22 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
  * - Transporte: POST text/plain (sin preflight CORS) a SCHOOL_CONF.api con {t: pase, f: función, a: args}.
  *   El servidor (src/Puerta.gs, doPost) comprueba el pase y la lista blanca; contesta {ok, r} o
  *   {ok:false, code, msg}. Sin cookies (credentials: omit): quién eres sale SOLO del pase.
- * - Pase: lo firma la puerta (doGet, «Solo yo» hoy) y vuelve aquí en #t=<pase>&s=<nonce>. Este fichero
- *   lo guarda en sessionStorage («influentia-school:token», solo ESTA pestaña) y lo quita de la barra
- *   y del historial con history.replaceState, al cargar y también en «hashchange» (si llega con la
- *   pestaña ya abierta, se guarda y se recarga). Dura 14 días. Caducado o rechazado (unauthenticated)
- *   = se borra y la web enseña «Entrar». Antes (hasta el 16-oct) vivía 30 días en localStorage, que
- *   comparten TODAS las webs de uriel-iglesias.github.io: ese pase viejo se borra al cargar y no se usa.
+ * - Entrada: la puerta (doGet, «Solo yo» hoy) vuelve aquí con #c=<código de un solo uso, 2 min>. Este
+ *   fichero lo quita de la barra y del historial (history.replaceState) y lo canjea por el pase con un
+ *   POST (api_canjear: código + nonce de esta pestaña). El pase NUNCA va en una URL (juez 17-oct: el
+ *   #t=<pase> de antes se quedaba 14 días en el historial de Chrome). El pase vive en sessionStorage
+ *   («influentia-school:token», solo ESTA pestaña), dura 14 días; caducado o rechazado
+ *   (unauthenticated) = se borra y la web enseña «Entrar» con el motivo («Tu sesión ha caducado…»).
+ *   Un #t= viejo (pases v2, ya no valen en el servidor) se quita de la barra y no se usa. Antes (hasta
+ *   el 16-oct) el pase vivía 30 días en localStorage, que comparten TODAS las webs de
+ *   uriel-iglesias.github.io: ese pase viejo se borra al cargar y no se usa.
  * - Nonce contra el login CSRF: al cargar se crea uno al azar (crypto.getRandomValues, 24 bytes en
- *   base64url, «influentia-school:nonce» en sessionStorage) y viaja en la vuelta a la puerta
- *   (?entrar=1&s=<nonce>). Un #t= solo se acepta si su s= es ESE nonce; luego se borra y se crea otro.
- *   Si no cuadra (o falta), el pase que llega se tira, la barra se limpia y el pase guardado no se toca.
+ *   base64url, «influentia-school:nonce» en sessionStorage) y viaja a la puerta (?entrar=1&s=<nonce>),
+ *   que lo ata al código. Vuelve SOLO en el POST del canje (no en la URL): un #c= de otra persona no
+ *   vale en esta pestaña. Un nonce = una entrada: se gasta al canjear y se crea otro.
+ * - Origen compartido (uriel-iglesias.github.io lo usan más webs): no se canjea nada si la School está
+ *   dentro de un marco o la abrió otra página de este mismo origen (window.opener legible). Es una
+ *   rebaja, no el arreglo: el arreglo es un origen propio (ver VERIFICACION.md).
  * - Arranque en UNA llamada: api_inicio trae el perfil y, a la vez, las colecciones de
  *   window.SCHOOL_PRECARGA (antes eran dos viajes seguidos a Google: api_inicio y luego el sondeo).
  * - Caché de arranque (sessionStorage, misma pestaña): al recargar se pinta al momento lo último que
@@ -739,7 +748,11 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     return unescape(encodeURIComponent(s)).length;
   }
   function igual(a, b) { return JSON.stringify(a) === JSON.stringify(b); }
-  function aviso(e) { try { console.warn('[escuela] ' + (e && e.message ? e.message : e)); } catch (x) { /* sin consola */ } }
+  /** Avisa en la consola de lo raro. «Entra con tu cuenta» no es raro (es la portada sin entrar): no se avisa. */
+  function aviso(e) {
+    if (e && e.sesion && e.login) return;
+    try { console.warn('[escuela] ' + (e && e.message ? e.message : e)); } catch (x) { /* sin consola */ }
+  }
   function idAuto() {
     var abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', s = '', i;
     var n = new Uint8Array(20);
@@ -765,12 +778,14 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
   // Selector de cuentas: el de Google (en las pruebas locales, uno falso).
   var SELECTOR = 'https://accounts.google.com/AccountChooser';
 
-  // ------------------------------------------------------------ pase (#t=… → sessionStorage de esta pestaña)
+  // ------------------------------------------------------------ pase (#c=… → canje → sessionStorage de esta pestaña)
 
   var CLAVE_PASE = 'influentia-school:token';
   var CLAVE_VOLVER = 'influentia-school:volver';
   var CLAVE_CACHE = 'influentia-school:cache';
   var CLAVE_NONCE = 'influentia-school:nonce';
+  var CLAVE_MOTIVO = 'influentia-school:motivo';
+  var RE_CODIGO = /^[A-Za-z0-9_-]{43}$/; // la misma forma que mira el canje (RE_CODIGO_ de Puerta.gs)
   var RE_PASE = /^[A-Za-z0-9_-]{8,2000}\.[A-Za-z0-9_-]{43}$/;
   var RE_NONCE = /^[A-Za-z0-9_-]{22,64}$/; // la misma forma que mira la puerta (RE_NONCE_ de Puerta.gs)
   var RE_RUTA = /^#\/[A-Za-z0-9_\-.~%\/]{0,300}$/;
@@ -808,11 +823,27 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       return o && typeof o.x === 'number' ? o.x : 0;
     } catch (e) { return 0; }
   }
-  /** Pase guardado y aún vigente, o null (si caducó, se borra). */
+  /** Por qué hay que entrar otra vez (lo enseña «Entrar»). Sobrevive a una recarga (una vez). */
+  var MOTIVOS = {
+    caducada: 'Tu sesión ha caducado. Vuelve a entrar.',
+    canje: 'Tu entrada ha caducado. Pulsa Entrar otra vez.',
+    red: 'No hay conexión. Pulsa Entrar otra vez.',
+    ventana: 'Abre la School en una pestaña nueva y entra otra vez.'
+  };
+  var motivo = (function () {
+    var m = leerClave(CLAVE_MOTIVO);
+    borrarClave(CLAVE_MOTIVO);
+    return m && Object.prototype.hasOwnProperty.call(MOTIVOS, m) ? m : '';
+  })();
+  function ponerMotivo(m) {
+    motivo = m || '';
+    if (motivo) guardarClave(CLAVE_MOTIVO, motivo); else borrarClave(CLAVE_MOTIVO);
+  }
+  /** Pase guardado y aún vigente, o null (si caducó, se borra y queda el motivo). */
   function paseVigente() {
     var p = leerClave(CLAVE_PASE);
     if (!p || !RE_PASE.test(p)) { if (p) borrarClave(CLAVE_PASE); return null; }
-    if (caducidad(p) <= Date.now()) { borrarClave(CLAVE_PASE); return null; }
+    if (caducidad(p) <= Date.now()) { borrarClave(CLAVE_PASE); motivo = 'caducada'; return null; }
     return p;
   }
   /** Ruta #/… en la que estabas antes de ir a entrar (para volver a ella con el pase nuevo). */
@@ -853,25 +884,37 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     return m ? m[1] : null;
   }
   /**
-   * Al llegar de la puerta (#t=<pase>&s=<nonce>): si s es el nonce de esta pestaña, guarda el pase
-   * (y gasta el nonce). Si no, tira el pase que llega y deja el guardado. Siempre quita t= y s= de la
-   * barra y del historial. Devuelve true si ha guardado un pase nuevo.
+   * ¿La School está dentro de un marco, o la abrió otra página de este mismo origen (que podría leer
+   * esta pestaña)? Entonces no se canjea. Un opener de otro origen no se puede leer (lanza): vale.
+   */
+  function abiertaDesdeOtraWeb() {
+    try { if (window.top && window.self && window.top !== window.self) return true; } catch (e) { return true; }
+    var o = null;
+    try { o = window.opener || null; } catch (e) { o = null; }
+    if (!o) return false;
+    try { return typeof o.location.href === 'string'; } catch (e) { return false; }
+  }
+  var pCanje = null; // canje en marcha: las llamadas a la API lo esperan
+  /**
+   * Al llegar de la puerta (#c=<código>): si hay nonce en esta pestaña, lo gasta y canjea el código por
+   * el pase (POST). El pase guardado solo se cambia si el canje sale bien: un enlace #c= ajeno (atado a
+   * otro nonce) no te saca de tu sesión. Siempre quita c=, t= y s= de la barra y del historial.
+   * Devuelve true si ha empezado un canje (pCanje dice si salió bien).
    */
   function capturarPase() {
     var loc = window.location;
     if (!loc) return false;
     var h = String(loc.hash || '');
-    var t = enHash(h, 't');
-    if (t === null) return false;
-    var s = enHash(h, 's');
+    var c = enHash(h, 'c');
+    if (c === null && enHash(h, 't') === null && enHash(h, 's') === null) return false;
     var mio = leerClave(CLAVE_NONCE);
-    var vale = RE_PASE.test(t) && s !== null && RE_NONCE.test(s) && !!mio && RE_NONCE.test(mio) && igualSeguro(s, mio);
+    var vale = c !== null && RE_CODIGO.test(c) && !!mio && RE_NONCE.test(mio);
+    if (vale && abiertaDesdeOtraWeb()) { vale = false; ponerMotivo('ventana'); }
     if (vale) {
-      guardarClave(CLAVE_PASE, t);
-      borrarCache();
       borrarClave(CLAVE_NONCE); // un nonce = una entrada
+      pCanje = canjear(c, mio);
     }
-    var resto = '#' + h.replace(/^#/, '').split('&').filter(function (x) { return x && x.indexOf('t=') !== 0 && x.indexOf('s=') !== 0; }).join('&');
+    var resto = '#' + h.replace(/^#/, '').split('&').filter(function (x) { return x && x.indexOf('c=') !== 0 && x.indexOf('t=') !== 0 && x.indexOf('s=') !== 0; }).join('&');
     var volver = vale ? leerClave(CLAVE_VOLVER) : null;
     if (vale) borrarClave(CLAVE_VOLVER);
     var ruta = RE_RUTA.test(resto) ? resto : (volver && RE_RUTA.test(volver) ? volver : '');
@@ -890,13 +933,16 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       : '';
   }
   armarLogin();
-  // Un #t= que llega con la pestaña ya abierta (mismo documento, solo cambia el hash): igual que al
-  // cargar. Si el pase vale, se recarga para arrancar con él (nunca salta al login).
+  // Un #c= que llega con la pestaña ya abierta (mismo documento, solo cambia el hash): igual que al
+  // cargar. Acabado el canje se recarga para arrancar con el pase nuevo (o con el motivo si falló).
   if (typeof window.addEventListener === 'function') {
     window.addEventListener('hashchange', function () {
       if (!capturarPase()) return;
-      armarLogin();
-      try { if (window.location && typeof window.location.reload === 'function') window.location.reload(); } catch (e) { /* sin recarga */ }
+      var recargar = function () {
+        armarLogin();
+        try { if (window.location && typeof window.location.reload === 'function') window.location.reload(); } catch (e) { /* sin recarga */ }
+      };
+      Promise.resolve(pCanje).then(recargar, recargar);
     });
   }
   /**
@@ -954,25 +1000,20 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
 
   function sinPase() {
     recordarRuta();
-    var x = error('unauthenticated', 'Entra con tu cuenta de Influentia.');
+    var x = error('unauthenticated', MOTIVOS[motivo] || 'Entra con tu cuenta de Influentia.');
     x.detalle = '';
     x.sesion = true;
     x.login = true;
     return x;
   }
 
-  /** Llama a una api_* del servidor. {ok:true, r} → r; {ok:false} → rechazo con .code. */
-  function llamar(fn, args) {
-    var pase = paseVigente();
-    if (!pase) return Promise.reject(sinPase());
+  /** POST de un cuerpo ya en texto a la API → {ok, …} del servidor, o rechazo «unavailable». */
+  function pedirApi(cuerpo) {
     if (!API || typeof fetch !== 'function') {
       var sin = error('unavailable', 'Falta la dirección del servidor.');
       sin.detalle = API ? 'Este navegador no tiene fetch.' : 'SCHOOL_CONF.api vacío o no válido.';
       return Promise.reject(sin);
     }
-    var cuerpo;
-    try { cuerpo = JSON.stringify({ t: pase, f: fn, a: args || [] }); }
-    catch (e) { return Promise.reject(error('invalid_argument', 'Los datos no se pueden enviar.')); }
     var peticion;
     try {
       peticion = fetch(API, {
@@ -1002,16 +1043,55 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       x.detalle = textoError(e) || 'Failed to fetch';
       x.noContesta = true;
       throw x;
-    }).then(function (j) {
+    });
+  }
+
+  /**
+   * Canje del código de la puerta (+ el nonce de esta pestaña) por el pase. Un corte de red o un «prueba
+   * otra vez» se reintenta una vez. Mal = sin pase y con el motivo para «Entrar». Resuelve true/false.
+   */
+  function canjear(codigo, nonce) {
+    var cuerpo = JSON.stringify({ f: 'api_canjear', a: [codigo, nonce] });
+    function intento(n) {
+      return pedirApi(cuerpo).then(function (j) {
+        if (j.ok === true && j.r && typeof j.r.t === 'string' && RE_PASE.test(j.r.t)) {
+          guardarClave(CLAVE_PASE, j.r.t);
+          borrarCache();
+          ponerMotivo('');
+          return true;
+        }
+        if (j.ok !== true && j.reintentar && n < 1) return dormir(ESPERA_MS).then(function () { return intento(n + 1); });
+        if (!paseVigente()) ponerMotivo('canje'); // con sesión buena de antes, se sigue en ella sin aviso
+        return false;
+      }, function () {
+        if (n < 1) return dormir(ESPERA_MS).then(function () { return intento(n + 1); });
+        if (!paseVigente()) ponerMotivo('red');
+        return false;
+      });
+    }
+    return intento(0).then(function (v) { pCanje = null; return v; }, function () { pCanje = null; return false; });
+  }
+
+  /** Llama a una api_* del servidor. {ok:true, r} → r; {ok:false} → rechazo con .code. */
+  function llamar(fn, args) {
+    if (pCanje) return pCanje.then(function () { return llamar(fn, args); });
+    var pase = paseVigente();
+    if (!pase) return Promise.reject(sinPase());
+    var cuerpo;
+    try { cuerpo = JSON.stringify({ t: pase, f: fn, a: args || [] }); }
+    catch (e) { return Promise.reject(error('invalid_argument', 'Los datos no se pueden enviar.')); }
+    return pedirApi(cuerpo).then(function (j) {
       if (j.ok === true) return j.r === undefined ? null : j.r;
       var x = error(String(j.code || 'unavailable'), String(j.msg || 'Algo ha fallado. Prueba otra vez en un momento.'));
       x.detalle = String(j.msg || '');
       x.reintentar = !!j.reintentar;
       if (x.code === 'unauthenticated') {
-        // Pase caducado, de otra cuenta o con la firma mal: se borra y la web pide entrar otra vez.
+        // Pase caducado, cerrado con «Salir», de otra cuenta o con la firma mal: se borra y la web pide
+        // entrar otra vez, diciendo por qué (el texto del servidor: «Tu sesión ha caducado…»).
         borrarClave(CLAVE_PASE);
         borrarCache();
         recordarRuta();
+        if (!/@/.test(x.message)) { motivo = 'caducada'; x.message = MOTIVOS.caducada; }
         x.sesion = true;
         x.login = true;
       }
@@ -1144,8 +1224,9 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
   /**
    * Primera llamada (instala si entra el dueño, registra la visita, trae tu perfil y la precarga).
    * Con caché de esta pestaña: resuelve al momento con ella y refresca por detrás. Un corte de red
-   * o un fallo del servidor se reintenta 2 veces; un «entra / no tienes permiso» no (no se arregla
-   * solo). Sin pase ni se llama. Si el servidor no contesta en INICIO_MS, rechaza.
+   * o un fallo del servidor se reintenta 2 veces (a 1 s y 2 s; sin red en el aparato, ninguna); un
+   * «entra / no tienes permiso» no (no se arregla solo). Sin pase ni se llama. Si el servidor no
+   * contesta en INICIO_MS, rechaza.
    */
   function inicio() {
     if (pInicio) return pInicio;
@@ -1167,7 +1248,9 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     var objetivos = objetivosPrecarga(null);
     var intento = (function intentar(n) {
       return llamar('api_inicio', objetivos.length ? [objetivos] : []).catch(function (e) {
-        if (e.code === 'unavailable' && n < 2) return dormir(ESPERA_MS * 2 * (n + 1)).then(function () { return intentar(n + 1); });
+        // Sin red en el aparato (navigator.onLine === false) no se espera: «No hay conexión» al momento.
+        var sinRed = typeof navigator !== 'undefined' && navigator && navigator.onLine === false;
+        if (e.code === 'unavailable' && n < 2 && !sinRed) return dormir(ESPERA_MS * (n + 1)).then(function () { return intentar(n + 1); });
         throw e;
       });
     })(0);
@@ -1985,6 +2068,14 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     for (var i = 2; i < arguments.length; i++) anadir(el, arguments[i]);
     return el;
   }
+  // «💬 Frases para Claude» → [emoji en su span con aire, «Frases para Claude»]. Sin emoji delante, tal cual.
+  var RE_EMO_INI = /^([^\s\w«¿¡"'(\[*`\u00C0-\u024F]{1,8})\s+(\S[\s\S]*)$/;
+  function conEmo(txt, resto) {
+    var m = RE_EMO_INI.exec(String(txt == null ? '' : txt));
+    if (!m) return resto ? resto(String(txt == null ? '' : txt)) : String(txt == null ? '' : txt);
+    return [h('span', { class: 'emo', 'aria-hidden': 'true' }, m[1]), resto ? resto(m[2]) : m[2]];
+  }
+  function enLinea(t) { return inl(t, true); }
   function anadir(el, c) {
     if (c === null || c === undefined || c === false) return;
     if (Array.isArray(c)) { c.forEach(function (x) { anadir(el, x); }); return; }
@@ -2425,14 +2516,14 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
             });
           });
           ul.appendChild(h('li', { class: 'pide__fila' },
-            h('div', { class: 'pide__tu' }, h('span', { class: 'pide__etq' }, '✍️ Tú escribes'), frase, h('div', { class: 'pide__acc' }, b, aviso)),
+            h('div', { class: 'pide__tu' }, h('span', { class: 'pide__etq' }, conEmo('✍️ Tú escribes')), frase, h('div', { class: 'pide__acc' }, b, aviso)),
             h('span', { class: 'pide__flecha', 'aria-hidden': 'true' }, '→'),
-            h('div', { class: 'pide__claude' }, h('span', { class: 'pide__etq' }, '✳️ Claude hace'), h('span', null, inl(it.d, true)))));
+            h('div', { class: 'pide__claude' }, h('span', { class: 'pide__etq' }, conEmo('✳️ Claude hace')), h('span', null, conEmo(it.d, enLinea)))));
         } else {
           ul.appendChild(h('li', { class: 'pide__fila pide__fila--info' },
-            h('div', { class: 'pide__tu' }, h('span', { class: 'pide__frase' }, inl(it.f, true))),
+            h('div', { class: 'pide__tu' }, h('span', { class: 'pide__frase' }, conEmo(it.f, enLinea))),
             h('span', { class: 'pide__flecha', 'aria-hidden': 'true' }, '→'),
-            h('div', { class: 'pide__claude' }, h('span', null, inl(it.d, true)))));
+            h('div', { class: 'pide__claude' }, h('span', null, conEmo(it.d, enLinea)))));
         }
       });
       A.caja.appendChild(ul);
@@ -2629,7 +2720,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
         h('div', { class: 'paso__cabtxt' }, h('span', { class: 'act__tipo' }, datos.n ? 'Paso ' + datos.n : 'Paso'), h('h3', { class: 'act__tit paso__tit' }, inl(datos.tit))));
     } else {
       etiqueta = titulo ? plano(titulo) : info[0].replace(/^\S+\s/, '');
-      cab = h('div', { class: 'act__cab' }, h('div', null, h('span', { class: 'act__tipo' }, info[0]), titulo ? h('h3', { class: 'act__tit' }, inl(titulo)) : null));
+      cab = h('div', { class: 'act__cab' }, h('div', null, h('span', { class: 'act__tipo' }, conEmo(info[0])), titulo ? h('h3', { class: 'act__tit' }, inl(titulo)) : null));
     }
     var caja = h('section', { class: 'act act--' + tipo, 'aria-label': etiqueta }, cab);
     function chipHecha() { if (tipo !== 'paso' && !cab.querySelector('.chip--ok')) cab.appendChild(h('span', { class: 'chip chip--ok' }, icono('check'), 'Hecha')); }
@@ -3537,7 +3628,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
   }
   function errorDb(e) {
     var c = e && e.code;
-    if (c === 'quota_exceeded') return 'La escuela está llena de datos. Avisa a Uriel.';
+    if (c === 'quota_exceeded') return 'La escuela está llena de datos. Avisa al equipo.';
     if (c === 'resource_exhausted') return 'Vas muy rápido. Espera unos segundos.';
     if (c === 'invalid_argument') return 'No tienes permiso para esto.';
     if (c === 'revoked' || c === 'not_granted') return 'Se ha cortado el acceso. Recarga la página.';
@@ -3589,7 +3680,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     var lista = Array.from(S.preguntas.values()).filter(function (p) { return p.leccion_id === l.id; }).sort(function (a, b) { return (a.ts || 0) - (b.ts || 0); });
     var sec = h('section', { class: 'tarjeta tarjeta--pad' }, h('div', { class: 'titulo-seccion' }, icono('chat'), h('h2', null, 'Preguntas'), h('span', { class: 'chip' }, String(lista.length))));
     if (lista.length) { var ul = h('ul', { class: 'hilo' }); lista.forEach(function (p) { ul.appendChild(preguntaEl(p, false)); }); sec.appendChild(ul); }
-    else sec.appendChild(h('p', { class: 'muted' }, '¿Algo no queda claro? Pregunta. Te responde Uriel.'));
+    else sec.appendChild(h('p', { class: 'muted' }, '¿Algo no queda claro? Pregunta. Te respondemos.'));
     if (S.db && S.uid) sec.appendChild(h('div', { style: { 'margin-top': '16px', 'border-top': '1px solid var(--linea)', 'padding-top': '6px' } }, cajaTexto('p-' + l.id, 'Escribe tu pregunta…', 'Preguntar', function (t) { return preguntar(l.id, t); })));
     return sec;
   }
@@ -3714,7 +3805,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
   }
   // Recordatorio para el canal: sin nombres (nadie queda señalado). Los nombres, si acaso, en un privado.
   function textoRecordatorio() {
-    var t = 'Hola 👋 ¿Le das un rato a Influentia School?\nEmpieza por «Empieza aquí». Son 3 pasos, 15 min.';
+    var t = 'Hola 👋 ¿Le das un rato a Influentia School?\nEmpieza por el primer curso. Son 3 pasos, 15 min.';
     // Enlace a la web de GitHub Pages: si no tiene pase, la propia web le pide entrar con su cuenta.
     var u = urlApp();
     if (u) t += '\n' + u;
@@ -4180,9 +4271,9 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
       h('h1', { class: 'entrar__titulo' }, 'Influentia School'),
       h('p', { class: 'entrar__lema' }, (e && e.mensaje) || 'Entra con tu cuenta de Influentia.'));
     if (cuenta) caja.appendChild(h('a', { class: 'btn btn--enorme', href: cuenta, target: '_top', rel: 'noopener', 'data-k': 'entrar-cuenta' }, h('span', { class: 'btn__txt' }, 'Entrar con tu cuenta @' + dom)));
-    else caja.appendChild(h('p', { class: 'peq muted' }, 'Falta la dirección para entrar. Avisa a Uriel.'));
+    else caja.appendChild(h('p', { class: 'peq muted' }, 'Falta la dirección para entrar. Avisa al equipo.'));
     caja.appendChild(h('ol', { class: 'entrar__ayuda', 'data-k': 'entrar-ayuda', 'aria-label': 'Cómo entrar' },
-      h('li', null, h('span', { class: 'entrar__num' }, '1'), h('span', null, 'Elige tu cuenta ', h('b', { class: 'nowrap' }, '@' + dom))),
+      h('li', null, h('span', { class: 'entrar__num' }, '1'), h('span', null, 'Elige la cuenta con tu nombre ', h('b', { class: 'nowrap' }, '(@' + dom + ')'))),
       h('li', null, h('span', { class: 'entrar__num' }, '2'), h('span', null, 'Pulsa ', h('b', { class: 'nowrap' }, 'Entrar a la School')))));
     return caja;
   }
@@ -4201,8 +4292,8 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     var re = h('button', { type: 'button', class: cuenta ? 'btn btn--fantasma sin-conexion__otra' : 'btn btn--enorme', 'data-k': 'reintentar' }, h('span', { class: 'btn__txt' }, 'Reintentar'));
     re.addEventListener('click', reintentarConexion);
     caja.appendChild(re);
-    caja.appendChild(h('p', { class: 'sin-conexion__ayuda' }, 'Si sigue igual, avisa a Uriel.'));
-    // El detalle técnico no se ve: va a la consola y queda plegado en «Ver detalle técnico» (para pasárselo a Uriel).
+    caja.appendChild(h('p', { class: 'sin-conexion__ayuda' }, 'Si sigue igual, avisa al equipo.'));
+    // El detalle técnico no se ve: va a la consola y queda plegado en «Ver detalle técnico» (para pasárselo al equipo).
     if (e.detalle && !(sinPermiso && e.detalle === e.mensaje)) {
       try { console.warn('[School] sin conexión:', e.code, e.detalle); } catch (x) { /* sin consola */ }
       caja.appendChild(h('details', { class: 'sin-conexion__detalle' },
