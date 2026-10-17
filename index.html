@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src https://script.google.com https://script.googleusercontent.com; frame-src https://drive.google.com https://docs.google.com https://www.youtube-nocookie.com https://www.youtube.com https://player.vimeo.com https://www.loom.com; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Influentia School</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2300C8E0'/%3E%3Cstop offset='.5' stop-color='%23009FFF'/%3E%3Cstop offset='1' stop-color='%237641FF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='15' fill='url(%23g)'/%3E%3C/svg%3E">
@@ -70,6 +71,7 @@ body {
   min-height: 100vh; overflow-x: hidden; padding-bottom: 92px;
 }
 @media (min-width: 820px) { body { padding-bottom: 48px; } }
+body.sin-nav { padding-bottom: 48px; }
 img, svg, iframe, video, object { max-width: 100%; }
 a { color: var(--acento); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 3px; }
@@ -88,13 +90,13 @@ p { margin: 0; }
 /* cabecera */
 .cab { position: sticky; top: 0; z-index: 30; background: var(--cab); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--linea); }
 .cab__in { max-width: var(--ancho); margin: 0 auto; padding: 10px var(--lado); display: flex; align-items: center; gap: 12px; min-height: 60px; }
-.marca { display: inline-flex; align-items: center; gap: 10px; color: var(--fg); flex: 0 1 auto; min-width: 0; }
+.marca { display: inline-flex; align-items: center; gap: 10px; color: var(--fg); flex: 0 1 auto; min-width: 0; min-height: 44px; }
 .marca:hover { text-decoration: none; }
 .marca .logo { height: 19px; width: auto; display: block; }
 @media (min-width: 720px) { .marca .logo { height: 23px; } }
 .marca__pill { font-family: var(--titulo); font-weight: 700; font-size: 0.8rem; padding: 3px 9px; border-radius: 999px; background: var(--grad); color: var(--tinta); }
 .nav { display: flex; gap: 4px; margin-left: auto; }
-.nav a { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 12px; color: var(--muted); font-weight: 600; font-size: 0.93rem; position: relative; }
+.nav a { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; min-height: 44px; border-radius: 12px; color: var(--muted); font-weight: 600; font-size: 0.93rem; position: relative; }
 .nav a:hover { color: var(--fg); background: var(--hover); text-decoration: none; }
 .nav a[aria-current="page"] { color: var(--fg); background: var(--acento-suave); }
 .nav a[aria-current="page"] .ico { color: var(--acento); }
@@ -106,7 +108,7 @@ p { margin: 0; }
 @media (max-width: 819px) {
   .cab { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--bg); }
   .nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; margin: 0; justify-content: space-around; gap: 0; padding: 6px 8px calc(6px + env(safe-area-inset-bottom)); background: var(--cab); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid var(--linea); }
-  .nav a { flex-direction: column; gap: 2px; font-size: 0.74rem; padding: 6px 10px; flex: 1 1 0; text-align: center; }
+  .nav a { flex-direction: column; justify-content: center; gap: 2px; font-size: 0.875rem; padding: 6px 6px; min-height: 52px; flex: 1 1 0; text-align: center; }
   .nav a .contador { position: absolute; top: 2px; right: calc(50% - 26px); }
   .cab__lado { margin-left: auto; }
 }
@@ -229,7 +231,7 @@ a.leccion-fila:hover { text-decoration: none; border-color: var(--linea-2); back
 .bloqueado__ico { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: var(--bg-3); color: var(--muted); }
 .bloqueado__ico .ico { width: 28px; height: 28px; }
 .mini-lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
-.mini-lista a, .mini-lista span.fila { display: flex; align-items: center; gap: 10px; padding: 12px 10px; border-radius: 10px; color: var(--fg); font-size: 0.9rem; min-width: 0; }
+.mini-lista a, .mini-lista span.fila { display: flex; align-items: center; gap: 10px; padding: 12px 10px; border-radius: 10px; color: var(--fg); font-size: 0.9rem; min-width: 0; min-height: 48px; }
 .mini-lista a:hover { background: var(--hover); text-decoration: none; }
 .mini-lista a[aria-current="page"] { background: var(--acento-suave); font-weight: 700; }
 .mini-lista span.fila { color: var(--flojo); }
@@ -318,18 +320,34 @@ textarea.entrada { min-height: 96px; resize: vertical; line-height: 1.5; }
 .estado-subida .barra > span { width: 40%; animation: carga 1.2s ease-in-out infinite; }
 .barra--pct > span, .estado-subida .barra--pct > span { animation: none; transition: width .3s ease; }
 .subida-pct { font-weight: 700; font-variant-numeric: tabular-nums; }
-.sin-conexion { max-width: 600px; margin: 24px auto 0; }
-.sin-conexion .btn--enorme { justify-content: center; text-align: center; }
+.sin-conexion { max-width: 520px; margin: 7vh auto 0; text-align: center; align-items: center; }
+.sin-conexion__ico { display: inline-flex; color: var(--acento-texto); }
+.sin-conexion__ico svg { width: 40px; height: 40px; }
+.sin-conexion__titulo { font-family: var(--titulo); font-size: clamp(1.5rem, 6vw, 2rem); line-height: 1.15; margin: 0; text-wrap: balance; }
+.sin-conexion__texto { font-size: 1.1rem; margin: 0; }
+.sin-conexion .btn--enorme, .sin-conexion__otra { justify-content: center; text-align: center; width: 100%; }
 .sin-conexion .btn--enorme .btn__txt { flex: 0 1 auto; }
-.sin-conexion__detalle { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .78rem; overflow-wrap: anywhere; }
+.sin-conexion__ayuda { font-size: 1rem; color: var(--muted); margin: 0; }
+.sin-conexion__detalle { width: 100%; font-size: 0.95rem; color: var(--muted); }
+.sin-conexion__detalle summary { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 0 12px; cursor: pointer; font-weight: 600; border-radius: 12px; }
+.sin-conexion__detalle summary:hover { color: var(--fg); background: var(--hover); }
+.sin-conexion__detalle p { margin: 6px 0 0; overflow-wrap: anywhere; }
+.cargando { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 8px 0 4px; font-size: 1.15rem; font-weight: 700; color: var(--fg); }
+.cargando__nota { margin: 0; text-align: center; font-size: 1.05rem; color: var(--muted); }
+.cargando__punto { width: 12px; height: 12px; border-radius: 50%; background: var(--acento-texto); animation: latido 1s ease-in-out infinite; }
+@keyframes latido { 0%, 100% { opacity: .35; transform: scale(.8); } 50% { opacity: 1; transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .cargando__punto { animation: none; } }
+.nowrap { white-space: nowrap; }
 .entrar { max-width: 520px; margin: 7vh auto 0; text-align: center; align-items: center; }
-.entrar__pill { display: inline-block; }
 .entrar__titulo { font-family: var(--titulo); font-size: clamp(1.9rem, 6vw, 2.6rem); line-height: 1.1; margin: 0; }
 .entrar__lema { font-size: 1.1rem; margin: 0; }
 .entrar .btn--enorme { justify-content: center; text-align: center; }
 .entrar .btn--enorme .btn__txt { flex: 0 1 auto; }
-.entrar__ayuda { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
-.yo__salir { min-height: 36px; padding: 0 12px; }
+.entrar__ayuda { list-style: none; margin: 4px auto 0; padding: 0; display: grid; gap: 12px; justify-items: start; text-align: left; font-size: 1rem; line-height: 1.4; color: var(--fg); }
+.entrar__ayuda li { display: flex; align-items: center; gap: 10px; }
+.entrar__ayuda b { font-weight: 700; }
+.entrar__num { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 50%; display: inline-grid; place-items: center; background: var(--acento-suave); color: var(--fg); font-family: var(--titulo); font-weight: 800; font-size: 1rem; }
+.yo__salir { min-height: 44px; min-width: 44px; padding: 0 14px; }
 @keyframes carga { 0% { transform: translateX(-100%); } 100% { transform: translateX(250%); } }
 .tabla-envol { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radio-s); border: 1px solid var(--linea); }
 .tabla { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 0.9rem; }
@@ -622,7 +640,7 @@ a.camino__tarjeta:hover { text-decoration: none; border-color: var(--linea-2); b
   </div>
 </header>
 <div class="aviso" id="aviso" hidden></div>
-<main id="principal" class="principal" tabindex="-1"><div class="envoltorio" id="vista"></div></main>
+<main id="principal" class="principal" tabindex="-1"><div class="envoltorio" id="vista"><p class="cargando" role="status"><span class="cargando__punto" aria-hidden="true"></span>Cargando tus clases…</p></div></main>
 <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
 <script>
 /* Puente window.claude → API de Apps Script por fetch (src/Puente.js, generado) */
@@ -640,16 +658,33 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
  * - Transporte: POST text/plain (sin preflight CORS) a SCHOOL_CONF.api con {t: pase, f: función, a: args}.
  *   El servidor (src/Puerta.gs, doPost) comprueba el pase y la lista blanca; contesta {ok, r} o
  *   {ok:false, code, msg}. Sin cookies (credentials: omit): quién eres sale SOLO del pase.
- * - Pase: lo firma la puerta (doGet, «Solo yo» hoy) y vuelve aquí en #t=… La primera línea de este
- *   fichero que corre lo guarda en localStorage («influentia-school:token») y lo quita de la barra
- *   con history.replaceState. Caducado o rechazado (unauthenticated) = se borra y la web enseña «Entrar».
- * - window.SCHOOL_LOGIN_URL = selector de cuentas de Google (hd=dominio) que acaba en la puerta.
- *   window.SCHOOL_SALIR() = borra el pase y vuelve a la portada.
+ * - Pase: lo firma la puerta (doGet, «Solo yo» hoy) y vuelve aquí en #t=<pase>&s=<nonce>. Este fichero
+ *   lo guarda en sessionStorage («influentia-school:token», solo ESTA pestaña) y lo quita de la barra
+ *   y del historial con history.replaceState, al cargar y también en «hashchange» (si llega con la
+ *   pestaña ya abierta, se guarda y se recarga). Dura 14 días. Caducado o rechazado (unauthenticated)
+ *   = se borra y la web enseña «Entrar». Antes (hasta el 16-oct) vivía 30 días en localStorage, que
+ *   comparten TODAS las webs de uriel-iglesias.github.io: ese pase viejo se borra al cargar y no se usa.
+ * - Nonce contra el login CSRF: al cargar se crea uno al azar (crypto.getRandomValues, 24 bytes en
+ *   base64url, «influentia-school:nonce» en sessionStorage) y viaja en la vuelta a la puerta
+ *   (?entrar=1&s=<nonce>). Un #t= solo se acepta si su s= es ESE nonce; luego se borra y se crea otro.
+ *   Si no cuadra (o falta), el pase que llega se tira, la barra se limpia y el pase guardado no se toca.
+ * - Arranque en UNA llamada: api_inicio trae el perfil y, a la vez, las colecciones de
+ *   window.SCHOOL_PRECARGA (antes eran dos viajes seguidos a Google: api_inicio y luego el sondeo).
+ * - Caché de arranque (sessionStorage, misma pestaña): al recargar se pinta al momento lo último que
+ *   se vio y se refresca por detrás con una sola api_inicio. Atada al pase; fuera las colecciones de
+ *   window.SCHOOL_SIN_CACHE (equipo = emails). Se borra al salir y si el servidor pide entrar.
+ * - window.SCHOOL_LOGIN_URL = selector de cuentas de Google (hd=dominio) que acaba en la puerta (con el
+ *   nonce). Solo se va a entrar con un clic: nada salta solo al login.
+ *   window.SCHOOL_SALIR() = avisa al servidor (api_salir: ese pase y los demás de esa persona dejan de
+ *   valer), borra el pase al momento y vuelve a la portada cuando el servidor contesta (máx. 2,5 s).
+ * - Ganchos de pruebas locales (ajustes del arnés, http de la máquina local, selector de cuentas falso)
+ *   van entre marcas «dev»: el build de producción (tools/construir.mjs) los quita.
  * - Los permisos los decide SIEMPRE el servidor (Docs.gs). Aquí solo hay eco local inmediato de las
  *   escrituras (se deshace si el servidor dice que no).
  * - onSnapshot = un único sondeo por pestaña (api_docs_sondeo) cada ~15 s para todas las colecciones
  *   vigiladas; con la pestaña oculta se para y vuelve al enseñarse. Si no ha cambiado nada, el
- *   servidor solo contesta «igual».
+ *   servidor solo contesta «igual». Si los datos llegaron hace menos de medio sondeo (precarga),
+ *   no se vuelve a preguntar todavía.
  * - Archivos a Drive en trozos de 8 MB (vídeos de cientos de MB), con reintentos y reanudación.
  * - window.SCHOOL_URL_ARCHIVO(id, tipo) → URL de Drive (/preview para vídeo, /view para el resto).
  * - window.SCHOOL_MAX_ASSET = 4 GB (el tope que mira la web antes de subir; PDF ≤ 200 MB lo frena subir()).
@@ -663,8 +698,9 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
   'use strict';
   if (window.claude && typeof window.claude.use === 'function') return;
 
-  var CONF = window.__SCHOOL_PUENTE || {};
+  var CONF = {};
   var SONDEO_MS = CONF.sondeoMs || 15000;
+  var SALIR_MAX_MS = 2500; // «Salir» espera la respuesta de api_salir como mucho esto antes de ir a la portada
   var TRAS_ESCRIBIR_MS = CONF.trasEscribirMs || 2000;
   var REGISTRO_MS = CONF.registroMs || 50;
   var ESPERA_MS = CONF.esperaMs || 1000;
@@ -716,40 +752,53 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
   // ------------------------------------------------------------ configuración (la deja el build)
 
   var SC = (window.SCHOOL_CONF && typeof window.SCHOOL_CONF === 'object') ? window.SCHOOL_CONF : {};
-  /** Solo https (o http en 127.0.0.1/localhost, para las pruebas locales). Si no, ''. */
+  /** Solo https (en las pruebas locales, también http de la máquina local). Si no, ''. */
   function urlSegura(u) {
     var s = typeof u === 'string' ? u.trim() : '';
     if (/^https:\/\/[^\s"'<>\\]+$/i.test(s)) return s;
-    if (/^http:\/\/(127\.0\.0\.1|localhost)(:\d{1,5})?(\/[^\s"'<>\\]*)?$/i.test(s)) return s;
     return '';
   }
   var API = urlSegura(SC.api);
   var PUERTA = urlSegura(SC.puerta);
   var WEB = urlSegura(SC.web);
   var DOMINIO = (typeof SC.dominio === 'string' && /^[a-z0-9.-]+\.[a-z]{2,}$/i.test(SC.dominio)) ? SC.dominio.toLowerCase() : 'influentia.me';
-  // Selector de cuentas: el de Google; en las pruebas locales, SCHOOL_CONF.login lo cambia por uno falso.
-  var SELECTOR = urlSegura(SC.login) || 'https://accounts.google.com/AccountChooser';
+  // Selector de cuentas: el de Google (en las pruebas locales, uno falso).
+  var SELECTOR = 'https://accounts.google.com/AccountChooser';
 
-  // ------------------------------------------------------------ pase (#t=… → localStorage)
+  // ------------------------------------------------------------ pase (#t=… → sessionStorage de esta pestaña)
 
   var CLAVE_PASE = 'influentia-school:token';
   var CLAVE_VOLVER = 'influentia-school:volver';
+  var CLAVE_CACHE = 'influentia-school:cache';
+  var CLAVE_NONCE = 'influentia-school:nonce';
   var RE_PASE = /^[A-Za-z0-9_-]{8,2000}\.[A-Za-z0-9_-]{43}$/;
+  var RE_NONCE = /^[A-Za-z0-9_-]{22,64}$/; // la misma forma que mira la puerta (RE_NONCE_ de Puerta.gs)
   var RE_RUTA = /^#\/[A-Za-z0-9_\-.~%\/]{0,300}$/;
-  var memoria = Object.create(null); // por si localStorage está bloqueado (modo privado, Safari…)
+  var memoria = Object.create(null); // por si sessionStorage está bloqueado (modo privado, Safari…)
+  /** sessionStorage = solo esta pestaña (localStorage lo leen todas las webs de uriel-iglesias.github.io). */
+  function almacen() {
+    try { return window.sessionStorage || null; } catch (e) { return null; }
+  }
   function leerClave(k) {
     var v = null;
-    try { v = window.localStorage ? window.localStorage.getItem(k) : null; } catch (e) { v = null; }
+    try { var s = almacen(); v = s ? s.getItem(k) : null; } catch (e) { v = null; }
     return v !== null && v !== undefined ? String(v) : (memoria[k] || null);
   }
   function guardarClave(k, v) {
     memoria[k] = v;
-    try { if (window.localStorage) window.localStorage.setItem(k, v); } catch (e) { /* queda en memoria */ }
+    try { var s = almacen(); if (s) s.setItem(k, v); } catch (e) { /* queda en memoria */ }
   }
   function borrarClave(k) {
     delete memoria[k];
-    try { if (window.localStorage) window.localStorage.removeItem(k); } catch (e) { /* nada que borrar */ }
+    try { var s = almacen(); if (s) s.removeItem(k); } catch (e) { /* nada que borrar */ }
   }
+  // El pase de 30 días que guardaba la versión anterior en localStorage: fuera, sin usarlo.
+  (function borrarPaseViejo() {
+    try {
+      var l = window.localStorage;
+      if (l) { l.removeItem(CLAVE_PASE); l.removeItem(CLAVE_VOLVER); }
+    } catch (e) { /* almacenamiento bloqueado: no hay nada que borrar */ }
+  })();
   /** Caducidad (ms) escrita en el pase. Solo para no mandar uno viejo: la que manda es la del servidor. */
   function caducidad(pase) {
     try {
@@ -771,33 +820,127 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     var h = String((window.location && window.location.hash) || '');
     if (RE_RUTA.test(h) && h !== '#/' && h !== '#/inicio') guardarClave(CLAVE_VOLVER, h);
   }
-  /** Al llegar de la puerta (#t=…): guarda el pase y lo quita de la barra (y del historial). */
+  /** Comparación en tiempo constante (no dice cuántas letras acierta un nonce falso). */
+  function igualSeguro(a, b) {
+    a = String(a); b = String(b);
+    var d = a.length ^ b.length, n = Math.max(a.length, b.length), i;
+    for (i = 0; i < n; i++) d |= (a.charCodeAt(i) || 0) ^ (b.charCodeAt(i) || 0);
+    return d === 0;
+  }
+  /** 24 bytes al azar en base64url (32 letras). Sin crypto no hay nonce: entonces no se acepta ningún pase. */
+  function nonceNuevo() {
+    var c = window.crypto;
+    if (!c || typeof c.getRandomValues !== 'function') return '';
+    var n = new Uint8Array(24), abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_', s = '', i;
+    c.getRandomValues(n);
+    for (i = 0; i < 24; i += 3) {
+      var v = (n[i] << 16) | (n[i + 1] << 8) | n[i + 2];
+      s += abc.charAt((v >> 18) & 63) + abc.charAt((v >> 12) & 63) + abc.charAt((v >> 6) & 63) + abc.charAt(v & 63);
+    }
+    return s;
+  }
+  /** El nonce de esta pestaña (lo crea si falta o está roto). '' si no se puede crear. */
+  function nonceActual() {
+    var n = leerClave(CLAVE_NONCE);
+    if (n && RE_NONCE.test(n)) return n;
+    n = nonceNuevo();
+    if (n) guardarClave(CLAVE_NONCE, n); else borrarClave(CLAVE_NONCE);
+    return n;
+  }
+  /** Valor de «clave=» en un hash «#a=1&b=2» (sin decodificar), o null. */
+  function enHash(h, clave) {
+    var m = new RegExp('(?:^#|&)' + clave + '=([^&]*)').exec(h);
+    return m ? m[1] : null;
+  }
+  /**
+   * Al llegar de la puerta (#t=<pase>&s=<nonce>): si s es el nonce de esta pestaña, guarda el pase
+   * (y gasta el nonce). Si no, tira el pase que llega y deja el guardado. Siempre quita t= y s= de la
+   * barra y del historial. Devuelve true si ha guardado un pase nuevo.
+   */
   function capturarPase() {
     var loc = window.location;
-    if (!loc) return;
+    if (!loc) return false;
     var h = String(loc.hash || '');
-    var m = /(?:^#|&)t=([^&]*)/.exec(h);
-    if (!m) return;
-    if (RE_PASE.test(m[1])) guardarClave(CLAVE_PASE, m[1]);
-    var resto = '#' + h.replace(/^#/, '').split('&').filter(function (x) { return x && x.indexOf('t=') !== 0; }).join('&');
-    var volver = leerClave(CLAVE_VOLVER);
-    borrarClave(CLAVE_VOLVER);
+    var t = enHash(h, 't');
+    if (t === null) return false;
+    var s = enHash(h, 's');
+    var mio = leerClave(CLAVE_NONCE);
+    var vale = RE_PASE.test(t) && s !== null && RE_NONCE.test(s) && !!mio && RE_NONCE.test(mio) && igualSeguro(s, mio);
+    if (vale) {
+      guardarClave(CLAVE_PASE, t);
+      borrarCache();
+      borrarClave(CLAVE_NONCE); // un nonce = una entrada
+    }
+    var resto = '#' + h.replace(/^#/, '').split('&').filter(function (x) { return x && x.indexOf('t=') !== 0 && x.indexOf('s=') !== 0; }).join('&');
+    var volver = vale ? leerClave(CLAVE_VOLVER) : null;
+    if (vale) borrarClave(CLAVE_VOLVER);
     var ruta = RE_RUTA.test(resto) ? resto : (volver && RE_RUTA.test(volver) ? volver : '');
     var destino = String(loc.pathname || '') + String(loc.search || '') + ruta;
     try { window.history.replaceState(null, '', destino || '.'); }
     catch (e) { try { loc.hash = ruta.replace(/^#/, ''); } catch (x) { /* sin historial */ } }
+    return vale;
   }
   capturarPase();
 
-  window.SCHOOL_LOGIN_URL = PUERTA
-    ? SELECTOR + '?hd=' + encodeURIComponent(DOMINIO) + '&continue=' + encodeURIComponent(PUERTA + (PUERTA.indexOf('?') < 0 ? '?' : '&') + 'entrar=1')
-    : '';
-  /** «Salir»: borra el pase de este navegador y vuelve a la portada (pide entrar otra vez). */
+  /** Enlace de entrar: selector de cuentas → puerta (?entrar=1&s=<nonce>). Sin nonce, '' (no se entra). */
+  function armarLogin() {
+    var n = PUERTA ? nonceActual() : '';
+    window.SCHOOL_LOGIN_URL = PUERTA && n
+      ? SELECTOR + '?hd=' + encodeURIComponent(DOMINIO) + '&continue=' + encodeURIComponent(PUERTA + (PUERTA.indexOf('?') < 0 ? '?' : '&') + 'entrar=1&s=' + n)
+      : '';
+  }
+  armarLogin();
+  // Un #t= que llega con la pestaña ya abierta (mismo documento, solo cambia el hash): igual que al
+  // cargar. Si el pase vale, se recarga para arrancar con él (nunca salta al login).
+  if (typeof window.addEventListener === 'function') {
+    window.addEventListener('hashchange', function () {
+      if (!capturarPase()) return;
+      armarLogin();
+      try { if (window.location && typeof window.location.reload === 'function') window.location.reload(); } catch (e) { /* sin recarga */ }
+    });
+  }
+  /**
+   * «Salir»: avisa al servidor (api_salir: ese pase y los demás de esa persona dejan de valer), borra
+   * el pase de este navegador y vuelve a la portada. Lo local se borra YA. El aviso sale con keepalive,
+   * pero WebKit (Safari, iPhone) lo cancela si la página se va antes de tiempo (e2e de la ronda 2: el
+   * pase viejo seguía valiendo). Por eso se vuelve a la portada cuando el servidor contesta, o como
+   * mucho a los SALIR_MAX_MS. Devuelve una promesa: true si el servidor confirmó el cierre.
+   */
   window.SCHOOL_SALIR = function () {
+    var pase = leerClave(CLAVE_PASE);
+    var aviso = null;
+    if (pase && RE_PASE.test(pase) && API && typeof fetch === 'function') {
+      try {
+        aviso = fetch(API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ t: pase, f: 'api_salir', a: [] }),
+          credentials: 'omit',
+          cache: 'no-store',
+          redirect: 'follow',
+          keepalive: true
+        });
+      } catch (e) { aviso = null; }
+    }
     borrarClave(CLAVE_PASE);
     borrarClave(CLAVE_VOLVER);
+    borrarClave(CLAVE_NONCE);
+    borrarCache();
     var loc = window.location;
-    try { loc.replace(WEB || (String(loc.pathname || '') + String(loc.search || ''))); } catch (e) { /* sin navegación */ }
+    function aPortada() {
+      try { loc.replace(WEB || (String(loc.pathname || '') + String(loc.search || ''))); } catch (e) { /* sin navegación */ }
+    }
+    if (!aviso) { aPortada(); return Promise.resolve(false); }
+    var confirmado = Promise.resolve(aviso)
+      .then(function (r) { return r && typeof r.text === 'function' ? r.text() : ''; })
+      .then(function (texto) { var j = null; try { j = JSON.parse(texto); } catch (e) { j = null; } return !!(j && j.ok === true); },
+        function () { return false; });
+    return new Promise(function (listo) {
+      var hecho = false;
+      function acabar(v) { if (hecho) return; hecho = true; aPortada(); listo(v); }
+      var tope = setTimeout(function () { acabar(false); }, SALIR_MAX_MS);
+      confirmado.then(function (v) { clearTimeout(tope); acabar(v); });
+    });
   };
   // Antes de ir a entrar se apunta la ruta (vuelves a la misma clase con el pase nuevo).
   if (typeof document !== 'undefined' && document.addEventListener) {
@@ -867,6 +1010,7 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       if (x.code === 'unauthenticated') {
         // Pase caducado, de otra cuenta o con la firma mal: se borra y la web pide entrar otra vez.
         borrarClave(CLAVE_PASE);
+        borrarCache();
         recordarRuta();
         x.sesion = true;
         x.login = true;
@@ -885,37 +1029,154 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     return msg.replace(/\s+/g, ' ').trim().slice(0, 300);
   }
 
+  // ------------------------------------------------------------ precarga y caché de arranque
+
+  var RE_COL = /^[A-Za-z0-9_-]{1,60}$/;
+  var CACHE_MAX = 2 * 1024 * 1024; // caracteres: sessionStorage da ~5 MB por origen
+  /** Colecciones que la web pide ya en api_inicio (window.SCHOOL_PRECARGA, la deja index.html). */
+  function precarga() {
+    var p = window.SCHOOL_PRECARGA;
+    if (!Array.isArray(p)) return [];
+    return p.filter(function (x) { return typeof x === 'string' && RE_COL.test(x); }).slice(0, 20);
+  }
+  /** Las que se pueden guardar en la caché de la pestaña (fuera las de SCHOOL_SIN_CACHE). */
+  function cacheables() {
+    var no = Array.isArray(window.SCHOOL_SIN_CACHE) ? window.SCHOOL_SIN_CACHE : [];
+    return precarga().filter(function (c) { return no.indexOf(c) < 0; });
+  }
+  function marcaCache(pase) { return String(pase).slice(-16); }
+  function borrarCache() {
+    try { var s = almacen(); if (s) s.removeItem(CLAVE_CACHE); } catch (e) { /* nada que borrar */ }
+  }
+  /** Caché de esta pestaña para ESTE pase, o null. {ini: {yo,…}, cols: {col: {v, d: {id: data}}}} */
+  function leerCache(pase) {
+    var s = null, o = null;
+    try { var a = almacen(); s = a ? a.getItem(CLAVE_CACHE) : null; } catch (e) { s = null; }
+    if (!s) return null;
+    try { o = JSON.parse(s); } catch (e) { o = null; }
+    var vale = o && o.s === marcaCache(pase) && esMapa(o.ini) && esMapa(o.ini.yo) && typeof o.ini.yo.id === 'string' && esMapa(o.cols);
+    if (!vale) { borrarCache(); return null; }
+    return o;
+  }
+  var iniActual = null;   // lo último que dijo api_inicio (sin el sondeo): va a la caché
+  var volcado = null;     // la db deja aquí cómo sacar sus colecciones confirmadas
+  var tCache = null;
+  function guardarCacheLuego() {
+    if (tCache) return;
+    tCache = setTimeout(function () {
+      tCache = null;
+      var pase = paseVigente();
+      if (!pase || !iniActual) return;
+      var s;
+      try { s = JSON.stringify({ s: marcaCache(pase), t: Date.now(), ini: iniActual, cols: volcado ? volcado() : {} }); } catch (e) { return; }
+      if (s.length > CACHE_MAX) { borrarCache(); return; }
+      try { var a = almacen(); if (a) a.setItem(CLAVE_CACHE, s); } catch (e) { borrarCache(); }
+    }, 300);
+  }
+  function soloIni(ini) { return { yo: ini.yo, version: ini.version, escuela: ini.escuela, url: ini.url }; }
+  function aplicarIni(ini) {
+    // Dirección de la web para «Copiar recordatorio» (la fija el build; si no, la del servidor).
+    if (ini && typeof ini.url === 'string' && /^https:\/\//.test(ini.url) && typeof window.SCHOOL_URL !== 'string') window.SCHOOL_URL = ini.url;
+    if (ini && esMapa(ini.yo)) { iniActual = soloIni(ini); guardarCacheLuego(); }
+  }
+  /** Objetivos del sondeo para la precarga; con versiones (de la caché) el servidor contesta «igual». */
+  function objetivosPrecarga(versiones) {
+    return precarga().map(function (col) {
+      var v = versiones && esMapa(versiones[col]) && typeof versiones[col].v === 'string' ? versiones[col].v : null;
+      return { tipo: 'col', ruta: col, version: v };
+    });
+  }
+
+  // Lo que llega para la db antes de que exista (precarga, caché) se guarda aquí y lo coge crearDb.
+  var siembras = [];
+  var ganchosDb = null;   // {sembrar(lista, red, marcas), marcas(), cortar(e), despertar()}
+  var refrescando = false;
+  function entregar(lista, red, marcas) {
+    if (ganchosDb) ganchosDb.sembrar(lista, red, marcas);
+    else siembras.push({ lista: lista, red: red });
+  }
+
+  /** Error de «el servidor no contesta» al cabo de INICIO_MS (para Promise.race). */
+  function reloj(que) {
+    var t = null;
+    var p = new Promise(function (ok, ko) {
+      t = setTimeout(function () {
+        var x = error('unavailable', 'El servidor no contesta.');
+        x.detalle = que + ' sin respuesta en ' + Math.round(INICIO_MS / 1000) + ' s.';
+        x.noContesta = true;
+        ko(x);
+      }, INICIO_MS);
+    });
+    p.catch(function () { /* lo recoge quien haga la carrera */ });
+    return { p: p, parar: function () { if (t) { clearTimeout(t); t = null; } } };
+  }
+
+  /**
+   * Arranque desde la caché: la web ya pinta; por detrás, UNA api_inicio con las versiones guardadas
+   * (si nada cambió, el servidor solo dice «igual»). Mientras, la db no sondea. Si el servidor dice
+   * «entra otra vez» o «no tienes permiso», se corta todo y la web lo enseña.
+   */
+  function refrescar(cache) {
+    refrescando = true;
+    var marcas = ganchosDb ? ganchosDb.marcas() : null;
+    var r = reloj('api_inicio');
+    Promise.race([llamar('api_inicio', [objetivosPrecarga(cache.cols)]), r.p]).then(function (ini) {
+      r.parar();
+      refrescando = false;
+      aplicarIni(ini);
+      entregar(ini && Array.isArray(ini.sondeo) ? ini.sondeo : [], true, marcas);
+      if (ganchosDb) ganchosDb.despertar();
+    }, function (e) {
+      r.parar();
+      refrescando = false;
+      if (e && (e.code === 'unauthenticated' || e.code === 'not_granted' || e.code === 'revoked')) {
+        borrarCache();
+        anotarError(e);
+        if (ganchosDb) ganchosDb.cortar(e);
+        return;
+      }
+      aviso(e); // corte de red o Google lento: el sondeo normal lo vuelve a intentar
+      if (ganchosDb) ganchosDb.despertar();
+    });
+  }
+
   var pInicio = null;
   /**
-   * Primera llamada (instala si entra el dueño, registra la visita y trae tu perfil). Un corte de red
+   * Primera llamada (instala si entra el dueño, registra la visita, trae tu perfil y la precarga).
+   * Con caché de esta pestaña: resuelve al momento con ella y refresca por detrás. Un corte de red
    * o un fallo del servidor se reintenta 2 veces; un «entra / no tienes permiso» no (no se arregla
    * solo). Sin pase ni se llama. Si el servidor no contesta en INICIO_MS, rechaza.
    */
   function inicio() {
     if (pInicio) return pInicio;
-    var reloj = null;
-    var tarde = new Promise(function (ok, ko) {
-      reloj = setTimeout(function () {
-        var x = error('unavailable', 'El servidor no contesta.');
-        x.detalle = 'api_inicio sin respuesta en ' + Math.round(INICIO_MS / 1000) + ' s.';
-        x.noContesta = true;
-        ko(x);
-      }, INICIO_MS);
-    });
+    var pase = paseVigente();
+    var cache = pase ? leerCache(pase) : null;
+    if (cache) {
+      iniActual = soloIni(cache.ini);
+      var lista = Object.keys(cache.cols).filter(function (col) { return esMapa(cache.cols[col]) && esMapa(cache.cols[col].d); }).map(function (col) {
+        var d = cache.cols[col].d;
+        return { ruta: col, version: typeof cache.cols[col].v === 'string' ? cache.cols[col].v : null, docs: Object.keys(d).map(function (id) { return { id: id, data: d[id] }; }) };
+      });
+      entregar(lista, false, null);
+      aplicarIni(cache.ini);
+      pInicio = Promise.resolve(cache.ini);
+      refrescar(cache);
+      return pInicio;
+    }
+    var r = reloj('api_inicio');
+    var objetivos = objetivosPrecarga(null);
     var intento = (function intentar(n) {
-      return llamar('api_inicio', []).catch(function (e) {
+      return llamar('api_inicio', objetivos.length ? [objetivos] : []).catch(function (e) {
         if (e.code === 'unavailable' && n < 2) return dormir(ESPERA_MS * 2 * (n + 1)).then(function () { return intentar(n + 1); });
         throw e;
       });
     })(0);
-    pInicio = Promise.race([intento, tarde]);
-    var parar = function () { if (reloj) { clearTimeout(reloj); reloj = null; } };
-    tarde.catch(function () { /* lo recoge pInicio */ });
+    pInicio = Promise.race([intento, r.p]);
     pInicio.then(function (ini) {
-      // Dirección de la web para «Copiar recordatorio» (la fija el build; si no, la del servidor).
-      if (ini && typeof ini.url === 'string' && /^https:\/\//.test(ini.url) && typeof window.SCHOOL_URL !== 'string') window.SCHOOL_URL = ini.url;
+      aplicarIni(ini);
+      if (ini && Array.isArray(ini.sondeo)) entregar(ini.sondeo, true, null);
     }, function () { pInicio = null; });
-    pInicio.then(parar, parar);
+    pInicio.then(r.parar, r.parar);
     return pInicio;
   }
 
@@ -983,14 +1244,49 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
 
   function crearDb() {
     // Todos los índices por id son Object.create(null): un id «constructor» o «toString» no hereda nada.
-    var cols = Object.create(null); // col → {version, docs: {id: data} | null, marca}
+    var cols = Object.create(null); // col → {version, docs: {id: data} | null, marca, al}
     var pendientes = [];  // escrituras sin confirmar: {modo, col, id, datos}
     var oyentes = [];
     var temporizador = null, proximo = 0, enVuelo = false, otraVez = false, fallos = 0;
+    // Datos que llegaron hace menos de esto (precarga de api_inicio) no se vuelven a pedir aún.
+    var FRESCA_MS = Math.floor(SONDEO_MS / 2);
 
+    // al = cuándo confirmó el servidor estos datos (0 = de la caché de la pestaña, sin confirmar).
     function estadoCol(col) {
-      if (!Object.prototype.hasOwnProperty.call(cols, col)) cols[col] = { version: null, docs: null, marca: 0 };
+      if (!Object.prototype.hasOwnProperty.call(cols, col)) cols[col] = { version: null, docs: null, marca: 0, al: 0 };
       return cols[col];
+    }
+    function fresca(c, ahora) { return !!(c && c.docs && c.version && c.al && ahora - c.al < FRESCA_MS); }
+
+    /**
+     * Datos que no vienen del sondeo: la precarga de api_inicio (red = true) o la caché de la pestaña
+     * (red = false, se enseñan ya y el sondeo los confirma). marcas = c.marca de cada colección cuando
+     * se pidió: si alguien escribió mientras, esa colección se ignora y se vuelve a preguntar.
+     */
+    function sembrar(lista, red, marcas) {
+      var ahora = Date.now();
+      (Array.isArray(lista) ? lista : []).forEach(function (r) {
+        if (!r || typeof r.ruta !== 'string') return;
+        var col = r.ruta, c = estadoCol(col);
+        if (r.code) {
+          // Esa colección falló en el servidor: quien la escuche se entera; si nadie, la pedirá el sondeo.
+          var e = error(r.code, r.error);
+          oyentes.slice().forEach(function (o) { if (o.col === col) fallar(o, e); });
+          return;
+        }
+        var m0 = marcas && typeof marcas[col] === 'number' ? marcas[col] : 0;
+        if (c.marca !== m0) { c.version = null; return; }
+        if (r.igual) { if (c.docs && red) c.al = ahora; return; }
+        if (!Array.isArray(r.docs)) return;
+        if (!red && c.docs) return; // la caché nunca pisa lo que ya llegó del servidor
+        var mapa = Object.create(null);
+        r.docs.forEach(function (d) { if (d && typeof d.id === 'string') mapa[d.id] = d.data; });
+        c.docs = mapa;
+        c.version = typeof r.version === 'string' ? r.version : null;
+        c.al = red ? ahora : 0;
+      });
+      if (red) guardarCacheLuego();
+      emitirTodos();
     }
 
     /** Lo que se ve de una colección: lo confirmado + las escrituras pendientes, en orden. */
@@ -1107,7 +1403,15 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       var activas = colsActivas();
       if (!activas.length) return; // nadie escucha: el bucle se para hasta el próximo onSnapshot
       if (oculto()) return; // pestaña oculta: vuelve con visibilitychange
+      if (refrescando) return; // api_inicio por detrás (arranque desde caché): al acabar, despertar()
       if (enVuelo) { otraVez = true; return; }
+      var ahora = Date.now();
+      if (activas.every(function (col) { return fresca(cols[col], ahora); })) {
+        // Todo llegó hace nada con api_inicio: el siguiente sondeo, a su hora.
+        var falta = Math.min.apply(null, activas.map(function (col) { return cols[col].al + SONDEO_MS - ahora; }));
+        programar(Math.max(REGISTRO_MS, falta));
+        return;
+      }
       enVuelo = true;
       var marcas = Object.create(null);
       var objetivos = activas.map(function (col) {
@@ -1122,6 +1426,7 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       }
       llamar('api_docs_sondeo', [objetivos]).then(function (res) {
         fallos = 0;
+        var cambio = false, al = Date.now();
         (res || []).forEach(function (r) {
           var col = String(r.ruta), c = estadoCol(col);
           if (r.code) {
@@ -1130,12 +1435,15 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
             return;
           }
           if (c.marca !== marcas[col]) { c.version = null; otraVez = true; return; } // hubo escrituras mientras tanto
-          if (r.igual) return;
+          if (r.igual) { c.al = al; return; }
           var mapa = Object.create(null);
           (r.docs || []).forEach(function (d) { mapa[d.id] = d.data; });
           c.docs = mapa;
           c.version = r.version;
+          c.al = al;
+          cambio = true;
         });
+        if (cambio) guardarCacheLuego();
         emitirTodos();
       }, function (e) {
         if (e.code === 'unauthenticated' || e.code === 'not_granted' || e.code === 'revoked' || e.code === 'capability_disabled') {
@@ -1168,9 +1476,10 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       o.siguiente = siguiente;
       o.fallo = typeof fallo === 'function' ? fallo : aviso;
       o.activo = true;
-      var fresca = oyentes.some(function (x) { return x.col === o.col; }) && estadoCol(o.col).docs;
+      var hay = !!estadoCol(o.col).docs;
       oyentes.push(o);
-      if (fresca) setTimeout(function () { emitir(o); }, 0); // otra vista ya la tiene al día
+      // Ya hay datos (precarga, caché de la pestaña u otra vista): se pintan ya; el sondeo los confirma.
+      if (hay) setTimeout(function () { emitir(o); }, 0);
       programar(REGISTRO_MS);
       return function () { if (o.activo) quitarOyente(o); };
     }
@@ -1196,6 +1505,7 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
         c.version = null;
         c.marca++;
         emitirCol(col);
+        guardarCacheLuego();
         programar(TRAS_ESCRIBIR_MS);
         return undefined;
       }, function (e) {
@@ -1301,6 +1611,23 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       });
       return col;
     }
+
+    // Ganchos para la precarga y el refresco de api_inicio (ver inicio() y refrescar()).
+    ganchosDb = {
+      sembrar: sembrar,
+      marcas: function () { var m = {}; Object.keys(cols).forEach(function (col) { m[col] = cols[col].marca; }); return m; },
+      cortar: function (e) { oyentes.slice().forEach(function (o) { fallar(o, e); }); },
+      despertar: function () { programar(REGISTRO_MS); }
+    };
+    volcado = function () {
+      var out = {};
+      cacheables().forEach(function (col) {
+        var c = cols[col];
+        if (c && c.docs) out[col] = { v: c.version || null, d: c.docs };
+      });
+      return out;
+    };
+    siembras.splice(0).forEach(function (s) { sembrar(s.lista, s.red, null); });
 
     return {
       doc: function (ruta) { return refDoc(ruta); },
@@ -1494,7 +1821,7 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
   if (typeof window.SCHOOL_MAX_PDF !== 'number') window.SCHOOL_MAX_PDF = MAX_PDF;
 
   // Lo que deja el build en la página: dirección de la web (recordatorio) y dominio del equipo.
-  // WEB ya pasó por urlSegura (https, o http de 127.0.0.1/localhost en pruebas locales).
+  // WEB ya pasó por urlSegura (https; en pruebas locales, también http de la máquina local).
   if (WEB && typeof window.SCHOOL_URL !== 'string') window.SCHOOL_URL = WEB;
   if (typeof window.SCHOOL_DOMINIO !== 'string') window.SCHOOL_DOMINIO = DOMINIO;
 
@@ -1541,6 +1868,9 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
 
 </script>
 <script>
+// Lo que el puente pide ya en la primera llamada (un solo viaje a Google) y lo que no guarda en la pestaña.
+window.SCHOOL_PRECARGA = ['cursos', 'lecciones', 'progreso', 'preguntas', 'respuestas', 'equipo'];
+window.SCHOOL_SIN_CACHE = ['equipo'];
 (function () {
   'use strict';
 
@@ -1570,14 +1900,14 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
   // Dirección de la web (GitHub Pages) y dominio del equipo (los fija el build; los deja el puente).
   function urlApp() {
     var u = window.SCHOOL_URL;
-    return (typeof u === 'string' && (/^https:\/\//.test(u) || /^http:\/\/(127\.0\.0\.1|localhost)(:\d{1,5})?\//.test(u))) ? u : '';
+    return (typeof u === 'string' && (/^https:\/\//.test(u) || /(?!)/.test(u))) ? u : '';
   }
   function dominioApp() { var d = window.SCHOOL_DOMINIO; return (typeof d === 'string' && /^[a-z0-9.-]+\.[a-z]{2,}$/i.test(d)) ? d.toLowerCase() : 'influentia.me'; }
   // Entrar con la cuenta buena: selector de cuentas de Google (hd=dominio) que acaba en la puerta
   // y vuelve aquí con el pase (sirve con varias cuentas abiertas). Lo arma el puente.
   function urlCuenta() {
     var u = window.SCHOOL_LOGIN_URL;
-    return (typeof u === 'string' && (/^https:\/\//.test(u) || /^http:\/\/(127\.0\.0\.1|localhost)(:\d{1,5})?\//.test(u))) ? u : '';
+    return (typeof u === 'string' && (/^https:\/\//.test(u) || /(?!)/.test(u))) ? u : '';
   }
   // Enlaces de Drive y Docs con authuser=<tu email>: abren con tu cuenta aunque tengas varias abiertas.
   function conCuenta(url) {
@@ -2011,8 +2341,11 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     var hechas = actsHechas(lid), n, t;
     if (pasos.length) {
       n = pasos.filter(function (ci) { return hechas.indexOf(ci) >= 0; }).length; t = pasos.length;
+      var falta = t - n;
+      // Clase hecha y algún paso desmarcado: se dice cuántos faltan (no toca XP ni «completadas»).
+      if (completa && falta > 0) return { n: n, t: t, falta: falta, txt: 'Clase hecha · ' + (falta === 1 ? 'falta 1 paso' : 'faltan ' + falta + ' pasos') };
       if (completa) n = t;
-      return { n: n, t: t, txt: completa ? 'Clase hecha ✓' : n >= t ? 'Los ' + t + ' pasos, hechos ✓' : 'Paso ' + (n + 1) + ' de ' + t };
+      return { n: n, t: t, falta: 0, txt: completa ? 'Clase hecha ✓' : n >= t ? 'Los ' + t + ' pasos, hechos ✓' : 'Paso ' + (n + 1) + ' de ' + t };
     }
     var a = cuentaActs(lid, nBloques, completa);
     return { n: a.n, t: a.t, txt: a.n >= a.t ? 'Clase hecha ✓' : 'Actividad ' + (a.n + 1) + ' de ' + a.t };
@@ -2027,6 +2360,15 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     if (br) br.setAttribute('aria-valuenow', String(pct));
     if (sp) sp.style.width = pct + '%';
     if (tx) tx.textContent = a.txt;
+    var tc = textoCompletada(a.falta);
+    Array.prototype.forEach.call(document.querySelectorAll('[data-k="chip-completada"] .chip__txt'), function (el) { if (el.textContent !== tc) el.textContent = tc; });
+  }
+  // Chip «Completada»: si falta repasar algún paso, lo dice (se actualiza al marcar/desmarcar).
+  function textoCompletada(falta) {
+    return falta > 0 ? 'Completada · ' + (falta === 1 ? 'falta repasar 1 paso' : 'faltan ' + falta + ' pasos por repasar') : 'Completada';
+  }
+  function chipCompletada(falta) {
+    return h('span', { class: 'chip chip--ok', 'data-k': 'chip-completada' }, icono('check'), h('span', { class: 'chip__txt' }, textoCompletada(falta || 0)));
   }
   function repintar(cont, fn) {
     var a = document.activeElement, k = (a && cont.contains(a)) ? a.getAttribute('data-k') : null;
@@ -2480,8 +2822,12 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
   function pintarCabecera(ruta) {
     var nav = document.getElementById('nav');
     nav.textContent = '';
-    var items = [['#/inicio', 'Inicio', 'casa', 'inicio'], ['#/preguntas', 'Preguntas', 'chat', 'preguntas']];
-    if (S.admin) items.push(['#/admin', 'Admin', 'ajustes', 'admin']);
+    // Sin sesión (pantalla de entrar, sin conexión, cargando) no se enseña la navegación.
+    var conSesion = !!(S.uid && S.db && !S.sinDb);
+    nav.hidden = !conSesion;
+    document.body.classList.toggle('sin-nav', !conSesion);
+    var items = !conSesion ? [] : [['#/inicio', 'Inicio', 'casa', 'inicio'], ['#/preguntas', 'Preguntas', 'chat', 'preguntas']];
+    if (S.admin && conSesion) items.push(['#/admin', 'Admin', 'ajustes', 'admin']);
     items.forEach(function (it) {
       var actual = ruta[0] === it[3] || (it[3] === 'inicio' && (ruta[0] === 'curso' || ruta[0] === 'leccion'));
       var a = h('a', { href: it[0], 'aria-current': actual ? 'page' : null }, icono(it[2]), h('span', null, it[1]));
@@ -2501,7 +2847,7 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       yo.appendChild(av);
       if (typeof window.SCHOOL_SALIR === 'function') {
         var salir = h('button', { type: 'button', class: 'btn btn--suave btn--peq yo__salir', 'data-k': 'salir', 'aria-label': 'Salir de la School' }, 'Salir');
-        salir.addEventListener('click', function () { window.SCHOOL_SALIR(); });
+        salir.addEventListener('click', function () { salir.disabled = true; salir.textContent = 'Saliendo…'; window.SCHOOL_SALIR(); });
         yo.appendChild(salir);
       }
     }
@@ -2550,6 +2896,7 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     else if (r[0] === 'admin') v = S.admin ? vistaAdmin(r) : vistaNoAdmin();
     else v = vistaInicio();
     vista.appendChild(v);
+    if (r[0] === 'leccion') pintarLbar();
     resolverPersonas();
     if (k) {
       var nuevo = vista.querySelector('[data-k="' + k.replace(/"/g, '') + '"]');
@@ -2571,8 +2918,20 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
   // (v3 con google.script.history archivada en _archive/v3-historia-google/).
   document.getElementById('saltar').addEventListener('click', function (e) { e.preventDefault(); document.getElementById('principal').focus(); });
 
+  // Carga: frase grande desde el primer momento; a los 6 s se añade «Tarda un poco la primera vez».
+  var cargaDesde = 0, cargaReloj = null;
   function esqueleto() {
-    return h('div', { class: 'pila', 'aria-busy': 'true', 'aria-label': 'Cargando' },
+    if (!cargaDesde) cargaDesde = Date.now();
+    var pasado = Date.now() - cargaDesde, lenta = pasado >= 6000;
+    if (!lenta && !cargaReloj) cargaReloj = setTimeout(function () {
+      cargaReloj = null;
+      var n = document.querySelector('[data-k="cargando-lento"]');
+      if (n) n.hidden = false;
+    }, 6000 - pasado);
+    return h('div', { class: 'pila', 'aria-busy': 'true', 'data-k': 'cargando' },
+      h('div', { role: 'status' },
+        h('p', { class: 'cargando' }, h('span', { class: 'cargando__punto', 'aria-hidden': 'true' }), 'Cargando tus clases…'),
+        h('p', { class: 'cargando__nota', 'data-k': 'cargando-lento', hidden: !lenta }, 'Tarda un poco la primera vez.')),
       h('div', { class: 'esq', style: { height: '44px', width: '60%' } }),
       h('div', { class: 'esq', style: { height: '180px' } }),
       h('div', { class: 'esq', style: { height: '220px' } }));
@@ -2794,7 +3153,7 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       l.duracion_min ? h('span', { class: 'kicker' }, l.duracion_min + ' min') : null);
     if (l.resumen && ver) cuerpo.appendChild(h('p', { class: 'muted', style: { 'font-size': '1.05rem' } }, l.resumen));
     var chips = h('div', { class: 'chips' });
-    if (ok || fiesta) chips.appendChild(h('span', { class: 'chip chip--ok' }, icono('check'), 'Completada'));
+    if (ok || fiesta) chips.appendChild(chipCompletada(0)); // el texto lo afina pintarLbar() con los pasos
     if (l.publicado === false) chips.appendChild(h('span', { class: 'chip chip--aviso' }, icono('ojoNo'), 'Oculta al equipo'));
     if (S.admin && leccionBloqueada(l)) chips.appendChild(h('span', { class: 'chip chip--aviso' }, icono('candado'), 'Bloqueada para el equipo (tú la ves)'));
     if (S.admin) chips.appendChild(h('a', { class: 'chip chip--cyan', href: '#/admin/leccion/' + encodeURIComponent(l.id) }, icono('lapiz'), 'Editar'));
@@ -2897,7 +3256,8 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       h('p', { class: 'video-slot__tit' }, l.video_previsto ? 'El equipo ve: «El vídeo llega pronto» y hace los pasos ya.' : 'Esta clase aún no tiene vídeo.'),
       b, input,
       sv && sv.subiendo ? barraSubida(sv.pct) : null,
-      h('p', { class: 'muted peq', role: 'status' }, sv && sv.subiendo ? 'Subiendo ' + sv.nombre + '… No cierres la pestaña.' : 'MP4, MOV o WebM. Máximo ' + tamMax('video') + '. O pega un enlace en ', sv && sv.subiendo ? null : h('a', { href: '#/admin/leccion/' + encodeURIComponent(l.id) }, 'Editar'), sv && sv.subiendo ? null : '.'));
+      h('p', { class: 'muted peq', role: 'status' }, sv && sv.subiendo ? 'Subiendo ' + sv.nombre + '… No cierres la pestaña.' : 'MP4, MOV o WebM. Máximo ' + tamMax('video') + '.'),
+      sv && sv.subiendo ? null : h('a', { class: 'btn btn--suave btn--peq', href: '#/admin/leccion/' + encodeURIComponent(l.id) }, icono('lapiz'), 'O pega un enlace en Editar'));
   }
   function ladoLeccion(l, c) {
     var ls = leccionesDe(c.id, S.admin);
@@ -2936,14 +3296,14 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       if (!ok) sec.appendChild(h('p', { class: 'muted qz__intro' }, test.length + (test.length === 1 ? ' pregunta' : ' preguntas') + '. Puedes repetir las veces que quieras. ', h('span', { class: 'chip chip--cyan' }, '+100 XP')));
       sec.appendChild(quizEl(l, test, ok));
       if (ok) {
-        acc.appendChild(h('span', { class: 'chip chip--ok' }, icono('check'), 'Completada'));
+        acc.appendChild(chipCompletada(0));
         if (sig) acc.appendChild(h('a', { class: 'btn', href: '#/leccion/' + encodeURIComponent(sig.id) }, 'Siguiente clase', icono('flecha')));
         sec.appendChild(acc);
       }
       return sec;
     }
     if (ok) {
-      acc.appendChild(h('span', { class: 'chip chip--ok' }, icono('check'), 'Completada'));
+      acc.appendChild(chipCompletada(0));
       if (sig) acc.appendChild(h('a', { class: 'btn', href: '#/leccion/' + encodeURIComponent(sig.id) }, 'Siguiente clase', icono('flecha')));
     } else {
       var b = h('button', { class: 'btn btn--grande', type: 'button', 'data-k': 'completar', disabled: !S.db || !S.uid, 'aria-disabled': S.guardando ? 'true' : null }, icono('check'), S.guardando ? 'Guardando…' : 'Marcar como completada');
@@ -3817,14 +4177,13 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
   function vistaEntrar(e) {
     var cuenta = urlCuenta(), dom = dominioApp();
     var caja = h('section', { class: 'tarjeta tarjeta--pad pila entrar', 'data-k': 'entrar' },
-      h('span', { class: 'marca__pill entrar__pill' }, 'School'),
       h('h1', { class: 'entrar__titulo' }, 'Influentia School'),
       h('p', { class: 'entrar__lema' }, (e && e.mensaje) || 'Entra con tu cuenta de Influentia.'));
     if (cuenta) caja.appendChild(h('a', { class: 'btn btn--enorme', href: cuenta, target: '_top', rel: 'noopener', 'data-k': 'entrar-cuenta' }, h('span', { class: 'btn__txt' }, 'Entrar con tu cuenta @' + dom)));
     else caja.appendChild(h('p', { class: 'peq muted' }, 'Falta la dirección para entrar. Avisa a Uriel.'));
-    caja.appendChild(h('ul', { class: 'entrar__ayuda peq muted' },
-      h('li', null, '¿Te pide iniciar sesión? Usa tu @' + dom),
-      h('li', null, '¿Sale «No se puede abrir el archivo»? Elige tu cuenta de Influentia')));
+    caja.appendChild(h('ol', { class: 'entrar__ayuda', 'data-k': 'entrar-ayuda', 'aria-label': 'Cómo entrar' },
+      h('li', null, h('span', { class: 'entrar__num' }, '1'), h('span', null, 'Elige tu cuenta ', h('b', { class: 'nowrap' }, '@' + dom))),
+      h('li', null, h('span', { class: 'entrar__num' }, '2'), h('span', null, 'Pulsa ', h('b', { class: 'nowrap' }, 'Entrar a la School')))));
     return caja;
   }
   // Sin conexión: frase corta, botón grande para entrar con otra cuenta si hace falta, detalle y Reintentar.
@@ -3834,13 +4193,22 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     var sinPermiso = e.code === 'not_granted' || e.code === 'revoked';
     var cuenta = (sinPermiso || e.sesion) ? urlCuenta() : '';
     var caja = h('section', { class: 'tarjeta tarjeta--pad pila sin-conexion', role: 'status', 'data-k': 'sin-conexion' },
-      h('div', { class: 'titulo-seccion', style: { margin: '0' } }, icono('alerta'), h('h2', null, sinPermiso ? 'Esta cuenta no puede entrar.' : 'No hay conexión con el servidor.')),
-      h('p', null, sinPermiso ? (e.mensaje || 'Prueba con tu cuenta de Influentia.') : 'Prueba otra vez en un momento.'));
+      h('span', { class: 'sin-conexion__ico', 'aria-hidden': 'true' }, icono('alerta')),
+      h('h2', { class: 'sin-conexion__titulo' }, sinPermiso ? 'Esta cuenta no puede entrar.' : 'No hay conexión.'),
+      h('p', { class: 'sin-conexion__texto' }, sinPermiso ? (e.mensaje || 'Prueba con tu cuenta de Influentia.') : 'Prueba otra vez en un momento.'));
     if (cuenta) caja.appendChild(h('a', { class: 'btn btn--enorme', href: cuenta, target: '_top', rel: 'noopener', 'data-k': 'entrar-cuenta' }, h('span', { class: 'btn__txt' }, sinPermiso ? 'Entrar con otra cuenta' : 'Entrar con tu cuenta @' + dominioApp())));
-    var re = h('button', { type: 'button', class: 'btn btn--suave', 'data-k': 'reintentar' }, 'Reintentar');
+    // Reintentar es lo principal (botón grande), salvo si lo que falta es otra cuenta.
+    var re = h('button', { type: 'button', class: cuenta ? 'btn btn--fantasma sin-conexion__otra' : 'btn btn--enorme', 'data-k': 'reintentar' }, h('span', { class: 'btn__txt' }, 'Reintentar'));
     re.addEventListener('click', reintentarConexion);
-    caja.appendChild(h('div', { class: 'acciones' }, re, h('span', { class: 'peq muted' }, 'Si sigue, avisa a Uriel.')));
-    if (e.detalle && !(sinPermiso && e.detalle === e.mensaje)) caja.appendChild(h('p', { class: 'peq muted sin-conexion__detalle', 'data-k': 'error-detalle' }, 'Detalle: ' + e.detalle));
+    caja.appendChild(re);
+    caja.appendChild(h('p', { class: 'sin-conexion__ayuda' }, 'Si sigue igual, avisa a Uriel.'));
+    // El detalle técnico no se ve: va a la consola y queda plegado en «Ver detalle técnico» (para pasárselo a Uriel).
+    if (e.detalle && !(sinPermiso && e.detalle === e.mensaje)) {
+      try { console.warn('[School] sin conexión:', e.code, e.detalle); } catch (x) { /* sin consola */ }
+      caja.appendChild(h('details', { class: 'sin-conexion__detalle' },
+        h('summary', null, 'Ver detalle técnico'),
+        h('p', { 'data-k': 'error-detalle' }, e.code + ' · ' + e.detalle)));
+    }
     return caja;
   }
   function reintentarConexion() {
@@ -3852,6 +4220,7 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     }
     S.sinDb = false; S.errorCon = null; S.arrancado = false;
     S.user = null; S.yo = null; S.uid = null; S.admin = false;
+    cargaDesde = 0; if (cargaReloj) { clearTimeout(cargaReloj); cargaReloj = null; }
     arrancar();
   }
   function arrancar() {
