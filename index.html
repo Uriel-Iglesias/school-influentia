@@ -116,6 +116,12 @@ p { margin: 0; }
 }
 
 .aviso { max-width: var(--ancho); margin: 16px auto 0; padding: 0 var(--lado); }
+/* «Sin conexión»: franja dentro de la cabecera fija, a la vista aunque bajes por la clase */
+.cab__red { border-top: 1px solid var(--linea); background: var(--aviso-suave); }
+.cab__red__in { max-width: var(--ancho); margin: 0 auto; padding: 6px var(--lado); display: flex; align-items: center; gap: 10px; font-size: 0.9375rem; }
+.cab__red__in .ico { color: var(--aviso); flex: none; }
+.cab__red__in > div { flex: 1 1 auto; min-width: 0; }
+.cab__red__in .btn { flex: none; }
 .aviso__in { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: var(--radio-s); background: var(--aviso-suave); color: var(--fg); border: 1px solid var(--linea); }
 .aviso__in .ico { color: var(--aviso); margin-top: 2px; }
 
@@ -181,7 +187,7 @@ a.chip { min-height: 44px; padding: 0 14px; }
 
 /* inicio */
 .inicio { display: grid; gap: 22px; grid-template-columns: minmax(0, 1fr); }
-@media (min-width: 980px) { .inicio { grid-template-columns: minmax(0, 1fr) 340px; align-items: start; } .inicio__lado { position: sticky; top: 84px; } }
+@media (min-width: 980px) { .inicio { grid-template-columns: minmax(0, 1fr) 340px; align-items: start; } .inicio__lado { position: sticky; top: calc(84px + var(--cab-extra, 0px)); } }
 .saludo h1 span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .saludo p { color: var(--muted); margin-top: 6px; font-size: 1.04rem; }
 .continuar { display: grid; grid-template-columns: minmax(0, 1fr); overflow: hidden; }
@@ -227,7 +233,7 @@ a.leccion-fila:hover { text-decoration: none; border-color: var(--linea-2); back
 
 /* lección */
 .leccion { display: grid; gap: 22px; grid-template-columns: minmax(0, 1fr); }
-@media (min-width: 980px) { .leccion { grid-template-columns: minmax(0, 1fr) 300px; align-items: start; } .leccion__lado { position: sticky; top: 84px; } }
+@media (min-width: 980px) { .leccion { grid-template-columns: minmax(0, 1fr) 300px; align-items: start; } .leccion__lado { position: sticky; top: calc(84px + var(--cab-extra, 0px)); } }
 .marco { position: relative; aspect-ratio: 16 / 9; border-radius: var(--radio-s); overflow: hidden; background: #000; }
 .marco iframe, .marco video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .pdf { width: 100%; height: 70vh; min-height: 420px; border: 0; border-radius: var(--radio-s); background: var(--bg-3); display: block; }
@@ -411,7 +417,7 @@ a.camino__tarjeta:hover { text-decoration: none; border-color: var(--linea-2); b
 @media (max-width: 480px) { .camino__nodo { width: 48px; height: 48px; } .camino::before { left: 24px; } .camino__tarjeta { padding: 12px; gap: 10px; } }
 
 /* ===== v3: lección ===== */
-.lbar { position: sticky; top: 70px; z-index: 20; display: flex; align-items: center; gap: 12px; padding: 8px 16px; border-radius: 999px; background: var(--bg-2); border: 1px solid var(--linea); box-shadow: var(--sombra); font-size: 0.875rem; min-width: 0; }
+.lbar { position: sticky; top: calc(70px + var(--cab-extra, 0px)); z-index: 20; display: flex; align-items: center; gap: 12px; padding: 8px 16px; border-radius: 999px; background: var(--bg-2); border: 1px solid var(--linea); box-shadow: var(--sombra); font-size: 0.875rem; min-width: 0; }
 .lbar b { white-space: nowrap; }
 .lbar .barra { flex: 1 1 auto; min-width: 40px; }
 .lbar__n { white-space: nowrap; font-weight: 800; font-size: 0.95rem; color: var(--fg); }
@@ -647,6 +653,7 @@ a.camino__tarjeta:hover { text-decoration: none; border-color: var(--linea-2); b
       <div class="yo" id="yo"></div>
     </div>
   </div>
+  <div class="cab__red" id="cab-red" hidden></div>
 </header>
 <div class="aviso" id="aviso" hidden></div>
 <main id="principal" class="principal" tabindex="-1"><div class="envoltorio" id="vista"><p class="cargando" role="status"><span class="cargando__punto" aria-hidden="true"></span>Cargando tus clases…</p></div></main>
@@ -3088,6 +3095,9 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     }
     var aviso = document.getElementById('aviso');
     aviso.textContent = '';
+    var red = document.getElementById('cab-red');
+    red.textContent = '';
+    var hayRed = false;
     if (S.sinDb && enGoogle()) {
       aviso.hidden = true; // en Google lo explica la vista «Sin conexión» (con Entrar y Reintentar)
     } else if (S.sinDb) {
@@ -3099,14 +3109,24 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
       aviso.appendChild(h('div', { class: 'aviso__in' }, icono('alerta'), h('div', null, h('b', null, 'Entra con tu cuenta de Influentia. '), 'Sin cuenta no se guarda tu progreso.',
         cta ? h('div', { style: { 'margin-top': '10px' } }, h('a', { class: 'btn btn--peq', href: cta, target: '_top', rel: 'noopener', 'data-k': 'entrar-cuenta' }, 'Entrar con tu cuenta @' + dominioApp())) : null)));
     } else if (conSesion && window.SCHOOL_SIN_RED === true) {
-      // El servidor no contesta: se ve lo guardado en la pestaña. Se dice, con Reintentar.
-      aviso.hidden = false;
+      // El servidor no contesta: se ve lo guardado en la pestaña. Se dice en la cabecera fija
+      // (a la vista aunque estés a media clase o el navegador recargue más abajo), con Reintentar.
+      aviso.hidden = true;
+      hayRed = true;
       var re = h('button', { type: 'button', class: 'btn btn--peq', 'data-k': 'sin-red-reintentar' }, 'Reintentar');
       re.addEventListener('click', function () { location.reload(); });
-      aviso.appendChild(h('div', { class: 'aviso__in', role: 'status', 'data-k': 'sin-red' }, icono('alerta'),
-        h('div', null, h('b', null, 'Sin conexión. '), 'Ves lo último guardado.', h('div', { style: { 'margin-top': '10px' } }, re))));
+      red.appendChild(h('div', { class: 'cab__red__in', role: 'status', 'data-k': 'sin-red' }, icono('alerta'),
+        h('div', null, h('b', null, 'Sin conexión. '), 'Ves lo último guardado.'), re));
     } else aviso.hidden = true;
+    red.hidden = !hayRed;
+    altoRed();
   }
+  // Lo que crece la cabecera con la franja: lo pegajoso de debajo (barra de pasos, columna) baja lo mismo.
+  function altoRed() {
+    var red = document.getElementById('cab-red');
+    document.documentElement.style.setProperty('--cab-extra', red && !red.hidden ? red.offsetHeight + 'px' : '0px');
+  }
+  window.addEventListener('resize', altoRed);
   window.addEventListener('school-sin-red', function () { pintarCabecera(ruta()); });
 
   // ------------------------------------------------------------ router y render
