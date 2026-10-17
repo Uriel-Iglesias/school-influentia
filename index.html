@@ -8,6 +8,8 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2300C8E0'/%3E%3Cstop offset='.5' stop-color='%23009FFF'/%3E%3Cstop offset='1' stop-color='%237641FF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='15' fill='url(%23g)'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://script.google.com" crossorigin>
+<link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -143,7 +145,7 @@ p { margin: 0; }
 .ico { width: 20px; height: 20px; flex: 0 0 auto; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .ico.ico--emo { width: 1em; height: 1em; stroke-width: 1.6; display: block; }
 .portada__ico .ico--emo { color: #fff; }
-.camino__emoji .ico--emo, .fila-admin__ico .ico--emo { color: var(--acento-texto); }
+.camino__emoji .ico--emo, .fila-admin__ico .ico--emo, .video-pronto__ico .ico--emo, .video-slot__ico .ico--emo { color: var(--acento-texto); }
 
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 0 20px; border: 0; border-radius: 12px; background: var(--boton); color: var(--tinta); font-weight: 700; cursor: pointer; text-decoration: none; transition: transform .15s ease, box-shadow .15s ease; }
 .btn:hover { text-decoration: none; box-shadow: 0 6px 16px -8px rgba(4, 16, 31, 0.45); transform: translateY(-1px); }
@@ -352,6 +354,9 @@ textarea.entrada { min-height: 96px; resize: vertical; line-height: 1.5; }
 .entrar { max-width: 520px; margin: 7vh auto 0; text-align: center; align-items: center; }
 .entrar__titulo { font-family: var(--titulo); font-size: clamp(1.9rem, 6vw, 2.6rem); line-height: 1.1; margin: 0; }
 .entrar__lema { font-size: 1.1rem; margin: 0; }
+.entrar__alerta { display: flex; gap: 10px; align-items: flex-start; text-align: left; margin: 0; padding: 14px 16px; border-radius: var(--radio-s); background: var(--mal-suave); border: 1px solid var(--mal); color: var(--fg); font-size: 1.05rem; font-weight: 600; line-height: 1.4; width: 100%; }
+.entrar__alerta .ico { color: var(--mal); margin-top: 1px; }
+.entrar .btn--enorme { min-width: min(100%, 260px); }
 .entrar .btn--enorme { justify-content: center; text-align: center; }
 .entrar .btn--enorme .btn__txt { flex: 0 1 auto; }
 .entrar__ayuda { list-style: none; margin: 20px auto 0; padding: 0; display: grid; gap: 12px; justify-items: start; text-align: left; font-size: 1rem; line-height: 1.4; color: var(--fg); }
@@ -388,12 +393,15 @@ textarea.entrada { min-height: 96px; resize: vertical; line-height: 1.5; }
 .logros { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(136px, 1fr)); }
 @media (max-width: 480px) { .logros { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .logro { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; padding: 12px 6px; border-radius: 14px; background: var(--bg-3); min-width: 0; }
-.logro__ico { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-size: 1.5rem; background: var(--boton); }
+.logro__ico { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--boton); color: var(--tinta); }
+.logro__ico .ico { width: 24px; height: 24px; stroke-width: 2.2; }
 .logro b, .logro small { overflow-wrap: normal; word-break: normal; hyphens: manual; }
 .logro b { font-size: 0.875rem; line-height: 1.25; }
 .logro small { font-size: 0.875rem; line-height: 1.3; color: var(--muted); }
-.logro--no .logro__ico { background: var(--bg-4); filter: grayscale(1); opacity: 0.5; }
+.logro--no .logro__ico { background: transparent; color: var(--muted); border: 2px dashed var(--linea-2); }
 .logro--no b { color: var(--muted); }
+.logro__estado { margin-top: 2px; padding: 2px 10px; border-radius: 999px; font-size: 0.875rem; font-weight: 700; line-height: 1.4; color: var(--muted); background: var(--bg-4); }
+.logro__estado--ok { color: var(--ok); background: var(--ok-suave); }
 
 /* ===== v3: curso como camino ===== */
 .camino { list-style: none; margin: 0; padding: 0; position: relative; display: flex; flex-direction: column; gap: 14px; }
@@ -410,7 +418,7 @@ a.camino__tarjeta:hover { text-decoration: none; border-color: var(--linea-2); b
 .camino__paso--ahora .camino__tarjeta { border-color: var(--acento); box-shadow: var(--sombra); }
 .camino__tarjeta--bloq { background: transparent; border-style: dashed; color: var(--flojo); }
 .camino__emoji { font-size: 1.6rem; line-height: 1; flex: 0 0 auto; }
-.camino__tarjeta--bloq .camino__emoji { filter: grayscale(1); opacity: 0.5; }
+.camino__tarjeta--bloq .camino__emoji .ico--emo { color: var(--flojo); }
 .camino__t { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
 .camino__t b { font-weight: 700; overflow-wrap: anywhere; line-height: 1.3; }
 .camino__t span { font-size: 0.875rem; color: var(--muted); }
@@ -442,6 +450,13 @@ a.camino__tarjeta:hover { text-decoration: none; border-color: var(--linea-2); b
 .act__tipo { font-size: 0.92rem; font-weight: 800; color: var(--acento-texto); }
 /* Emoji delante de una etiqueta: en su propio hueco (en negrita se pegaba a la palabra). */
 .emo { display: inline-block; margin-right: 0.4em; font-weight: 400; }
+.emo--ico { display: inline-flex; vertical-align: -0.15em; }
+.emo--ico .ico--emo { width: 1.15em; height: 1.15em; stroke-width: 2; }
+.diploma__sello .ico { width: 48px; height: 48px; color: var(--acento-texto); stroke-width: 1.6; }
+.ranking__pos .ico { width: 22px; height: 22px; display: block; margin: 0 auto; }
+.ranking__pos--1 { color: #B8860B; } .ranking__pos--2 { color: #7C8797; } .ranking__pos--3 { color: #A0522D; }
+.qz__nota--ico .ico { width: 48px; height: 48px; color: var(--ok); stroke-width: 2.5; }
+.fiesta__emoji .ico { width: 56px; height: 56px; color: var(--acento-texto); stroke-width: 1.6; }
 .act .act__tit { margin-top: 4px; font-size: 1.15rem; }
 .act__pie { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .act__cuerpo { display: flex; flex-direction: column; gap: 12px; }
@@ -675,7 +690,8 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
  *   El servidor (src/Puerta.gs, doPost) comprueba el pase y la lista blanca; contesta {ok, r} o
  *   {ok:false, code, msg}. Sin cookies (credentials: omit): quién eres sale SOLO del pase.
  * - Entrada: la puerta (doGet, «Solo yo» hoy) vuelve aquí con #c=<código de un solo uso, 2 min>. Este
- *   fichero lo quita de la barra y del historial (history.replaceState) y lo canjea por el pase con un
+ *   fichero lo quita de la barra y de la entrada actual del historial de la pestaña (history.replaceState;
+ *   el historial global de Chrome no se puede tocar desde una web) y lo canjea por el pase con un
  *   POST (api_canjear: código + nonce de esta pestaña). El pase NUNCA va en una URL (juez 17-oct: el
  *   #t=<pase> de antes se quedaba 14 días en el historial de Chrome). El pase vive en sessionStorage
  *   («influentia-school:token», solo ESTA pestaña), dura 14 días; caducado o rechazado
@@ -688,10 +704,23 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
  *   que lo ata al código. Vuelve SOLO en el POST del canje (no en la URL): un #c= de otra persona no
  *   vale en esta pestaña. Un nonce = una entrada: se gasta al canjear y se crea otro.
  * - Origen compartido (uriel-iglesias.github.io lo usan más webs): no se canjea nada si la School está
- *   dentro de un marco o la abrió otra página de este mismo origen (window.opener legible). Es una
- *   rebaja, no el arreglo: el arreglo es un origen propio (ver VERIFICACION.md).
+ *   dentro de un marco, la abrió otra página de este mismo origen (window.opener legible, o un Referer
+ *   de este origen fuera de la School: así se pilla también el truco «w.opener = null») o la controla
+ *   un service worker que no es el de la School. Esa pestaña queda marcada («influentia-school:ajena»)
+ *   y no salta sola a la puerta. Es una rebaja, no el arreglo: otra web del mismo origen puede leer y
+ *   tocar todo lo de esta pestaña. El arreglo es un origen propio (MOVER-A-ORIGEN-PROPIO.md).
+ * - Service worker propio (sw.js, ronda 5): vacío (sin «fetch»), con scope en la carpeta de la School.
+ *   Gana al de la raíz del origen (el más largo manda) y así otra web de la raíz no se queda con la
+ *   School en las visitas siguientes. Solo se registra en la dirección de la web (SCHOOL_CONF.web).
  * - Arranque en UNA llamada: api_inicio trae el perfil y, a la vez, las colecciones de
  *   window.SCHOOL_PRECARGA (antes eran dos viajes seguidos a Google: api_inicio y luego el sondeo).
+ *   Al volver de la puerta (ronda 5) el canje lleva también esa api_inicio (3.er argumento): entrar
+ *   es UN viaje a Google en vez de dos. Mientras, window.SCHOOL_CANJEANDO = true (evento
+ *   «school-canjeando»): la web enseña «Entrando…».
+ * - Salir en otra pestaña (ronda 5): «Salir» borra la marca de localStorage; las demás pestañas de la
+ *   School lo oyen (evento «storage»), sueltan su pase al momento y enseñan «Has salido de la School».
+ *   Si el servidor rechaza un pase por «Salir» o por «Cerrar todas las sesiones» (campo «por»), la
+ *   frase lo dice; no dice «caducado».
  * - Caché de arranque (sessionStorage, misma pestaña): al recargar se pinta al momento lo último que
  *   se vio y se refresca por detrás con una sola api_inicio. Atada al pase; fuera las colecciones de
  *   window.SCHOOL_SIN_CACHE (equipo = emails). Se borra al salir y si el servidor pide entrar.
@@ -813,6 +842,7 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
   var CLAVE_MOTIVO = 'influentia-school:motivo';
   var CLAVE_YA_ENTRO = 'influentia-school:ya-entro'; // localStorage, SIN secreto: «aquí ya se entró» ('1')
   var CLAVE_SALTO = 'influentia-school:salto';       // sessionStorage: esta pestaña ya saltó sola a la puerta
+  var CLAVE_AJENA = 'influentia-school:ajena';       // sessionStorage: esta pestaña la abrió otra web de este origen
   var RE_CODIGO = /^[A-Za-z0-9_-]{43}$/; // la misma forma que mira el canje (RE_CODIGO_ de Puerta.gs)
   var RE_PASE = /^[A-Za-z0-9_-]{8,2000}\.[A-Za-z0-9_-]{43}$/;
   var RE_NONCE = /^[A-Za-z0-9_-]{22,64}$/; // la misma forma que mira la puerta (RE_NONCE_ de Puerta.gs)
@@ -870,12 +900,19 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
   }
   /** Por qué hay que entrar otra vez (lo enseña «Entrar»). Sobrevive a una recarga (una vez). */
   var MOTIVOS = {
-    caducada: 'Tu sesión ha caducado. Vuelve a entrar.',
+    caducada: 'Tu sesión ha caducado. Pulsa Entrar para volver.',
     canje: 'Tu entrada ha caducado. Pulsa Entrar otra vez.',
     red: 'No hay conexión. Pulsa Entrar otra vez.',
-    ventana: 'Abre la School en una pestaña nueva y entra otra vez.',
-    freno: 'Hay mucha gente entrando. Espera un minuto y pulsa Entrar.'
+    ventana: 'Abre la School en una pestaña nueva y pulsa Entrar.',
+    freno: 'Hay mucha gente entrando. Espera un minuto y pulsa Entrar.',
+    salido: 'Has salido de la School. Pulsa Entrar para volver.',
+    cerrada: 'Se cerraron todas las sesiones. Pulsa Entrar para volver.',
+    ajena: 'Esta pestaña la controla otra web. Recarga la página y pulsa Entrar.'
   };
+  /** Motivo según el «por» del servidor al rechazar un pase (ronda 5: «Salir» no es «caducado»). */
+  function motivoDePor(por) {
+    return por === 'salir' ? 'salido' : por === 'todas' ? 'cerrada' : 'caducada';
+  }
   var motivo = (function () {
     var m = leerClave(CLAVE_MOTIVO);
     borrarClave(CLAVE_MOTIVO);
@@ -929,22 +966,65 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     var m = new RegExp('(?:^#|&)' + clave + '=([^&]*)').exec(h);
     return m ? m[1] : null;
   }
+  // Origen y carpeta de la web (https://uriel-iglesias.github.io + /school-influentia/), sin URL() (no
+  // está en todos los entornos de prueba).
+  var WEB_ORIGEN = (/^(https?:\/\/[^\/?#]+)/.exec(WEB) || [])[1] || '';
+  var WEB_RUTA = WEB_ORIGEN ? (WEB.slice(WEB_ORIGEN.length).split(/[?#]/)[0] || '/').replace(/[^\/]*$/, '') : '';
+  var WEB_SW = WEB_ORIGEN ? WEB_ORIGEN + WEB_RUTA + 'sw.js' : '';
+  /** ¿Llegó aquí desde otra página de ESTE origen que no es la School (Referer)? Google, Slack… no cuentan. */
+  function refererDelOrigen() {
+    var r = '';
+    try { r = String((typeof document !== 'undefined' && document && document.referrer) || ''); } catch (e) { r = ''; }
+    if (!r || !WEB_ORIGEN) return false;
+    if (r !== WEB_ORIGEN && r.indexOf(WEB_ORIGEN + '/') !== 0) return false;
+    return r.indexOf(WEB_ORIGEN + WEB_RUTA) !== 0;
+  }
+  /** ¿Controla esta pestaña un service worker que no es el de la School (p. ej. el de otra web de la raíz)? */
+  function controlAjeno() {
+    try {
+      var sw = typeof navigator !== 'undefined' && navigator ? navigator.serviceWorker : null;
+      var c = sw ? sw.controller : null;
+      return !!c && String(c.scriptURL || '') !== WEB_SW;
+    } catch (e) { return false; }
+  }
+  // La marca de «pestaña abierta por otra web» se queda en esta pestaña: al volver de la puerta el
+  // Referer ya es de Google, pero la pestaña sigue en manos de quien la abrió.
+  var ajena = (function () {
+    var ya = false;
+    try { var s = almacen(); ya = !!s && s.getItem(CLAVE_AJENA) === '1'; } catch (e) { ya = false; }
+    if (!ya && refererDelOrigen()) {
+      ya = true;
+      try { var s2 = almacen(); if (s2) s2.setItem(CLAVE_AJENA, '1'); } catch (e) { /* queda en esta carga */ }
+    }
+    return ya;
+  })();
+  window.SCHOOL_AJENA = ajena;
+  // El nombre de la ventana lo puede poner quien la abre (window.open(url, nombre)) y sobrevive a las
+  // navegaciones: fuera, para que no sirva de canal.
+  try { if (window.name) window.name = ''; } catch (e) { /* sin nombre */ }
   /**
    * ¿La School está dentro de un marco, o la abrió otra página de este mismo origen (que podría leer
    * esta pestaña)? Entonces no se canjea. Un opener de otro origen no se puede leer (lanza): vale.
+   * También cuenta la marca de esta pestaña (Referer de otra web del origen, aunque hiciera
+   * «w.opener = null»). Es una rebaja: quien tiene la pestaña puede borrar la marca.
    */
   function abiertaDesdeOtraWeb() {
     try { if (window.top && window.self && window.top !== window.self) return true; } catch (e) { return true; }
+    if (ajena) return true;
     var o = null;
     try { o = window.opener || null; } catch (e) { o = null; }
     if (!o) return false;
     try { return typeof o.location.href === 'string'; } catch (e) { return false; }
   }
   var pCanje = null; // canje en marcha: las llamadas a la API lo esperan
+  var iniCanje = null; // lo que trajo el canje de api_inicio (ronda 5): la primera inicio() lo usa sin otro viaje
+  var soltarCanje = null; // arranca ya el canje que espera a la web (lo llama inicio())
+  window.SCHOOL_CANJEANDO = false;
   /**
    * Al llegar de la puerta (#c=<código>): si hay nonce en esta pestaña, lo gasta y canjea el código por
    * el pase (POST). El pase guardado solo se cambia si el canje sale bien: un enlace #c= ajeno (atado a
-   * otro nonce) no te saca de tu sesión. Siempre quita c=, t= y s= de la barra y del historial.
+   * otro nonce) no te saca de tu sesión. Siempre quita c=, t= y s= de la barra y de la entrada actual
+   * del historial de la pestaña (replaceState).
    * Devuelve true si ha empezado un canje (pCanje dice si salió bien).
    */
   function capturarPase() {
@@ -956,10 +1036,11 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     var mio = leerClave(CLAVE_NONCE);
     var vale = c !== null && RE_CODIGO.test(c) && !!mio && RE_NONCE.test(mio);
     if (vale && abiertaDesdeOtraWeb()) { vale = false; ponerMotivo('ventana'); }
+    if (vale && controlAjeno()) { vale = false; ponerMotivo('ajena'); }
     if (vale) {
       borrarClave(CLAVE_NONCE); // un nonce = una entrada
       pCanje = canjear(c, mio);
-    } else if (c !== null && motivo !== 'ventana' && !paseVigente()) {
+    } else if (c !== null && motivo !== 'ventana' && motivo !== 'ajena' && !paseVigente()) {
       // #c= falso, mal copiado o de otra pestaña (sin su nonce): se dice por qué, no se queda en blanco.
       ponerMotivo('canje');
     }
@@ -973,6 +1054,8 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     return vale;
   }
   capturarPase();
+  // Pestaña abierta por otra web del origen, sin pase: se dice por qué (y no se salta sola a la puerta).
+  if (ajena && !motivo && !paseVigente()) motivo = 'ventana';
 
   /** Enlace de entrar: selector de cuentas → puerta (?entrar=1&s=<nonce>). Sin nonce, '' (no se entra). */
   function armarLogin() {
@@ -1007,7 +1090,7 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
    */
   function saltarALaPuerta() {
     if (window.SCHOOL_SALTANDO || pCanje || !PUERTA || !yaEntro() || yaSalto()) return false;
-    if (paseVigente() || (motivo && motivo !== 'caducada') || abiertaDesdeOtraWeb()) return false;
+    if (paseVigente() || (motivo && motivo !== 'caducada') || abiertaDesdeOtraWeb() || controlAjeno()) return false;
     var h = String((window.location && window.location.hash) || '');
     if (enHash(h, 'c') !== null || enHash(h, 't') !== null || enHash(h, 's') !== null) return false;
     var n = nonceActual();
@@ -1092,6 +1175,28 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       return r;
     });
   };
+  /**
+   * «Salir» en OTRA pestaña de la School borra la marca «ya-entro» de localStorage. Las demás pestañas lo
+   * oyen (evento «storage», solo llega a las otras) y sueltan su pase ya: no se quedan con tu nombre,
+   * tu foto y «Salir» de una sesión que el servidor ya cerró. Un clear() (key null) no cuenta.
+   */
+  if (typeof window.addEventListener === 'function') {
+    window.addEventListener('storage', function (ev) {
+      if (!ev || ev.key !== CLAVE_YA_ENTRO || ev.newValue !== null) return;
+      if (!leerClave(CLAVE_PASE)) return;
+      borrarClave(CLAVE_PASE);
+      borrarClave(CLAVE_VOLVER);
+      borrarCache();
+      ponerMotivo('salido');
+      var x = error('unauthenticated', MOTIVOS.salido);
+      x.detalle = '';
+      x.sesion = true;
+      x.login = true;
+      x.motivo = 'salido';
+      anotarError(x);
+      if (ganchosDb) ganchosDb.cortar(x);
+    });
+  }
   // Antes de ir a entrar se apunta la ruta (vuelves a la misma clase con el pase nuevo).
   if (typeof document !== 'undefined' && document.addEventListener) {
     document.addEventListener('click', function (ev) {
@@ -1108,6 +1213,7 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     x.detalle = '';
     x.sesion = true;
     x.login = true;
+    x.motivo = MOTIVOS[motivo] ? motivo : '';
     return x;
   }
 
@@ -1155,14 +1261,20 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
    * otra vez» se reintenta una vez. Mal = sin pase y con el motivo para «Entrar». Resuelve true/false.
    */
   function canjear(codigo, nonce) {
-    var cuerpo = JSON.stringify({ f: 'api_canjear', a: [codigo, nonce] });
+    marcarCanje(true);
+    // El canje sale cuando la web ya ha dicho qué precargar (SCHOOL_PRECARGA va en su <script>, detrás
+    // de este): lo suelta inicio() o, si nadie llama, el siguiente turno del navegador.
+    var listo = new Promise(function (ok) { soltarCanje = ok; setTimeout(ok, 0); });
     function intento(n) {
+      // 3.er argumento (ronda 5): lo que pediría api_inicio. El servidor lo contesta en el mismo viaje.
+      var cuerpo = JSON.stringify({ f: 'api_canjear', a: [codigo, nonce, objetivosPrecarga(null)] });
       return pedirApi(cuerpo).then(function (j) {
         if (j.ok === true && j.r && typeof j.r.t === 'string' && RE_PASE.test(j.r.t)) {
           guardarClave(CLAVE_PASE, j.r.t);
           borrarCache();
           ponerMotivo('');
           recordarEntrada();
+          iniCanje = esMapa(j.r.ini) && esMapa(j.r.ini.yo) ? j.r.ini : null;
           return true;
         }
         if (j.ok !== true && j.code === 'resource_exhausted') { // freno del servidor: no se reintenta
@@ -1178,7 +1290,13 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
         return false;
       });
     }
-    return intento(0).then(function (v) { pCanje = null; return v; }, function () { pCanje = null; return false; });
+    function fin(v) { pCanje = null; marcarCanje(false); return v; }
+    return listo.then(function () { soltarCanje = null; return intento(0); }).then(fin, function () { return fin(false); });
+  }
+  /** «Entrando…» mientras dura el canje: window.SCHOOL_CANJEANDO + evento «school-canjeando». */
+  function marcarCanje(si) {
+    window.SCHOOL_CANJEANDO = !!si;
+    try { window.dispatchEvent(new CustomEvent('school-canjeando', { detail: { canjeando: !!si } })); } catch (x) { /* sin CustomEvent */ }
   }
 
   /** Llama a una api_* del servidor. {ok:true, r} → r; {ok:false} → rechazo con .code. */
@@ -1196,11 +1314,12 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       x.reintentar = !!j.reintentar;
       if (x.code === 'unauthenticated') {
         // Pase caducado, cerrado con «Salir», de otra cuenta o con la firma mal: se borra y la web pide
-        // entrar otra vez, diciendo por qué (el texto del servidor: «Tu sesión ha caducado…»).
+        // entrar otra vez, diciendo por qué. El servidor dice «por» (ronda 5): «salir» = saliste (en otra
+        // pestaña o aparato), «todas» = se cerraron todas las sesiones; si no, caducada.
         borrarClave(CLAVE_PASE);
         borrarCache();
         recordarRuta();
-        if (!/@/.test(x.message)) { motivo = 'caducada'; x.message = MOTIVOS.caducada; }
+        if (!/@/.test(x.message)) { motivo = motivoDePor(j.por); x.message = MOTIVOS[motivo]; x.motivo = motivo; }
         x.sesion = true;
         x.login = true;
       }
@@ -1352,6 +1471,23 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
    */
   function inicio() {
     if (pInicio) return pInicio;
+    if (pCanje) {
+      // Canje en marcha: se espera y, si trajo api_inicio, no hace falta otro viaje a Google.
+      if (soltarCanje) soltarCanje();
+      var esperando = pCanje.then(function () { if (pInicio === esperando) pInicio = null; return inicio(); });
+      pInicio = esperando;
+      esperando.catch(function () { if (pInicio === esperando) pInicio = null; });
+      return esperando;
+    }
+    if (iniCanje) {
+      var ini0 = iniCanje;
+      iniCanje = null;
+      marcarRed(false);
+      aplicarIni(ini0);
+      if (Array.isArray(ini0.sondeo)) entregar(ini0.sondeo, true, null);
+      pInicio = Promise.resolve(ini0);
+      return pInicio;
+    }
     var pase = paseVigente();
     var cache = pase ? leerCache(pase) : null;
     if (cache) {
@@ -2004,7 +2140,8 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       mensaje: String(e.message || ''),
       detalle: String(e.detalle || e.message || ''),
       sesion: !!e.sesion,
-      login: !!e.login
+      login: !!e.login,
+      motivo: typeof e.motivo === 'string' && Object.prototype.hasOwnProperty.call(MOTIVOS, e.motivo) ? e.motivo : ''
     };
     try { window.dispatchEvent(new CustomEvent('school-error', { detail: window.SCHOOL_ERROR })); } catch (x) { /* sin CustomEvent */ }
   }
@@ -2031,6 +2168,19 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
   // Lo que deja el build en la página: dirección de la web (recordatorio) y dominio del equipo.
   // WEB ya pasó por urlSegura (https; en pruebas locales, también http de la máquina local).
   if (WEB && typeof window.SCHOOL_URL !== 'string') window.SCHOOL_URL = WEB;
+
+  // Service worker propio (sw.js, vacío, sin «fetch»), con scope en la carpeta de la School: gana al de
+  // la raíz del origen, que si no se queda con /school-influentia/ (ronda 5). Solo en https y en la
+  // dirección de la web; si falla, nada (no hace falta para entrar).
+  (function registrarSw() {
+    try {
+      if (!WEB_SW || window.SCHOOL_SALTANDO || typeof navigator === 'undefined' || !navigator || !navigator.serviceWorker) return;
+      var aqui = String((window.location && window.location.href) || '');
+      if (WEB_ORIGEN.indexOf('https://') !== 0 || aqui.indexOf(WEB_ORIGEN + WEB_RUTA) !== 0) return;
+      var r = navigator.serviceWorker.register(WEB_SW, { scope: WEB_ORIGEN + WEB_RUTA });
+      if (r && typeof r.catch === 'function') r.catch(function () { /* sin service worker: se entra igual */ });
+    } catch (e) { /* sin service worker */ }
+  })();
   if (typeof window.SCHOOL_DOMINIO !== 'string') window.SCHOOL_DOMINIO = DOMINIO;
 
   function idDeBlob(url) {
@@ -2179,18 +2329,42 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     calendario: '<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17"/><path d="M8 3v4"/><path d="M16 3v4"/>',
     bandeja: '<path d="M3.5 13.5 6 5h12l2.5 8.5V19a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 19v-5.5Z"/><path d="M3.5 13.5H8l1.5 2.5h5l1.5-2.5h4.5"/>',
     etiqueta: '<path d="M3 12V4.5A1.5 1.5 0 0 1 4.5 3H12l9 9-9 9-9-9Z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
-    balanza: '<path d="M12 4v16"/><path d="M7 20h10"/><path d="M5 7h14"/><path d="m5 7-3 7a3.5 3.5 0 0 0 6 0L5 7Z"/><path d="m19 7-3 7a3.5 3.5 0 0 0 6 0l-3-7Z"/>'
+    balanza: '<path d="M12 4v16"/><path d="M7 20h10"/><path d="M5 7h14"/><path d="m5 7-3 7a3.5 3.5 0 0 0 6 0L5 7Z"/><path d="m19 7-3 7a3.5 3.5 0 0 0 6 0l-3-7Z"/>',
+    // logros y clases que antes salían con emoji (mismo trazo que el resto)
+    diana: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/>',
+    escudo: '<path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.2 7.5 9.5 4.3-1.3 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.8 12 2.3 2.3 4.2-4.6"/>',
+    llama: '<path d="M12 21c-3.9 0-6.5-2.6-6.5-6.2 0-3.4 2.4-5.4 3.6-8.3.7 1.6 1.6 2.6 2.7 3.1C12 7 13 4.6 14.6 3c.6 3.2 3.9 5.6 3.9 10.6 0 4.6-2.6 7.4-6.5 7.4Z"/>',
+    pregunta: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.8v.5"/><path d="M12 17h0"/>',
+    cartas: '<path d="M9.5 6.2 5 7a2 2 0 0 0-1.6 2.3l1.8 10.4A2 2 0 0 0 7.5 21.3l4.5-.8"/><rect x="9.5" y="3" width="11" height="15" rx="2"/><path d="m15 7.5 1.6 3-1.6 3-1.6-3 1.6-3Z"/>',
+    numeros: '<path d="M10 4 8 20"/><path d="M16 4l-2 16"/><path d="M4.5 9h15"/><path d="M4 15h15"/>',
+    abaco: '<rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M3.5 8.5h17"/><path d="M3.5 15.5h17"/><circle cx="8" cy="8.5" r="1.6"/><circle cx="12" cy="8.5" r="1.6"/><circle cx="10" cy="15.5" r="1.6"/><circle cx="15.5" cy="15.5" r="1.6"/>',
+    semaforo: '<rect x="7.5" y="2.5" width="9" height="19" rx="3"/><circle cx="12" cy="7" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="17" r="1.6"/>',
+    claqueta: '<rect x="3.5" y="9.5" width="17" height="11" rx="2"/><path d="m3.5 9.5 16-4.2-.8-3L3 6.5l.5 3Z"/><path d="m8 4.8 2.6 3.4"/><path d="m13 3.5 2.6 3.4"/>',
+    pasos: '<path d="M10 6h10"/><path d="M10 12h10"/><path d="M10 18h10"/><path d="M4 6h1.5"/><path d="M4 12h1.5"/><path d="M4 18h1.5"/>',
+    pieza: '<path d="M9 4.5a2.5 2.5 0 0 1 5 0V6h4a1.5 1.5 0 0 1 1.5 1.5V11H18a2.5 2.5 0 0 0 0 5h1.5v3.5A1.5 1.5 0 0 1 18 21H6a1.5 1.5 0 0 1-1.5-1.5V16H6a2.5 2.5 0 0 0 0-5H4.5V7.5A1.5 1.5 0 0 1 6 6h3V4.5Z"/>',
+    bombilla: '<path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.4 1.1 2.2V16h5v-.1c0-.8.4-1.6 1.1-2.2A6 6 0 0 0 12 3Z"/>',
+    equis: '<path d="M6 6l12 12"/><path d="M18 6 6 18"/>',
+    birrete: '<path d="m2.5 9 9.5-5 9.5 5-9.5 5-9.5-5Z"/><path d="M6.5 11.2V16c0 1.4 2.5 3 5.5 3s5.5-1.6 5.5-3v-4.8"/><path d="M21.5 9v5"/>',
+    medalla: '<circle cx="12" cy="14.5" r="5.5"/><path d="M8.5 10.2 6 3h4l2 4.5L14 3h4l-2.5 7.2"/>',
   };
-  // Emoji de curso o clase → icono en línea (sin variante U+FE0F). El que no está, sale como emoji.
+  // Emoji de curso o clase → icono en línea (sin variante U+FE0F). El que no está, sale con el libro.
   var EMO_SVG = {
     '\uD83D\uDCD8': 'libro', '\uD83E\uDDED': 'brujula', '\u2733': 'chispa', '\uD83D\uDE80': 'cohete', '\uD83D\uDE4C': 'estrella',
     '\uD83D\uDD11': 'llave', '\uD83D\uDD0D': 'lupa', '\uD83D\uDD0E': 'lupa', '\uD83D\uDC40': 'ojo', '\uD83D\uDED1': 'stop',
     '\uD83D\uDD0C': 'enchufe', '\uD83C\uDFA8': 'paleta', '\uD83D\uDCD1': 'doc', '\uD83D\uDCC8': 'grafica', '\uD83D\uDDD3': 'calendario',
-    '\uD83D\uDCE5': 'bandeja', '\uD83D\uDD0E\uFE0F': 'lupa', '\uD83C\uDFF7': 'etiqueta', '\uD83D\uDCDD': 'lapiz', '\u2696': 'balanza'
+    '\uD83D\uDCE5': 'bandeja', '\uD83C\uDFF7': 'etiqueta', '\uD83D\uDCDD': 'lapiz', '\u2696': 'balanza',
+    '\uD83C\uDCCF': 'cartas', '\uD83D\uDD22': 'numeros', '\uD83E\uDDEE': 'abaco', '\uD83D\uDEA6': 'semaforo', '\uD83D\uDEA5': 'semaforo',
+    '\uD83C\uDFAC': 'claqueta', '\uD83C\uDFA5': 'claqueta', '\uD83D\uDCF9': 'claqueta', '\uD83C\uDFAF': 'diana', '\uD83D\uDEE1': 'escudo',
+    '\uD83D\uDD25': 'llama', '\uD83D\uDE4B': 'pregunta', '\u2753': 'pregunta', '\uD83C\uDFC6': 'trofeo', '\u2B50': 'estrella',
+    '\uD83C\uDF1F': 'estrella', '\u2728': 'chispa', '\uD83D\uDCDA': 'libro', '\uD83D\uDCD6': 'libro', '\uD83D\uDCC4': 'doc',
+    '\uD83D\uDCCA': 'grafica', '\uD83D\uDD17': 'enlace', '\u2705': 'check', '\u25B6': 'play', '\uD83D\uDD12': 'candado',
+    '\uD83D\uDCAC': 'chat', '\uD83E\uDDE9': 'pieza', '\uD83D\uDCA1': 'bombilla', '\uD83D\uDC63': 'pasos', '\u270D': 'lapiz', '\u2713': 'check',
+    '\uD83D\uDCCB': 'doc', '\u27A1': 'flecha', '\uD83D\uDC47': 'abajo', '\uD83C\uDF89': 'chispa', '\uD83C\uDF93': 'birrete', '\uD83E\uDD47': 'medalla', '\uD83E\uDD48': 'medalla', '\uD83E\uDD49': 'medalla', '\uD83C\uDFC5': 'medalla', '\u274C': 'equis', '\u2715': 'equis', '\u26D4': 'stop', '\u2B06': 'arriba', '\uD83E\uDD16': 'chispa', '\uD83D\uDCCC': 'etiqueta'
   };
+  // Siempre un icono en línea, nunca un emoji suelto (cada móvil lo pinta distinto).
   function iconoEmoji(txt) {
-    var e = corta(txt || '\uD83D\uDCD8', 8), n = EMO_SVG[e.replace(/\uFE0F/g, '').trim()];
-    return n && ICONOS[n] ? icono(n, 'ico--emo') : e;
+    var e = corta(txt || '', 8), n = EMO_SVG[e.replace(/\uFE0F/g, '').trim()];
+    return icono(n && ICONOS[n] ? n : 'libro', 'ico--emo');
   }
   function icono(n, cls) {
     var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -2221,11 +2395,20 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
   }
   // «💬 Frases para Claude» → [emoji en su span con aire, «Frases para Claude»]. Sin emoji delante, tal cual.
   var RE_EMO_INI = /^([^\s\w«¿¡"'(\[*`\u00C0-\u024F]{1,8})\s+(\S[\s\S]*)$/;
+  // Emoji delante: el conocido sale como icono SVG (mismo trazo que el resto); el desconocido, fuera
+  // (cada móvil pinta los emoji distinto). Otro signo (→, —) se queda tal cual.
+  var RE_PICTO = /[\u2300-\u23FF\u2600-\u27BF\u2B00-\u2BFF]|[\uD83C-\uD83E][\uDC00-\uDFFF]/;
   function conEmo(txt, resto) {
-    var m = RE_EMO_INI.exec(String(txt == null ? '' : txt));
-    if (!m) return resto ? resto(String(txt == null ? '' : txt)) : String(txt == null ? '' : txt);
-    return [h('span', { class: 'emo', 'aria-hidden': 'true' }, m[1]), resto ? resto(m[2]) : m[2]];
+    var s = String(txt == null ? '' : txt), m = RE_EMO_INI.exec(s);
+    if (!m) return resto ? resto(s) : s;
+    var n = EMO_SVG[m[1].replace(/\uFE0F/g, '').trim()];
+    var icoEl = n && ICONOS[n] ? ico(n)
+      : RE_PICTO.test(m[1]) ? null : h('span', { class: 'emo', 'aria-hidden': 'true' }, m[1]);
+    return [icoEl, resto ? resto(m[2]) : m[2]];
   }
+  // Icono en línea delante de un texto (mismo trazo que el resto de la web).
+  function ico(n) { return h('span', { class: 'emo emo--ico', 'aria-hidden': 'true' }, icono(n, 'ico--emo')); }
+  function ponerTexto(el, n, txt) { el.textContent = ''; if (n) el.appendChild(ico(n)); el.appendChild(document.createTextNode(txt)); }
   function enLinea(t) { return inl(t, true); }
   function anadir(el, c) {
     if (c === null || c === undefined || c === false) return;
@@ -2658,11 +2841,11 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
       D.it.forEach(function (it, i) {
         if (it.frase) {
           var frase = h('span', { class: 'pide__frase' }, '«', inl(it.txt, true), '»');
-          var aviso = h('span', { class: 'pide__ok', role: 'status' }, st.cp[i] ? '✅ Copiado' : '');
+          var aviso = h('span', { class: 'pide__ok', role: 'status' }, st.cp[i] ? [ico('check'), 'Copiado'] : '');
           var b = h('button', { type: 'button', class: 'btn btn--suave btn--peq', 'data-k': A.k + 'c' + i, 'aria-label': 'Copiar: ' + plano(it.txt) }, icono('doc'), 'Copiar');
           b.addEventListener('click', function () {
             copiarTexto(plano(it.txt), frase).then(function (ok) {
-              if (ok) { st.cp[i] = true; aviso.textContent = '✅ Copiado'; anunciar('Copiado. Pégalo en Claude.'); A.hecho(); }
+              if (ok) { st.cp[i] = true; ponerTexto(aviso, 'check', 'Copiado'); anunciar('Copiado. Pégalo en Claude.'); A.hecho(); }
               else { aviso.textContent = textoCopiaManual(); anunciar(textoCopiaManual()); }
             });
           });
@@ -2692,7 +2875,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
             var r = st.r[i], resp = r !== undefined, bien = resp && r === it.si;
             var li = h('li', { class: 'clas__item' + (resp ? (bien ? ' clas__item--ok' : ' clas__item--mal') : '') }, h('span', { class: 'clas__txt' }, inl(it.t)));
             var btns = h('div', { class: 'clas__btns', role: 'group', 'aria-label': 'Tu respuesta' });
-            [[true, '✅ Se puede'], [false, '⛔ No se puede']].forEach(function (o) {
+            [[true, [ico('check'), 'Se puede']], [false, [ico('stop'), 'No se puede']]].forEach(function (o) {
               btns.appendChild(h('button', {
                 type: 'button', class: 'opc-btn', 'data-k': A.k + i + (o[0] ? 's' : 'n'),
                 'aria-pressed': resp ? String(r === o[0]) : 'false', 'aria-disabled': resp ? 'true' : null,
@@ -2715,7 +2898,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
           if (n === D.it.length) {
             var b = buenas();
             c.appendChild(h('div', { class: 'act__pie' },
-              h('span', { class: 'act__nota' }, b + '/' + D.it.length + ' bien' + (b === D.it.length ? ' 🎉' : '')),
+              h('span', { class: 'act__nota' }, b + '/' + D.it.length + ' bien', b === D.it.length ? [' ', ico('chispa')] : null),
               h('button', { type: 'button', class: 'btn btn--fantasma btn--peq', 'data-k': A.k + 'rep', onclick: function () {
                 st.r = {}; pintar();
                 var p = cuerpo.querySelector('button'); if (p) p.focus();
@@ -2748,7 +2931,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
           });
           if (st.ult !== undefined && D.ops[st.ult]) {
             var o = D.ops[st.ult];
-            c.appendChild(h('p', { class: 'fb ' + (o.ok ? 'fb--ok' : 'fb--mal') }, h('b', null, o.ok ? '✅ ¡Bien visto! ' : '❌ No es la mejor. '), o.por ? inl(o.por) : null, o.ok ? null : ' Prueba otra.'));
+            c.appendChild(h('p', { class: 'fb ' + (o.ok ? 'fb--ok' : 'fb--mal') }, h('b', null, o.ok ? [ico('check'), '¡Bien visto! '] : [ico('equis'), 'No es la mejor. ']), o.por ? inl(o.por) : null, o.ok ? null : ' Prueba otra.'));
           }
         });
       }
@@ -2766,9 +2949,9 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     },
     comparar: function (A, D) {
       A.caja.appendChild(h('div', { class: 'comp' },
-        h('div', { class: 'comp__col comp__col--mal' }, h('span', { class: 'comp__etq' }, '✕ Así no'), D.mal.map(function (t) { return h('p', null, inl(t)); })),
-        h('div', { class: 'comp__col comp__col--bien' }, h('span', { class: 'comp__etq' }, '✓ Así sí'), D.bien.map(function (t) { return h('p', null, inl(t)); }))));
-      if (D.por.length) A.caja.appendChild(h('p', { class: 'comp__porque' }, '💡 ', h('b', null, 'Por qué: '), inl(D.por.join(' '))));
+        h('div', { class: 'comp__col comp__col--mal' }, h('span', { class: 'comp__etq' }, [ico('equis'), 'Así no']), D.mal.map(function (t) { return h('p', null, inl(t)); })),
+        h('div', { class: 'comp__col comp__col--bien' }, h('span', { class: 'comp__etq' }, [ico('check'), 'Así sí']), D.bien.map(function (t) { return h('p', null, inl(t)); }))));
+      if (D.por.length) A.caja.appendChild(h('p', { class: 'comp__porque' }, ico('bombilla'), h('b', null, 'Por qué: '), inl(D.por.join(' '))));
     },
     prompt: function (A, D) {
       var pre = h('pre', { class: 'prompt__txt' }, D.txt);
@@ -2776,7 +2959,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
       var b = h('button', { type: 'button', class: 'btn btn--peq', 'data-k': A.k + 'cp' }, icono('doc'), 'Copiar');
       b.addEventListener('click', function () {
         copiarTexto(D.txt, pre).then(function (ok) {
-          if (ok) { aviso.className = 'fb fb--ok'; aviso.textContent = '✅ Copiado. Pégalo en Claude.'; A.hecho(); }
+          if (ok) { aviso.className = 'fb fb--ok'; ponerTexto(aviso, 'check', 'Copiado. Pégalo en Claude.'); A.hecho(); }
           else { aviso.className = 'prompt__aviso'; aviso.textContent = textoCopiaManual(); }
         });
       });
@@ -2831,7 +3014,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
         var b = h('button', { type: 'button', class: 'btn btn--grande paso__btn', 'data-k': A.k + 'cp' }, icono('doc'), ac.etq || 'Copiar');
         b.addEventListener('click', function () {
           copiarTexto(ac.txt, pre).then(function (ok) {
-            if (ok) { aviso.className = 'fb fb--ok'; aviso.textContent = '✅ Copiado. Pégalo en Claude.'; marcar(true); }
+            if (ok) { aviso.className = 'fb fb--ok'; ponerTexto(aviso, 'check', 'Copiado. Pégalo en Claude.'); marcar(true); }
             else { aviso.className = 'prompt__aviso'; aviso.textContent = textoCopiaManual(); }
           });
         });
@@ -3081,7 +3264,8 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     });
     var yo = document.getElementById('yo');
     yo.textContent = '';
-    if (S.yo && S.yo.id) {
+    // Tu nombre y «Salir» solo con la sesión viva: si se perdió (Salir en otra pestaña, caducada), fuera.
+    if (conSesion && S.yo && S.yo.id) {
       var av = h('span', { class: 'avatar avatar--peq', 'aria-hidden': 'true' });
       if (S.yo.avatarUrl) av.appendChild(h('img', { src: S.yo.avatarUrl, alt: '' }));
       if (S.yo.color) av.style.background = S.yo.color;
@@ -3183,6 +3367,12 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
 
   // Carga: frase grande desde el primer momento; a los 6 s se añade «Tarda un poco la primera vez».
   var cargaDesde = 0, cargaReloj = null;
+  try {
+    window.addEventListener('school-canjeando', function (ev) {
+      var t = document.querySelector('[data-k="cargando-txt"]');
+      if (t) t.textContent = (ev && ev.detail && ev.detail.canjeando) ? 'Entrando…' : 'Cargando tus clases…';
+    });
+  } catch (x) { /* sin eventos */ }
   function esqueleto() {
     if (!cargaDesde) cargaDesde = Date.now();
     var pasado = Date.now() - cargaDesde, lenta = pasado >= 6000;
@@ -3191,9 +3381,11 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
       var n = document.querySelector('[data-k="cargando-lento"]');
       if (n) n.hidden = false;
     }, 6000 - pasado);
+    // Mientras el puente canjea la entrada (#c=) se dice «Entrando…»: así se ve que algo pasa.
+    var entrando = window.SCHOOL_CANJEANDO === true;
     return h('div', { class: 'pila', 'aria-busy': 'true', 'data-k': 'cargando' },
       h('div', { role: 'status' },
-        h('p', { class: 'cargando' }, h('span', { class: 'cargando__punto', 'aria-hidden': 'true' }), 'Cargando tus clases…'),
+        h('p', { class: 'cargando' }, h('span', { class: 'cargando__punto', 'aria-hidden': 'true' }), h('span', { 'data-k': 'cargando-txt' }, entrando ? 'Entrando…' : 'Cargando tus clases…')),
         h('p', { class: 'cargando__nota', 'data-k': 'cargando-lento', hidden: !lenta }, 'Tarda un poco la primera vez.')),
       h('div', { class: 'esq', style: { height: '44px', width: '60%' } }),
       h('div', { class: 'esq', style: { height: '180px' } }),
@@ -3238,11 +3430,11 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     });
     function cursoTxt(c, n) { return c && c.titulo ? 'Acaba «' + c.titulo + '».' : 'Acaba el curso ' + n + '.'; }
     return [
-      { e: '🎯', n: 'Primera clase', c: 'Completa tu primera clase.', ok: cuentaHechas(uid) >= 1 },
-      { e: '🛡️', n: 'Normas dominadas', c: cursoTxt(c1, 1), ok: !!c1 && cursoCompleto(c1, uid) },
-      { e: '✳️', n: 'Claude a tope', c: cursoTxt(c2, 2), ok: !!c2 && cursoCompleto(c2, uid) },
-      { e: '🔥', n: '3 en un día', c: 'Completa 3 clases el mismo día.', ok: tres },
-      { e: '🙋', n: 'Curioso', c: 'Haz tu primera pregunta.', ok: Array.from(S.preguntas.values()).some(function (p) { return p.autor === uid; }) }
+      { i: 'diana', n: 'Primera clase', c: 'Completa tu primera clase.', ok: cuentaHechas(uid) >= 1 },
+      { i: 'escudo', n: 'Normas dominadas', c: cursoTxt(c1, 1), ok: !!c1 && cursoCompleto(c1, uid) },
+      { i: 'chispa', n: 'Claude a tope', c: cursoTxt(c2, 2), ok: !!c2 && cursoCompleto(c2, uid) },
+      { i: 'llama', n: '3 en un día', c: 'Completa 3 clases el mismo día.', ok: tres },
+      { i: 'pregunta', n: 'Curioso', c: 'Haz tu primera pregunta.', ok: Array.from(S.preguntas.values()).some(function (p) { return p.autor === uid; }) }
     ];
   }
 
@@ -3271,7 +3463,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
           h('span', { class: 'btn__txt' }, (hechasN ? 'Seguir' : 'Empezar') + (sig.duracion_min ? ' · ' + sig.duracion_min + ' min' : '')),
           icono('flecha'))));
     } else if (total && hechasN >= total) {
-      main.appendChild(h('section', { class: 'tarjeta tarjeta--pad' }, h('span', { class: 'kicker' }, 'Todo hecho'), h('h2', null, '¡Has terminado todos los cursos! 🏆'), h('p', { class: 'muted', style: { 'margin-top': '6px' } }, 'Cuando haya clases nuevas, saldrán aquí.')));
+      main.appendChild(h('section', { class: 'tarjeta tarjeta--pad' }, h('span', { class: 'kicker' }, 'Todo hecho'), h('h2', null, '¡Has terminado todos los cursos! ', ico('trofeo')), h('p', { class: 'muted', style: { 'margin-top': '6px' } }, 'Cuando haya clases nuevas, saldrán aquí.')));
     }
     var c1 = primerCurso();
     if (c1 && cursoCompleto(c1)) main.appendChild(diplomaEl(c1));
@@ -3310,10 +3502,10 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     var lg = logrosDe(S.uid), ulL = h('ul', { class: 'logros' });
     lg.forEach(function (x) {
       ulL.appendChild(h('li', { class: 'logro' + (x.ok ? '' : ' logro--no') },
-        h('span', { class: 'logro__ico', 'aria-hidden': 'true' }, x.e),
+        h('span', { class: 'logro__ico', 'aria-hidden': 'true' }, icono(x.i)),
         h('b', null, x.n),
-        h('small', null, (x.ok ? '✓ ' : '') + x.c),
-        h('span', { class: 'sr' }, x.ok ? 'Conseguido.' : 'Aún no.')));
+        h('small', null, x.c),
+        h('span', { class: 'logro__estado' + (x.ok ? ' logro__estado--ok' : '') }, x.ok ? 'Conseguido' : 'Aún no')));
     });
     lado.appendChild(h('section', { class: 'tarjeta tarjeta--pad pila', 'aria-label': 'Logros' },
       h('div', { class: 'titulo-seccion', style: { margin: '0' } }, icono('trofeo'), h('h2', null, 'Logros')),
@@ -3328,7 +3520,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     var comp = hechasDe(S.uid);
     var cuando = leccionesDe(c.id).reduce(function (m, l) { return Math.max(m, Number(comp[l.id]) || 0); }, 0);
     return h('section', { class: 'tarjeta diploma', 'aria-label': 'Diploma: ' + (c.titulo || 'Curso') },
-      h('span', { class: 'diploma__sello', 'aria-hidden': 'true' }, '🎓'),
+      h('span', { class: 'diploma__sello', 'aria-hidden': 'true' }, icono('birrete')),
       h('div', { class: 'diploma__txt' },
         h('span', { class: 'kicker' }, 'Diploma · Influentia School'),
         h('h2', null, c.titulo || 'Curso'),
@@ -3346,7 +3538,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     function fila(f, i) {
       var yo = f.uid === S.uid;
       return h('li', { class: yo ? 'es-yo' : null },
-        h('span', { class: 'ranking__pos' }, i < 3 ? ['🥇', '🥈', '🥉'][i] : String(i + 1)),
+        h('span', { class: 'ranking__pos' + (i < 3 ? ' ranking__pos--' + (i + 1) : '') }, i < 3 ? [icono('medalla'), h('span', { class: 'sr' }, 'Puesto ' + (i + 1))] : String(i + 1)),
         avatarEl(f.uid, true),
         h('span', { class: 'ranking__nombre' }, nombreEl(f.uid), h('small', null, nivelDe(f.xp).nombre + (yo ? ' · tú' : ''))),
         h('span', { class: 'ranking__n' }, f.xp + ' XP'));
@@ -3455,7 +3647,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     else if (S.admin) col.appendChild(huecoVideoAdmin(l));
     // Sin vídeo todavía: una línea fina y los pasos justo debajo (se pueden hacer ya).
     else if (l.video_previsto) col.appendChild(h('p', { class: 'video-pronto', role: 'note' },
-      h('span', { class: 'video-pronto__ico', 'aria-hidden': 'true' }, '🎬'),
+      h('span', { class: 'video-pronto__ico', 'aria-hidden': 'true' }, icono('claqueta', 'ico--emo')),
       h('span', null, h('b', null, 'El vídeo llega pronto. '), pasos.length ? 'Puedes hacer los ' + pasos.length + ' pasos ya.' : 'Puedes hacer la clase ya.')));
     if (texto) col.appendChild(h('section', { class: 'tarjeta tarjeta--pad' }, texto));
     if (l.pdf_asset) {
@@ -3515,7 +3707,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
         });
     });
     return h('section', { class: 'video-slot', 'aria-label': 'Vídeo de la clase' },
-      h('span', { class: 'video-slot__ico', 'aria-hidden': 'true' }, '🎬'),
+      h('span', { class: 'video-slot__ico', 'aria-hidden': 'true' }, icono('claqueta', 'ico--emo')),
       h('p', { class: 'video-slot__tit' }, l.video_previsto ? 'El equipo ve: «El vídeo llega pronto» y hace los pasos ya.' : 'Esta clase aún no tiene vídeo.'),
       b, input,
       sv && sv.subiendo ? barraSubida(sv.pct) : null,
@@ -3632,7 +3824,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     function dibuja(c) {
       if (q.fase === 'aprobado') {
         c.appendChild(h('div', { class: 'qz__fin' },
-          h('span', { class: 'qz__nota', 'aria-hidden': 'true' }, '✅'),
+          h('span', { class: 'qz__nota qz__nota--ico', 'aria-hidden': 'true' }, icono('check')),
           h('p', { class: 'qz__titfin' }, 'Ya lo aprobaste.'),
           h('p', { class: 'muted' }, 'Repásalo cuando quieras.'),
           h('div', { class: 'acciones' }, h('button', { type: 'button', class: 'btn btn--suave', 'data-k': 'qz-repasar', onclick: function () { otra(null, true); } }, '↺ Repasar'))));
@@ -3643,8 +3835,8 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
         var todo = !q.malas.length;
         var fin = h('div', { class: 'qz__fin', role: 'group', 'aria-label': 'Resultado del mini-test' },
           h('span', { class: 'qz__nota' }, q.aciertos + ' de ' + n),
-          h('p', { class: 'qz__titfin' }, todo ? '¡Todo bien! 🎉' : (q.aciertos ? 'Casi. Repite las falladas.' : 'Vamos otra vez. Tú puedes.')),
-          q.mejor >= 2 ? h('p', { class: 'muted peq' }, '🔥 Mejor racha: ' + q.mejor) : null);
+          h('p', { class: 'qz__titfin' }, todo ? ['¡Todo bien! ', ico('chispa')] : (q.aciertos ? 'Casi. Repite las falladas.' : 'Vamos otra vez. Tú puedes.')),
+          q.mejor >= 2 ? h('p', { class: 'muted peq' }, [ico('llama'), 'Mejor racha: ' + q.mejor]) : null);
         var acc = h('div', { class: 'acciones' });
         if (!todo) {
           var malas = q.malas.slice(), pr = q.practica;
@@ -3667,7 +3859,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
       for (var i = 0; i < n; i++) puntos.appendChild(h('span', { class: 'qz__punto' + (q.marcas[i] ? ' qz__punto--' + q.marcas[i] : '') + (i === q.i ? ' qz__punto--ahora' : '') }));
       c.appendChild(h('div', { class: 'qz__cab' }, puntos,
         h('span', { class: 'qz__num', 'aria-hidden': 'true' }, (q.i + 1) + ' / ' + n),
-        q.racha >= 2 ? h('span', { class: 'qz__racha' }, '🔥 Racha ' + q.racha) : null));
+        q.racha >= 2 ? h('span', { class: 'qz__racha' }, [ico('llama'), 'Racha ' + q.racha]) : null));
       c.appendChild(h('h3', { class: 'qz__preg', tabindex: '-1', 'data-k': 'qz-preg' }, t.pregunta));
       var ops = h('div', { class: 'qz__ops', role: 'group', 'aria-label': 'Respuestas' });
       t.opciones.forEach(function (o, oi) {
@@ -3686,7 +3878,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
       else {
         var bien = q.elegida === correcta;
         c.appendChild(h('p', { class: 'fb-q ' + (bien ? 'fb-q--ok' : 'fb-q--mal') },
-          h('b', null, bien ? '✅ ¡Bien! ' : '❌ No. '), String(t.explicacion || (bien ? 'Esa es la buena.' : 'La buena está en verde.'))));
+          h('b', null, bien ? [ico('check'), '¡Bien! '] : [ico('equis'), 'No. ']), String(t.explicacion || (bien ? 'Esa es la buena.' : 'La buena está en verde.'))));
         c.appendChild(h('div', { class: 'acciones qz__acc' },
           h('button', { type: 'button', class: 'btn btn--grande', 'data-k': 'qz-sig', onclick: siguiente }, q.i + 1 < n ? 'Siguiente' : 'Ver resultado', icono('flecha'))));
       }
@@ -3704,7 +3896,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
   });
   // Al fallar: pista (sin dar la respuesta). A partir del 2.º fallo en la misma pregunta, la explicación.
   function pistaDe(t, n) {
-    if ((n || 0) >= 2 && t.explicacion) return '📌 Repásalo: ' + String(t.explicacion);
+    if ((n || 0) >= 2 && t.explicacion) return 'Repásalo: ' + String(t.explicacion);
     if (t.pista) return 'Pista: ' + String(t.pista);
     return 'Pista: está en las actividades de arriba. Prueba otra.';
   }
@@ -3714,12 +3906,12 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
       ? h('a', { class: 'btn btn--grande', href: '#/leccion/' + encodeURIComponent(sig.id), 'data-k': 'fiesta-sig' }, 'Siguiente clase', icono('flecha'))
       : h('a', { class: 'btn btn--grande', href: '#/curso/' + encodeURIComponent(l.curso_id), 'data-k': 'fiesta-sig' }, 'Ver el curso', icono('flecha'));
     return h('div', { class: 'fiesta' },
-      h('span', { class: 'fiesta__emoji', 'aria-hidden': 'true' }, f.curso ? '🏆' : '🎉'),
+      h('span', { class: 'fiesta__emoji', 'aria-hidden': 'true' }, icono(f.curso ? 'trofeo' : 'chispa')),
       h('span', { class: 'fiesta__xp' }, '+100 XP'),
       h('span', { class: 'fiesta__txt' }, '¡Clase completada!'),
-      f.curso ? h('span', { class: 'fiesta__txt' }, '🏆 ¡Curso terminado! +50 XP') : null,
-      (f.curso && primerCurso() && primerCurso().id === l.curso_id) ? h('span', { class: 'chip chip--ok fiesta__diploma' }, '🎓 Diploma: ' + (primerCurso().titulo || 'Curso 1')) : null,
-      sube ? h('span', { class: 'chip chip--ok' }, '⬆️ Subes a ' + nv.nombre) : null,
+      f.curso ? h('span', { class: 'fiesta__txt' }, [ico('trofeo'), '¡Curso terminado! +50 XP']) : null,
+      (f.curso && primerCurso() && primerCurso().id === l.curso_id) ? h('span', { class: 'chip chip--ok fiesta__diploma' }, [ico('birrete'), 'Diploma: ' + (primerCurso().titulo || 'Curso 1')]) : null,
+      sube ? h('span', { class: 'chip chip--ok' }, [ico('arriba'), 'Subes a ' + nv.nombre]) : null,
       h('span', { class: 'muted' }, 'Llevas ' + xp + ' XP · nivel ' + nv.nombre + '.'),
       h('div', { class: 'acciones', style: { 'justify-content': 'center', 'margin-top': '8px' } }, a));
   }
@@ -4273,7 +4465,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
         toast('Añadido al final del texto.', 'ok');
       });
       grid.appendChild(h('div', { class: 'ejemplo' },
-        h('b', null, h('span', { 'aria-hidden': 'true' }, e[0] + ' '), e[1]),
+        h('b', null, h('span', { class: 'emo emo--ico', 'aria-hidden': 'true' }, iconoEmoji(e[0])), e[1]),
         h('small', { class: 'muted' }, e[2]), pre,
         h('div', { class: 'acciones' }, bc, ba)));
     });
@@ -4427,7 +4619,11 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     }, function (e) {
       // Sin «cargado = true»: con el mapa vacío, un set de progreso borraría lo hecho.
       if (!S.cargado[clave]) S.fallo[clave] = true;
-      if (e && (e.code === 'unauthenticated' || e.code === 'revoked' || e.code === 'not_granted' || e.code === 'capability_disabled')) { S.sinDb = true; S.errorCon = errorDeConexion(e); }
+      if (e && (e.code === 'unauthenticated' || e.code === 'revoked' || e.code === 'not_granted' || e.code === 'capability_disabled')) {
+        S.sinDb = true; S.errorCon = errorDeConexion(e);
+        // Sesión perdida: se olvida quién eras (sin nombre, avatar ni «Salir» en la cabecera).
+        if (e.code === 'unauthenticated') { S.yo = null; S.uid = null; S.admin = false; S.dueno = false; }
+      }
       else if (e && e.code === 'unavailable' && intento < 4) {
         // El listener ha muerto (puente caído): la única forma de recuperarlo es abrir otro onSnapshot.
         setTimeout(function () { suscribir(col, mapa, clave, intento + 1); }, (1000 * Math.pow(2, intento)) + Math.random() * 1000);
@@ -4463,20 +4659,35 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     if (!x) return { code: 'unavailable', mensaje: '', detalle: 'El servidor no ha contestado.', sesion: false, login: false };
     var det = String(x.detalle || x.mensaje || x.message || '').slice(0, 300);
     var men = String(x.mensaje || x.message || '').slice(0, 200);
-    return { code: String(x.code || 'unavailable'), mensaje: men, detalle: det, sesion: !!x.sesion, login: !!x.login || x.code === 'unauthenticated' };
+    return { code: String(x.code || 'unavailable'), mensaje: men, detalle: det, sesion: !!x.sesion, login: !!x.login || x.code === 'unauthenticated', motivo: String(x.motivo || '') };
   }
-  // Sin pase (o caducado): pantalla de entrar con la marca. Un botón grande y dos ayudas cortas.
+  // Sin pase (o caducado): pantalla de entrar con la marca. Un botón grande («Entrar») y dos ayudas cortas.
+  // Si algo salió mal (entrada caducada, sin red, otra cuenta…), la frase sale en una caja de aviso.
+  var LEMA_ENTRAR = 'Entra con tu cuenta de Influentia.';
   function vistaEntrar(e) {
     var cuenta = urlCuenta(), dom = dominioApp();
     var saltando = window.SCHOOL_SALTANDO === true; // el puente ya va solo a la puerta: el botón, por si acaso
+    var ajena = window.SCHOOL_AJENA === true; // abierta desde otra web del mismo origen: solo en pestaña nueva
+    var msg = (e && e.mensaje) || '';
+    var alerta = !saltando && msg && msg !== LEMA_ENTRAR;
     var caja = h('section', { class: 'tarjeta tarjeta--pad pila entrar', 'data-k': 'entrar' },
-      h('h1', { class: 'entrar__titulo' }, saltando ? 'Entrando…' : 'Influentia School'),
-      h('p', { class: 'entrar__lema', role: saltando ? 'status' : null }, saltando ? 'Un momento. Vamos a tu cuenta.' : ((e && e.mensaje) || 'Entra con tu cuenta de Influentia.')));
-    if (cuenta) caja.appendChild(h('a', { class: 'btn btn--enorme', href: cuenta, target: '_top', rel: 'noopener', 'data-k': 'entrar-cuenta' }, h('span', { class: 'btn__txt' }, 'Entrar con tu cuenta @' + dom)));
-    else caja.appendChild(h('p', { class: 'peq muted' }, 'Falta la dirección para entrar. Avisa al equipo.'));
-    caja.appendChild(h('ol', { class: 'entrar__ayuda', 'data-k': 'entrar-ayuda', 'aria-label': 'Cómo entrar' },
+      h('h1', { class: 'entrar__titulo' }, saltando ? 'Entrando…' : 'Influentia School'));
+    if (saltando) {
+      caja.appendChild(h('p', { class: 'cargando', role: 'status' }, h('span', { class: 'cargando__punto', 'aria-hidden': 'true' }), 'Un momento. Vamos a tu cuenta.'));
+    } else if (alerta) {
+      caja.appendChild(h('p', { class: 'entrar__alerta', role: 'alert', 'data-k': 'entrar-alerta' }, icono('alerta'), h('span', null, msg)));
+    } else {
+      caja.appendChild(h('p', { class: 'entrar__lema' }, LEMA_ENTRAR));
+    }
+    if (ajena) {
+      var web = urlApp();
+      if (web) caja.appendChild(h('a', { class: 'btn btn--enorme', href: web, target: '_blank', rel: 'noopener noreferrer', 'data-k': 'entrar-nueva' }, h('span', { class: 'btn__txt' }, 'Abrir pestaña nueva')));
+    } else if (cuenta) {
+      caja.appendChild(h('a', { class: 'btn ' + (saltando ? 'btn--fantasma' : 'btn--enorme'), href: cuenta, target: '_top', rel: 'noopener', 'data-k': 'entrar-cuenta', 'aria-label': 'Entrar con tu cuenta @' + dom }, h('span', { class: 'btn__txt' }, 'Entrar')));
+    } else caja.appendChild(h('p', { class: 'peq muted' }, 'Falta la dirección para entrar. Avisa al equipo.'));
+    if (!saltando && !ajena) caja.appendChild(h('ol', { class: 'entrar__ayuda', 'data-k': 'entrar-ayuda', 'aria-label': 'Cómo entrar' },
       h('li', null, h('span', { class: 'entrar__num' }, '1'), h('span', null, 'Elige la cuenta con tu nombre ', h('b', { class: 'nowrap' }, '(@' + dom + ')'))),
-      h('li', null, h('span', { class: 'entrar__num' }, '2'), h('span', null, 'Pulsa ', h('b', { class: 'nowrap' }, 'Entrar a la School')))));
+      h('li', null, h('span', { class: 'entrar__num' }, '2'), h('span', null, 'Pulsa ', h('b', { class: 'nowrap' }, '«Entrar a la School»')))));
     return caja;
   }
   // Sin conexión: frase corta, botón grande para entrar con otra cuenta si hace falta, detalle y Reintentar.
@@ -4489,7 +4700,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
       h('span', { class: 'sin-conexion__ico', 'aria-hidden': 'true' }, icono('alerta')),
       h('h2', { class: 'sin-conexion__titulo' }, sinPermiso ? 'Esta cuenta no puede entrar.' : 'No hay conexión.'),
       h('p', { class: 'sin-conexion__texto' }, sinPermiso ? (e.mensaje || 'Prueba con tu cuenta de Influentia.') : 'Prueba otra vez en un momento.'));
-    if (cuenta) caja.appendChild(h('a', { class: 'btn btn--enorme', href: cuenta, target: '_top', rel: 'noopener', 'data-k': 'entrar-cuenta' }, h('span', { class: 'btn__txt' }, sinPermiso ? 'Entrar con otra cuenta' : 'Entrar con tu cuenta @' + dominioApp())));
+    if (cuenta) caja.appendChild(h('a', { class: 'btn btn--enorme', href: cuenta, target: '_top', rel: 'noopener', 'data-k': 'entrar-cuenta' }, h('span', { class: 'btn__txt' }, sinPermiso ? 'Entrar con otra cuenta' : 'Entrar')));
     // Reintentar es lo principal (botón grande), salvo si lo que falta es otra cuenta.
     var re = h('button', { type: 'button', class: cuenta ? 'btn btn--fantasma sin-conexion__otra' : 'btn btn--enorme', 'data-k': 'reintentar' }, h('span', { class: 'btn__txt' }, 'Reintentar'));
     re.addEventListener('click', reintentarConexion);
