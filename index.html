@@ -72,6 +72,7 @@ body {
 }
 @media (min-width: 820px) { body { padding-bottom: 48px; } }
 body.sin-nav { padding-bottom: 48px; }
+body.sin-nav .cab__lado { margin-left: auto; }
 img, svg, iframe, video, object { max-width: 100%; }
 a { color: var(--acento); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 3px; }
@@ -100,7 +101,7 @@ p { margin: 0; }
 .nav a:hover { color: var(--fg); background: var(--hover); text-decoration: none; }
 .nav a[aria-current="page"] { color: var(--fg); background: var(--acento-suave); }
 .nav a[aria-current="page"] .ico { color: var(--acento); }
-.contador { min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px; background: var(--mal); color: var(--sobre-color); font-size: 0.72rem; font-weight: 700; display: inline-grid; place-items: center; line-height: 1; }
+.contador { min-width: 22px; height: 22px; padding: 0 6px; border-radius: 999px; background: var(--mal); color: var(--sobre-color); font-size: 0.875rem; font-weight: 700; display: inline-grid; place-items: center; line-height: 1; }
 .cab__lado { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
 .yo { display: flex; align-items: center; gap: 8px; }
 .yo__nombre { font-weight: 600; font-size: 0.88rem; color: var(--muted); display: none; max-width: 140px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -134,6 +135,9 @@ p { margin: 0; }
 .titulo-seccion .ico { color: var(--acento); }
 
 .ico { width: 20px; height: 20px; flex: 0 0 auto; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ico.ico--emo { width: 1em; height: 1em; stroke-width: 1.6; display: block; }
+.portada__ico .ico--emo { color: #fff; }
+.camino__emoji .ico--emo, .fila-admin__ico .ico--emo { color: var(--acento-texto); }
 
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 0 20px; border: 0; border-radius: 12px; background: var(--boton); color: var(--tinta); font-weight: 700; cursor: pointer; text-decoration: none; transition: transform .15s ease, box-shadow .15s ease; }
 .btn:hover { text-decoration: none; box-shadow: 0 6px 16px -8px rgba(4, 16, 31, 0.45); transform: translateY(-1px); }
@@ -157,9 +161,9 @@ p { margin: 0; }
 a.chip { min-height: 44px; padding: 0 14px; }
 .chip--mal { color: var(--mal); background: var(--mal-suave); }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.avatar { width: 34px; height: 34px; border-radius: 50%; display: inline-grid; place-items: center; flex: 0 0 auto; overflow: hidden; background: var(--bg-4); color: var(--fg); font-weight: 700; font-size: 0.8rem; }
+.avatar { width: 34px; height: 34px; border-radius: 50%; display: inline-grid; place-items: center; flex: 0 0 auto; overflow: hidden; background: var(--bg-4); color: var(--fg); font-weight: 700; font-size: 0.875rem; }
 .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.avatar--peq { width: 28px; height: 28px; font-size: 0.7rem; }
+.avatar--peq { width: 28px; height: 28px; font-size: 0.875rem; }
 
 .barra { height: 8px; border-radius: 999px; background: var(--bg-4); overflow: hidden; }
 .barra > span { display: block; height: 100%; border-radius: inherit; background: var(--grad); }
@@ -250,7 +254,7 @@ a.leccion-fila:hover { text-decoration: none; border-color: var(--linea-2); back
 .md code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; padding: 2px 6px; border-radius: 6px; background: var(--bg-3); overflow-wrap: anywhere; }
 .caja { margin-top: 18px; }
 .caja__tit { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 1.15rem; }
-.caja__sello { display: inline-grid; place-items: center; min-width: 44px; height: 30px; padding: 0 10px; border-radius: 10px; font-size: 0.85rem; letter-spacing: 0.04em; color: var(--sobre-color); }
+.caja__sello { display: inline-grid; place-items: center; min-width: 44px; height: 30px; padding: 0 10px; border-radius: 10px; font-size: 0.875rem; letter-spacing: 0.04em; color: var(--sobre-color); }
 .caja--si .caja__sello { background: var(--ok); }
 .caja--no .caja__sello { background: var(--mal); }
 .caja--pasos .caja__sello { background: var(--boton); color: var(--tinta); }
@@ -258,7 +262,7 @@ a.leccion-fila:hover { text-decoration: none; border-color: var(--linea-2); back
 .tarjetas-md li { margin: 0 !important; display: flex; gap: 12px; align-items: flex-start; padding: 14px; border-radius: 14px; border: 1px solid var(--linea); background: var(--bg-2); line-height: 1.45; }
 .caja--si .tarjetas-md li { background: var(--ok-suave); border-color: transparent; }
 .caja--no .tarjetas-md li { background: var(--mal-suave); border-color: transparent; }
-.tarjetas-md .marca-md { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 0.85rem; color: var(--sobre-color); }
+.tarjetas-md .marca-md { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 0.875rem; color: var(--sobre-color); }
 .caja--si .marca-md { background: var(--ok); }
 .caja--no .marca-md { background: var(--mal); }
 .caja--pasos .marca-md { background: var(--boton); color: var(--tinta); }
@@ -375,11 +379,13 @@ textarea.entrada { min-height: 96px; resize: vertical; line-height: 1.5; }
 .nivel { flex: 1 1 150px; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
 .nivel__nombre { font-family: var(--titulo); font-size: 1.3rem; line-height: 1.15; }
 .nivel__xp { font-weight: 800; color: var(--acento-texto); }
-.logros { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); }
+.logros { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(136px, 1fr)); }
+@media (max-width: 480px) { .logros { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .logro { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; padding: 12px 6px; border-radius: 14px; background: var(--bg-3); min-width: 0; }
 .logro__ico { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-size: 1.5rem; background: var(--boton); }
-.logro b { font-size: 0.875rem; line-height: 1.2; overflow-wrap: anywhere; }
-.logro small { font-size: 0.8125rem; line-height: 1.25; color: var(--muted); }
+.logro b, .logro small { overflow-wrap: normal; word-break: normal; hyphens: manual; }
+.logro b { font-size: 0.875rem; line-height: 1.25; }
+.logro small { font-size: 0.875rem; line-height: 1.3; color: var(--muted); }
 .logro--no .logro__ico { background: var(--bg-4); filter: grayscale(1); opacity: 0.5; }
 .logro--no b { color: var(--muted); }
 
@@ -465,7 +471,7 @@ a.camino__tarjeta:hover { text-decoration: none; border-color: var(--linea-2); b
 .esc__op:hover { background: var(--hover); }
 .esc__op--ok, .esc__op--ok:hover { border-color: var(--ok); background: var(--ok-suave); }
 .esc__op--mal, .esc__op--mal:hover { border-color: var(--mal); background: var(--mal-suave); }
-.esc__letra { flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--bg-4); font-weight: 800; font-size: 0.85rem; }
+.esc__letra { flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--bg-4); font-weight: 800; font-size: 0.875rem; }
 .esc__op--ok .esc__letra { background: var(--ok); color: var(--sobre-color); }
 .esc__op--mal .esc__letra { background: var(--mal); color: var(--sobre-color); }
 .esc__ops .fb { padding: 0 6px 4px; }
@@ -683,7 +689,20 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
  *   se vio y se refresca por detrás con una sola api_inicio. Atada al pase; fuera las colecciones de
  *   window.SCHOOL_SIN_CACHE (equipo = emails). Se borra al salir y si el servidor pide entrar.
  * - window.SCHOOL_LOGIN_URL = selector de cuentas de Google (hd=dominio) que acaba en la puerta (con el
- *   nonce). Solo se va a entrar con un clic: nada salta solo al login.
+ *   nonce). El botón «Entrar» lleva ahí.
+ * - Re-entrada (ronda 4): el pase NO vuelve a localStorage. Al canjear se deja en localStorage solo una
+ *   marca SIN secreto («influentia-school:ya-entro» = '1': «en este navegador ya se entró»). Una pestaña
+ *   nueva sin pase, sin motivo y con esa marca salta UNA vez sola a la puerta (directa, sin el selector
+ *   de cuentas; «influentia-school:salto» en sessionStorage evita las vueltas). Allí queda un clic
+ *   («Entrar»): la puerta va en un marco de Google que no deja sacar la pestaña sin clic. «Salir» y
+ *   «Cerrar todas las sesiones» borran la marca. La marca no abre nada: sin el clic en la puerta (con la
+ *   cuenta buena) no hay código, y sin el nonce de la pestaña el código no vale.
+ * - #/otra-cuenta (enlace «Entrar con otra cuenta» de la puerta) lleva al selector de cuentas.
+ * - #c= que no vale (falso, caducado, de otra pestaña): «Tu entrada ha caducado. Pulsa Entrar otra vez.»
+ * - window.SCHOOL_SIN_RED = true (evento «school-sin-red») si el servidor no contesta y la web enseña
+ *   lo último guardado; vuelve a false en cuanto contesta.
+ * - window.SCHOOL_CERRAR_TODAS() = api_cerrar_todas (solo el dueño de la School; lo mira el servidor):
+ *   fuera todas las sesiones, también la tuya; borra lo de este navegador y vuelve a la portada.
  *   window.SCHOOL_SALIR() = avisa al servidor (api_salir: ese pase y los demás de esa persona dejan de
  *   valer), borra el pase al momento y vuelve a la portada cuando el servidor contesta (máx. 2,5 s).
  * - Ganchos de pruebas locales (ajustes del arnés, http de la máquina local, selector de cuentas falso)
@@ -785,6 +804,8 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
   var CLAVE_CACHE = 'influentia-school:cache';
   var CLAVE_NONCE = 'influentia-school:nonce';
   var CLAVE_MOTIVO = 'influentia-school:motivo';
+  var CLAVE_YA_ENTRO = 'influentia-school:ya-entro'; // localStorage, SIN secreto: «aquí ya se entró» ('1')
+  var CLAVE_SALTO = 'influentia-school:salto';       // sessionStorage: esta pestaña ya saltó sola a la puerta
   var RE_CODIGO = /^[A-Za-z0-9_-]{43}$/; // la misma forma que mira el canje (RE_CODIGO_ de Puerta.gs)
   var RE_PASE = /^[A-Za-z0-9_-]{8,2000}\.[A-Za-z0-9_-]{43}$/;
   var RE_NONCE = /^[A-Za-z0-9_-]{22,64}$/; // la misma forma que mira la puerta (RE_NONCE_ de Puerta.gs)
@@ -814,6 +835,23 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       if (l) { l.removeItem(CLAVE_PASE); l.removeItem(CLAVE_VOLVER); }
     } catch (e) { /* almacenamiento bloqueado: no hay nada que borrar */ }
   })();
+  /** Marca SIN secreto de «en este navegador ya se entró» (localStorage). Solo decide si se salta a la puerta. */
+  function recordarEntrada() {
+    try { var l = window.localStorage; if (l) l.setItem(CLAVE_YA_ENTRO, '1'); } catch (e) { /* sin marca: se entra con el botón */ }
+  }
+  function olvidarEntrada() {
+    try { var l = window.localStorage; if (l) l.removeItem(CLAVE_YA_ENTRO); } catch (e) { /* nada que borrar */ }
+  }
+  function yaEntro() {
+    try { var l = window.localStorage; return !!l && l.getItem(CLAVE_YA_ENTRO) === '1'; } catch (e) { return false; }
+  }
+  /** «Esta pestaña ya saltó»: SOLO en sessionStorage de verdad (en memoria se perdería y podría dar vueltas). */
+  function marcarSalto() {
+    try { var s = almacen(); if (!s) return false; s.setItem(CLAVE_SALTO, '1'); return s.getItem(CLAVE_SALTO) === '1'; } catch (e) { return false; }
+  }
+  function yaSalto() {
+    try { var s = almacen(); return !s || s.getItem(CLAVE_SALTO) === '1'; } catch (e) { return true; }
+  }
   /** Caducidad (ms) escrita en el pase. Solo para no mandar uno viejo: la que manda es la del servidor. */
   function caducidad(pase) {
     try {
@@ -828,7 +866,8 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     caducada: 'Tu sesión ha caducado. Vuelve a entrar.',
     canje: 'Tu entrada ha caducado. Pulsa Entrar otra vez.',
     red: 'No hay conexión. Pulsa Entrar otra vez.',
-    ventana: 'Abre la School en una pestaña nueva y entra otra vez.'
+    ventana: 'Abre la School en una pestaña nueva y entra otra vez.',
+    freno: 'Hay mucha gente entrando. Espera un minuto y pulsa Entrar.'
   };
   var motivo = (function () {
     var m = leerClave(CLAVE_MOTIVO);
@@ -913,6 +952,9 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     if (vale) {
       borrarClave(CLAVE_NONCE); // un nonce = una entrada
       pCanje = canjear(c, mio);
+    } else if (c !== null && motivo !== 'ventana' && !paseVigente()) {
+      // #c= falso, mal copiado o de otra pestaña (sin su nonce): se dice por qué, no se queda en blanco.
+      ponerMotivo('canje');
     }
     var resto = '#' + h.replace(/^#/, '').split('&').filter(function (x) { return x && x.indexOf('c=') !== 0 && x.indexOf('t=') !== 0 && x.indexOf('s=') !== 0; }).join('&');
     var volver = vale ? leerClave(CLAVE_VOLVER) : null;
@@ -933,10 +975,49 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       : '';
   }
   armarLogin();
+
+  /** Quita el #/… de la barra sin recargar (o '' si no se puede). */
+  function quitarHash() {
+    var loc = window.location;
+    try { window.history.replaceState(null, '', String(loc.pathname || '') + String(loc.search || '') || '.'); }
+    catch (e) { try { loc.hash = ''; } catch (x) { /* sin historial */ } }
+  }
+  /** #/otra-cuenta (de la puerta): al selector de cuentas de Google, que acaba en la puerta con el nonce. */
+  function irAOtraCuenta() {
+    var loc = window.location;
+    if (!loc || String(loc.hash || '') !== '#/otra-cuenta') return false;
+    marcarSalto(); // al volver no se salta sola otra vez: se elige con calma
+    armarLogin();
+    var u = window.SCHOOL_LOGIN_URL;
+    if (!u || abiertaDesdeOtraWeb()) { quitarHash(); return false; }
+    window.SCHOOL_SALTANDO = true;
+    try { loc.replace(u); return true; } catch (e) { window.SCHOOL_SALTANDO = false; quitarHash(); return false; }
+  }
+  /**
+   * Pestaña nueva de alguien que ya entró en este navegador (marca sin secreto): sin pase (o con el pase
+   * caducado: los 14 días) y sin código en la barra, salta UNA vez a la puerta (directa: Google no pregunta
+   * la cuenta). Allí, un clic. Con otro motivo (#c= malo, freno, red, ventana) no salta: se dice por qué.
+   */
+  function saltarALaPuerta() {
+    if (window.SCHOOL_SALTANDO || pCanje || !PUERTA || !yaEntro() || yaSalto()) return false;
+    if (paseVigente() || (motivo && motivo !== 'caducada') || abiertaDesdeOtraWeb()) return false;
+    var h = String((window.location && window.location.hash) || '');
+    if (enHash(h, 'c') !== null || enHash(h, 't') !== null || enHash(h, 's') !== null) return false;
+    var n = nonceActual();
+    if (!n || !marcarSalto()) return false;
+    recordarRuta(); // vuelves a la misma clase con el pase nuevo
+    window.SCHOOL_SALTANDO = true;
+    try { window.location.replace(PUERTA + (PUERTA.indexOf('?') < 0 ? '?' : '&') + 'entrar=1&s=' + n); return true; }
+    catch (e) { window.SCHOOL_SALTANDO = false; return false; }
+  }
+  window.SCHOOL_SALTANDO = false;
+  if (!irAOtraCuenta()) saltarALaPuerta();
+
   // Un #c= que llega con la pestaña ya abierta (mismo documento, solo cambia el hash): igual que al
   // cargar. Acabado el canje se recarga para arrancar con el pase nuevo (o con el motivo si falló).
   if (typeof window.addEventListener === 'function') {
     window.addEventListener('hashchange', function () {
+      if (irAOtraCuenta()) return;
       if (!capturarPase()) return;
       var recargar = function () {
         armarLogin();
@@ -972,6 +1053,7 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     borrarClave(CLAVE_VOLVER);
     borrarClave(CLAVE_NONCE);
     borrarCache();
+    olvidarEntrada(); // has salido: una pestaña nueva ya no salta sola a la puerta
     var loc = window.location;
     function aPortada() {
       try { loc.replace(WEB || (String(loc.pathname || '') + String(loc.search || ''))); } catch (e) { /* sin navegación */ }
@@ -986,6 +1068,21 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       function acabar(v) { if (hecho) return; hecho = true; aPortada(); listo(v); }
       var tope = setTimeout(function () { acabar(false); }, SALIR_MAX_MS);
       confirmado.then(function (v) { clearTimeout(tope); acabar(v); });
+    });
+  };
+  /**
+   * «Cerrar todas las sesiones» (Admin, solo el dueño: lo mira el servidor). Fuera todos los pases,
+   * también el tuyo: se borra lo de este navegador y se vuelve a la portada. Rechaza si el servidor dice no.
+   */
+  window.SCHOOL_CERRAR_TODAS = function () {
+    return llamar('api_cerrar_todas', []).then(function (r) {
+      borrarClave(CLAVE_PASE);
+      borrarClave(CLAVE_VOLVER);
+      borrarClave(CLAVE_NONCE);
+      borrarCache();
+      olvidarEntrada();
+      try { window.location.replace(WEB || (String(window.location.pathname || '') + String(window.location.search || ''))); } catch (e) { /* sin navegación */ }
+      return r;
     });
   };
   // Antes de ir a entrar se apunta la ruta (vuelves a la misma clase con el pase nuevo).
@@ -1058,7 +1155,12 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
           guardarClave(CLAVE_PASE, j.r.t);
           borrarCache();
           ponerMotivo('');
+          recordarEntrada();
           return true;
+        }
+        if (j.ok !== true && j.code === 'resource_exhausted') { // freno del servidor: no se reintenta
+          if (!paseVigente()) ponerMotivo('freno');
+          return false;
         }
         if (j.ok !== true && j.reintentar && n < 1) return dormir(ESPERA_MS).then(function () { return intento(n + 1); });
         if (!paseVigente()) ponerMotivo('canje'); // con sesión buena de antes, se sigue en ella sin aviso
@@ -1176,6 +1278,17 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     else siembras.push({ lista: lista, red: red });
   }
 
+  /** Aviso de «el servidor no contesta y ves lo último guardado» (window.SCHOOL_SIN_RED + «school-sin-red»). */
+  var sinRed = false;
+  window.SCHOOL_SIN_RED = false;
+  function marcarRed(caida) {
+    caida = !!caida;
+    if (caida === sinRed) return;
+    sinRed = caida;
+    window.SCHOOL_SIN_RED = caida;
+    try { window.dispatchEvent(new CustomEvent('school-sin-red', { detail: { sinRed: caida } })); } catch (x) { /* sin CustomEvent */ }
+  }
+
   /** Error de «el servidor no contesta» al cabo de INICIO_MS (para Promise.race). */
   function reloj(que) {
     var t = null;
@@ -1203,6 +1316,7 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     Promise.race([llamar('api_inicio', [objetivosPrecarga(cache.cols)]), r.p]).then(function (ini) {
       r.parar();
       refrescando = false;
+      marcarRed(false);
       aplicarIni(ini);
       entregar(ini && Array.isArray(ini.sondeo) ? ini.sondeo : [], true, marcas);
       if (ganchosDb) ganchosDb.despertar();
@@ -1216,6 +1330,7 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
         return;
       }
       aviso(e); // corte de red o Google lento: el sondeo normal lo vuelve a intentar
+      marcarRed(true); // la web avisa: «Sin conexión. Ves lo último guardado.»
       if (ganchosDb) ganchosDb.despertar();
     });
   }
@@ -1256,6 +1371,7 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     })(0);
     pInicio = Promise.race([intento, r.p]);
     pInicio.then(function (ini) {
+      marcarRed(false);
       aplicarIni(ini);
       if (ini && Array.isArray(ini.sondeo)) entregar(ini.sondeo, true, null);
     }, function () { pInicio = null; });
@@ -1509,6 +1625,7 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
       }
       llamar('api_docs_sondeo', [objetivos]).then(function (res) {
         fallos = 0;
+        marcarRed(false);
         var cambio = false, al = Date.now();
         (res || []).forEach(function (r) {
           var col = String(r.ruta), c = estadoCol(col);
@@ -1536,6 +1653,7 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
         fallos++;
         if (fallos >= FALLOS_MAX) {
           fallos = 0;
+          marcarRed(true);
           var caida = error('unavailable', e.message);
           oyentes.slice().forEach(function (o) { fallar(o, caida); });
         } else {
@@ -2004,7 +2122,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
   var C = (window.claude && typeof window.claude.use === 'function') ? window.claude : null;
 
   var S = {
-    db: null, user: null, assets: null, uid: null, yo: null, admin: false,
+    db: null, user: null, assets: null, uid: null, yo: null, admin: false, dueno: false,
     sinDb: false, arrancado: false, errorCon: null,
     cursos: new Map(), lecciones: new Map(), progreso: new Map(), preguntas: new Map(), respuestas: new Map(), equipo: new Map(),
     cargado: { cursos: false, lecciones: false, progreso: false, preguntas: false, respuestas: false, equipo: false },
@@ -2039,8 +2157,34 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     alerta: '<path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v4"/><path d="M12 17h0"/>',
     subir: '<path d="M12 16V4"/><path d="m6 10 6-6 6 6"/><path d="M4 20h16"/>',
     estrella: '<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/>',
-    bajar: '<path d="M12 4v12"/><path d="m6 10 6 6 6-6"/><path d="M4 20h16"/>'
+    bajar: '<path d="M12 4v12"/><path d="m6 10 6 6 6-6"/><path d="M4 20h16"/>',
+    // iconos de curso y clase (los emojis de la semilla, en línea como los de la marca)
+    libro: '<path d="M4 19.5V5a2 2 0 0 1 2-2h14v15H6a2 2 0 0 0-2 2 2 2 0 0 0 2 2h14"/>',
+    brujula: '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/>',
+    chispa: '<path d="M12 3v18"/><path d="M3 12h18"/><path d="m5.6 5.6 12.8 12.8"/><path d="m18.4 5.6-12.8 12.8"/>',
+    cohete: '<path d="M14 4c3-1 5-1 6 0s1 3 0 6l-7 7-6-6 7-7Z"/><path d="M7 11 4 12l-1 3 4-1"/><path d="m13 17-1 3-3 1 1-4"/><circle cx="15.5" cy="8.5" r="1.5"/>',
+    llave: '<circle cx="8" cy="15" r="4"/><path d="m11 12 9-9"/><path d="m17 6 3 3"/><path d="m14.5 8.5 2 2"/>',
+    lupa: '<circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/>',
+    stop: '<path d="M8.2 3h7.6L21 8.2v7.6L15.8 21H8.2L3 15.8V8.2L8.2 3Z"/><path d="M8 12h8"/>',
+    enchufe: '<path d="M9 3v4"/><path d="M15 3v4"/><path d="M6 7h12v4a6 6 0 0 1-12 0V7Z"/><path d="M12 17v4"/>',
+    paleta: '<path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.5-.8 1.5-1.6 0-1.4-1-1.9-1-3 0-1 .8-1.9 2-1.9H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7" r="1"/>',
+    grafica: '<path d="M4 4v16h16"/><path d="m7 15 4-4 3 3 5-6"/>',
+    calendario: '<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17"/><path d="M8 3v4"/><path d="M16 3v4"/>',
+    bandeja: '<path d="M3.5 13.5 6 5h12l2.5 8.5V19a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 19v-5.5Z"/><path d="M3.5 13.5H8l1.5 2.5h5l1.5-2.5h4.5"/>',
+    etiqueta: '<path d="M3 12V4.5A1.5 1.5 0 0 1 4.5 3H12l9 9-9 9-9-9Z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
+    balanza: '<path d="M12 4v16"/><path d="M7 20h10"/><path d="M5 7h14"/><path d="m5 7-3 7a3.5 3.5 0 0 0 6 0L5 7Z"/><path d="m19 7-3 7a3.5 3.5 0 0 0 6 0l-3-7Z"/>'
   };
+  // Emoji de curso o clase → icono en línea (sin variante U+FE0F). El que no está, sale como emoji.
+  var EMO_SVG = {
+    '\uD83D\uDCD8': 'libro', '\uD83E\uDDED': 'brujula', '\u2733': 'chispa', '\uD83D\uDE80': 'cohete', '\uD83D\uDE4C': 'estrella',
+    '\uD83D\uDD11': 'llave', '\uD83D\uDD0D': 'lupa', '\uD83D\uDD0E': 'lupa', '\uD83D\uDC40': 'ojo', '\uD83D\uDED1': 'stop',
+    '\uD83D\uDD0C': 'enchufe', '\uD83C\uDFA8': 'paleta', '\uD83D\uDCD1': 'doc', '\uD83D\uDCC8': 'grafica', '\uD83D\uDDD3': 'calendario',
+    '\uD83D\uDCE5': 'bandeja', '\uD83D\uDD0E\uFE0F': 'lupa', '\uD83C\uDFF7': 'etiqueta', '\uD83D\uDCDD': 'lapiz', '\u2696': 'balanza'
+  };
+  function iconoEmoji(txt) {
+    var e = corta(txt || '\uD83D\uDCD8', 8), n = EMO_SVG[e.replace(/\uFE0F/g, '').trim()];
+    return n && ICONOS[n] ? icono(n, 'ico--emo') : e;
+  }
   function icono(n, cls) {
     var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     s.setAttribute('viewBox', '0 0 24 24');
@@ -2954,8 +3098,16 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
       var cta = enGoogle() ? urlCuenta() : '';
       aviso.appendChild(h('div', { class: 'aviso__in' }, icono('alerta'), h('div', null, h('b', null, 'Entra con tu cuenta de Influentia. '), 'Sin cuenta no se guarda tu progreso.',
         cta ? h('div', { style: { 'margin-top': '10px' } }, h('a', { class: 'btn btn--peq', href: cta, target: '_top', rel: 'noopener', 'data-k': 'entrar-cuenta' }, 'Entrar con tu cuenta @' + dominioApp())) : null)));
+    } else if (conSesion && window.SCHOOL_SIN_RED === true) {
+      // El servidor no contesta: se ve lo guardado en la pestaña. Se dice, con Reintentar.
+      aviso.hidden = false;
+      var re = h('button', { type: 'button', class: 'btn btn--peq', 'data-k': 'sin-red-reintentar' }, 'Reintentar');
+      re.addEventListener('click', function () { location.reload(); });
+      aviso.appendChild(h('div', { class: 'aviso__in', role: 'status', 'data-k': 'sin-red' }, icono('alerta'),
+        h('div', null, h('b', null, 'Sin conexión. '), 'Ves lo último guardado.', h('div', { style: { 'margin-top': '10px' } }, re))));
     } else aviso.hidden = true;
   }
+  window.addEventListener('school-sin-red', function () { pintarCabecera(ruta()); });
 
   // ------------------------------------------------------------ router y render
   function ruta() {
@@ -3029,7 +3181,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
   }
   function portada(c, bloq, completo, alto) {
     var p = h('div', { class: 'portada', style: { '--color': /^#[0-9a-fA-F]{3,8}$/.test(c.color || '') ? c.color : '#00B8D9' } },
-      h('span', { class: 'portada__ico', 'aria-hidden': 'true' }, corta(c.icono || '📘', 8)));
+      h('span', { class: 'portada__ico', 'aria-hidden': 'true' }, iconoEmoji(c.icono)));
     if (alto) p.style.aspectRatio = alto;
     if (bloq) p.appendChild(h('div', { class: 'portada__candado' }, h('span', null, icono('candado'), 'Bloqueado')));
     if (completo) p.appendChild(h('div', { class: 'portada__hecho' }, h('span', { class: 'chip' }, icono('check'), 'Hecho')));
@@ -3216,7 +3368,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
       if (l.test && l.test.length) sub.push('test de ' + l.test.length);
       if (ok) sub.push('hecha ✓'); else if (lb) sub.push('con candado'); else sub.push('+100 XP');
       var t = h('span', { class: 'camino__t' }, h('b', null, l.titulo || 'Clase'), h('span', null, sub.join(' · ')));
-      var emo = h('span', { class: 'camino__emoji', 'aria-hidden': 'true' }, corta(l.icono || c.icono || '📘', 8));
+      var emo = h('span', { class: 'camino__emoji', 'aria-hidden': 'true' }, iconoEmoji(l.icono || c.icono));
       var extra = l.publicado === false ? h('span', { class: 'chip chip--aviso' }, 'Oculta') : (sig ? h('span', { class: 'chip chip--cyan' }, 'Ahora') : null);
       var tarj = ver
         ? h('a', { class: 'camino__tarjeta', href: '#/leccion/' + encodeURIComponent(l.id), 'aria-current': sig ? 'step' : null }, emo, t, extra, icono('flecha'))
@@ -3355,7 +3507,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     var ul = h('ol', { class: 'mini-lista' });
     ls.forEach(function (x, i) {
       var ok = hecha(x.id), ver = puedeVer(x);
-      var ic = ok ? icono('check') : (!ver || leccionBloqueada(x)) ? icono('candado') : h('span', { style: { width: '16px', 'text-align': 'center', 'font-size': '0.8rem', 'font-weight': '700' } }, String(i + 1));
+      var ic = ok ? icono('check') : (!ver || leccionBloqueada(x)) ? icono('candado') : h('span', { style: { 'min-width': '16px', 'text-align': 'center', 'font-size': '0.875rem', 'font-weight': '700' } }, String(i + 1));
       if (ver) ul.appendChild(h('li', null, h('a', { href: '#/leccion/' + encodeURIComponent(x.id), 'aria-current': x.id === l.id ? 'page' : null }, ic, h('em', null, x.titulo || 'Clase'))));
       else ul.appendChild(h('li', null, h('span', { class: 'fila' }, ic, h('em', null, x.titulo || 'Clase'))));
     });
@@ -3715,7 +3867,36 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     });
     sec.appendChild(tabs);
     sec.appendChild(S.adminTab === 'progreso' ? tablaProgreso() : listaAdmin());
+    if (S.dueno && typeof window.SCHOOL_CERRAR_TODAS === 'function') sec.appendChild(cajaCerrarTodas());
     return sec;
+  }
+  // Solo el responsable de la School (lo mira también el servidor). Dos pasos: pulsar y confirmar.
+  function cajaCerrarTodas() {
+    var acc = h('div', { class: 'acciones' });
+    function inicioCaja() {
+      acc.textContent = '';
+      var b = h('button', { type: 'button', class: 'btn btn--suave', 'data-k': 'cerrar-todas' }, 'Cerrar todas las sesiones');
+      b.addEventListener('click', confirmar);
+      acc.appendChild(b);
+    }
+    function confirmar() {
+      acc.textContent = '';
+      var si = h('button', { type: 'button', class: 'btn', 'data-k': 'cerrar-todas-si' }, 'Sí, cerrar todas');
+      var no = h('button', { type: 'button', class: 'btn btn--suave', 'data-k': 'cerrar-todas-no' }, 'Cancelar');
+      si.addEventListener('click', function () {
+        si.disabled = true; no.disabled = true; si.textContent = 'Cerrando…';
+        window.SCHOOL_CERRAR_TODAS().catch(function (e) { toast(errorDb(e), 'mal'); inicioCaja(); });
+      });
+      no.addEventListener('click', inicioCaja);
+      acc.appendChild(h('p', { class: 'peq', style: { width: '100%' } }, '¿Seguro? Todos tendrán que entrar otra vez. Tú también.'));
+      acc.appendChild(si); acc.appendChild(no);
+      si.focus();
+    }
+    inicioCaja();
+    return h('section', { class: 'tarjeta tarjeta--pad pila', 'aria-label': 'Sesiones', 'data-k': 'sesiones' },
+      h('h2', null, 'Sesiones'),
+      h('p', { class: 'muted' }, '¿Alguien perdió su portátil o su móvil? Cierra todas las sesiones. Cada persona entra otra vez con su cuenta.'),
+      acc);
   }
   function btnIcono(ic, etiqueta, fn, deshab) {
     var b = h('button', { class: 'btn-icono', type: 'button', 'aria-label': etiqueta, title: etiqueta, disabled: !!deshab }, icono(ic));
@@ -3745,7 +3926,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
       var ls = leccionesDe(c.id, true);
       var bloque = h('section', { class: 'tarjeta tarjeta--pad' });
       bloque.appendChild(h('div', { class: 'fila-admin', style: { border: '0', padding: '0', background: 'transparent' } },
-        h('span', { class: 'fila-admin__ico', 'aria-hidden': 'true' }, corta(String(c.icono || '📘'), 8)),
+        h('span', { class: 'fila-admin__ico', 'aria-hidden': 'true' }, iconoEmoji(String(c.icono || ''))),
         h('span', { class: 'fila-admin__t' }, h('b', null, (i + 1) + '. ' + (c.titulo || 'Curso')), h('span', null, ls.length + ' clases' + (c.requiere_anterior ? ' · requiere el anterior' : '') + (c.publicado === false ? ' · OCULTO' : ''))),
         h('span', { class: 'fila-admin__btns' },
           btnIcono('arriba', 'Subir curso', function () { mover(cs, i, -1, 'cursos'); }, i === 0),
@@ -4267,9 +4448,10 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
   // Sin pase (o caducado): pantalla de entrar con la marca. Un botón grande y dos ayudas cortas.
   function vistaEntrar(e) {
     var cuenta = urlCuenta(), dom = dominioApp();
+    var saltando = window.SCHOOL_SALTANDO === true; // el puente ya va solo a la puerta: el botón, por si acaso
     var caja = h('section', { class: 'tarjeta tarjeta--pad pila entrar', 'data-k': 'entrar' },
-      h('h1', { class: 'entrar__titulo' }, 'Influentia School'),
-      h('p', { class: 'entrar__lema' }, (e && e.mensaje) || 'Entra con tu cuenta de Influentia.'));
+      h('h1', { class: 'entrar__titulo' }, saltando ? 'Entrando…' : 'Influentia School'),
+      h('p', { class: 'entrar__lema', role: saltando ? 'status' : null }, saltando ? 'Un momento. Vamos a tu cuenta.' : ((e && e.mensaje) || 'Entra con tu cuenta de Influentia.')));
     if (cuenta) caja.appendChild(h('a', { class: 'btn btn--enorme', href: cuenta, target: '_top', rel: 'noopener', 'data-k': 'entrar-cuenta' }, h('span', { class: 'btn__txt' }, 'Entrar con tu cuenta @' + dom)));
     else caja.appendChild(h('p', { class: 'peq muted' }, 'Falta la dirección para entrar. Avisa al equipo.'));
     caja.appendChild(h('ol', { class: 'entrar__ayuda', 'data-k': 'entrar-ayuda', 'aria-label': 'Cómo entrar' },
@@ -4310,7 +4492,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
       return;
     }
     S.sinDb = false; S.errorCon = null; S.arrancado = false;
-    S.user = null; S.yo = null; S.uid = null; S.admin = false;
+    S.user = null; S.yo = null; S.uid = null; S.admin = false; S.dueno = false;
     cargaDesde = 0; if (cargaReloj) { clearTimeout(cargaReloj); cargaReloj = null; }
     arrancar();
   }
@@ -4321,7 +4503,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     var pDb = C.use('db').catch(function () { return null; });
     Promise.all([pUser, pDb]).then(function (r) {
       S.user = r[0]; S.db = r[1];
-      return S.user ? S.user.me().then(function (me) { S.yo = me; S.uid = me.id; S.admin = !!me.canEdit; }) : null;
+      return S.user ? S.user.me().then(function (me) { S.yo = me; S.uid = me.id; S.admin = !!me.canEdit; S.dueno = !!me.isOwner; }) : null;
     }).then(function () {
       S.arrancado = true;
       if (!S.db) { S.sinDb = true; S.errorCon = errorDeConexion(null); render(); return; }
