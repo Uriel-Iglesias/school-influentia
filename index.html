@@ -354,7 +354,7 @@ textarea.entrada { min-height: 96px; resize: vertical; line-height: 1.5; }
 .entrar { max-width: 520px; margin: 7vh auto 0; text-align: center; align-items: center; }
 .entrar__titulo { font-family: var(--titulo); font-size: clamp(1.9rem, 6vw, 2.6rem); line-height: 1.1; margin: 0; }
 .entrar__lema { font-size: 1.1rem; margin: 0; }
-.entrar__alerta { display: flex; gap: 10px; align-items: flex-start; text-align: left; margin: 0; padding: 14px 16px; border-radius: var(--radio-s); background: var(--mal-suave); border: 1px solid var(--mal); color: var(--fg); font-size: 1.05rem; font-weight: 600; line-height: 1.4; width: 100%; }
+.entrar__alerta { display: flex; gap: 10px; align-items: flex-start; text-align: left; margin: 20px 0 0; padding: 14px 16px; border-radius: var(--radio-s); background: var(--mal-suave); border: 1px solid var(--mal); color: var(--fg); font-size: 1.05rem; font-weight: 600; line-height: 1.4; width: 100%; }
 .entrar__alerta .ico { color: var(--mal); margin-top: 1px; }
 .entrar .btn--enorme { min-width: min(100%, 260px); }
 .entrar .btn--enorme { justify-content: center; text-align: center; }
@@ -391,7 +391,6 @@ textarea.entrada { min-height: 96px; resize: vertical; line-height: 1.5; }
 .nivel__nombre { font-family: var(--titulo); font-size: 1.3rem; line-height: 1.15; }
 .nivel__xp { font-weight: 800; color: var(--acento-texto); }
 .logros { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(136px, 1fr)); }
-@media (max-width: 480px) { .logros { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .logro { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; padding: 12px 6px; border-radius: 14px; background: var(--bg-3); min-width: 0; }
 .logro__ico { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--boton); color: var(--tinta); }
 .logro__ico .ico { width: 24px; height: 24px; stroke-width: 2.2; }
@@ -402,6 +401,15 @@ textarea.entrada { min-height: 96px; resize: vertical; line-height: 1.5; }
 .logro--no b { color: var(--muted); }
 .logro__estado { margin-top: 2px; padding: 2px 10px; border-radius: 999px; font-size: 0.875rem; font-weight: 700; line-height: 1.4; color: var(--muted); background: var(--bg-4); }
 .logro__estado--ok { color: var(--ok); background: var(--ok-suave); }
+/* Ronda 6 · móvil: lista de una columna, todas las filas iguales (icono a la izquierda; nombre, frase y estado a la derecha). */
+@media (max-width: 480px) {
+  .logros { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .logro { display: grid; grid-template-columns: 48px minmax(0, 1fr); grid-template-areas: "ico nom" "ico des" "ico est"; align-items: center; justify-items: start; text-align: left; column-gap: 14px; row-gap: 2px; padding: 12px 14px; min-height: 96px; }
+  .logro__ico { grid-area: ico; align-self: center; }
+  .logro b { grid-area: nom; font-size: 1rem; }
+  .logro small { grid-area: des; }
+  .logro__estado { grid-area: est; margin-top: 4px; }
+}
 
 /* ===== v3: curso como camino ===== */
 .camino { list-style: none; margin: 0; padding: 0; position: relative; display: flex; flex-direction: column; gap: 14px; }
@@ -708,7 +716,10 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
  *   de este origen fuera de la School: así se pilla también el truco «w.opener = null») o la controla
  *   un service worker que no es el de la School. Esa pestaña queda marcada («influentia-school:ajena»)
  *   y no salta sola a la puerta. Es una rebaja, no el arreglo: otra web del mismo origen puede leer y
- *   tocar todo lo de esta pestaña. El arreglo es un origen propio (MOVER-A-ORIGEN-PROPIO.md).
+ *   tocar todo lo de esta pestaña. Y se salta (ronda 6, lo halló la revisión): una página que abre la
+ *   School sin mandar Referer (política de referrer «ninguno») y luego pone w.opener = null se ve igual
+ *   que una pestaña nueva escrita a mano. Ese caso no se distingue desde aquí. El arreglo es un
+ *   origen propio (MOVER-A-ORIGEN-PROPIO.md).
  * - Service worker propio (sw.js, ronda 5): vacío (sin «fetch»), con scope en la carpeta de la School.
  *   Gana al de la raíz del origen (el más largo manda) y así otra web de la raíz no se queda con la
  *   School en las visitas siguientes. Solo se registra en la dirección de la web (SCHOOL_CONF.web).
@@ -716,7 +727,9 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
  *   window.SCHOOL_PRECARGA (antes eran dos viajes seguidos a Google: api_inicio y luego el sondeo).
  *   Al volver de la puerta (ronda 5) el canje lleva también esa api_inicio (3.er argumento): entrar
  *   es UN viaje a Google en vez de dos. Mientras, window.SCHOOL_CANJEANDO = true (evento
- *   «school-canjeando»): la web enseña «Entrando…».
+ *   «school-canjeando»): la web enseña «Entrando…». Ronda 6: el canje espera a que la web diga qué
+ *   precargar (antes a veces salía sin la lista y la clase esperaba otro viaje); si Google corta o
+ *   tarda, se repite hasta 3 veces (detail.lento = true: la web dice «Un momento, casi está.»).
  * - Salir en otra pestaña (ronda 5): «Salir» borra la marca de localStorage; las demás pestañas de la
  *   School lo oyen (evento «storage»), sueltan su pase al momento y enseñan «Has salido de la School».
  *   Si el servidor rechaza un pase por «Salir» o por «Cerrar todas las sesiones» (campo «por»), la
@@ -769,6 +782,8 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
   var REGISTRO_MS = CONF.registroMs || 50;
   var ESPERA_MS = CONF.esperaMs || 1000;
   var INICIO_MS = CONF.inicioMs || 30000;
+  var CANJE_MS = CONF.canjeMs || 25000; // un intento de canje que no contesta en esto se corta y se repite
+  var CANJE_INTENTOS = 3; // ronda 6: el servidor deja 3 canjes con el mismo nonce (CANJE_USOS_)
   var FALLOS_MAX = 3;
   var REINTENTOS_SUBIDA = 5;
   var MAX_VIDEO = 4 * 1024 * 1024 * 1024;
@@ -1218,23 +1233,41 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
   }
 
   /** POST de un cuerpo ya en texto a la API → {ok, …} del servidor, o rechazo «unavailable». */
-  function pedirApi(cuerpo) {
+  function pedirApi(cuerpo, ms) {
     if (!API || typeof fetch !== 'function') {
       var sin = error('unavailable', 'Falta la dirección del servidor.');
       sin.detalle = API ? 'Este navegador no tiene fetch.' : 'SCHOOL_CONF.api vacío o no válido.';
       return Promise.reject(sin);
     }
+    // ms (opcional, ronda 6): si Google no contesta en ese tiempo, se corta (AbortController) y rechaza.
+    var corte = null, reloj = null;
+    if (ms > 0 && typeof AbortController === 'function') {
+      try { corte = new AbortController(); } catch (e) { corte = null; }
+    }
+    var opciones = {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: cuerpo,
+      credentials: 'omit',
+      cache: 'no-store',
+      redirect: 'follow'
+    };
+    if (corte) {
+      opciones.signal = corte.signal;
+      reloj = setTimeout(function () { try { corte.abort(); } catch (e) { /* ya acabó */ } }, ms);
+    }
     var peticion;
     try {
-      peticion = fetch(API, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: cuerpo,
-        credentials: 'omit',
-        cache: 'no-store',
-        redirect: 'follow'
-      });
+      peticion = fetch(API, opciones);
     } catch (e) { peticion = Promise.reject(e); }
+    if (reloj) {
+      var pararReloj = function () { clearTimeout(reloj); reloj = null; };
+      peticion = Promise.resolve(peticion).then(function (resp) {
+        // El cuerpo también cuenta: el reloj se para cuando llega el texto entero.
+        var texto = resp.text();
+        return { status: resp.status, ok: resp.ok, text: function () { return Promise.resolve(texto).then(function (t) { pararReloj(); return t; }, function (e) { pararReloj(); throw e; }); } };
+      }, function (e) { pararReloj(); throw e; });
+    }
     return Promise.resolve(peticion).then(function (resp) {
       return resp.text().then(function (texto) {
         var j = null;
@@ -1257,18 +1290,39 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
   }
 
   /**
-   * Canje del código de la puerta (+ el nonce de esta pestaña) por el pase. Un corte de red o un «prueba
-   * otra vez» se reintenta una vez. Mal = sin pase y con el motivo para «Entrar». Resuelve true/false.
+   * Canje del código de la puerta (+ el nonce de esta pestaña) por el pase. Ronda 6: hasta 3 intentos (a
+   * 1 s y 2 s) si Google corta (CORS, ERR_FAILED, tarda más de CANJE_MS) o dice «prueba otra vez»; el
+   * servidor deja 3 canjes con el mismo nonce, así que el reintento entra aunque el primero sí llegara.
+   * Mal = sin pase y con el motivo para «Entrar». Resuelve true/false.
    */
   function canjear(codigo, nonce) {
     marcarCanje(true);
     // El canje sale cuando la web ya ha dicho qué precargar (SCHOOL_PRECARGA va en su <script>, detrás
-    // de este): lo suelta inicio() o, si nadie llama, el siguiente turno del navegador.
-    var listo = new Promise(function (ok) { soltarCanje = ok; setTimeout(ok, 0); });
+    // de este): lo suelta inicio(), o la lista ya puesta, o el fin de la carga del HTML. Ronda 6: antes
+    // salía al siguiente turno del navegador, y Chrome a veces lo daba ANTES del <script> de la web: el
+    // canje iba sin precarga y la clase esperaba otro viaje entero (api_docs_sondeo).
+    // (Se mira en el siguiente turno: este código corre al cargar el puente, antes de que el resto del
+    // fichero haya definido lo que usa precarga().)
+    var listo = new Promise(function (ok) {
+      soltarCanje = ok;
+      var hasta = Date.now() + 3000;
+      function mirar() {
+        var hay = false;
+        try { hay = precarga().length > 0; } catch (e) { hay = false; }
+        var cargando = typeof document !== 'undefined' && document && document.readyState === 'loading';
+        if (hay || !cargando || Date.now() > hasta) ok();
+        else setTimeout(mirar, 10);
+      }
+      setTimeout(mirar, 0);
+    });
+    function otraVez(n) {
+      marcarCanje(true, true); // «Un momento, casi está.»
+      return dormir(ESPERA_MS * (n + 1)).then(function () { return intento(n + 1); });
+    }
     function intento(n) {
       // 3.er argumento (ronda 5): lo que pediría api_inicio. El servidor lo contesta en el mismo viaje.
       var cuerpo = JSON.stringify({ f: 'api_canjear', a: [codigo, nonce, objetivosPrecarga(null)] });
-      return pedirApi(cuerpo).then(function (j) {
+      return pedirApi(cuerpo, CANJE_MS).then(function (j) {
         if (j.ok === true && j.r && typeof j.r.t === 'string' && RE_PASE.test(j.r.t)) {
           guardarClave(CLAVE_PASE, j.r.t);
           borrarCache();
@@ -1281,11 +1335,11 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
           if (!paseVigente()) ponerMotivo('freno');
           return false;
         }
-        if (j.ok !== true && j.reintentar && n < 1) return dormir(ESPERA_MS).then(function () { return intento(n + 1); });
+        if (j.ok !== true && j.reintentar && n < CANJE_INTENTOS - 1) return otraVez(n);
         if (!paseVigente()) ponerMotivo('canje'); // con sesión buena de antes, se sigue en ella sin aviso
         return false;
       }, function () {
-        if (n < 1) return dormir(ESPERA_MS).then(function () { return intento(n + 1); });
+        if (n < CANJE_INTENTOS - 1) return otraVez(n);
         if (!paseVigente()) ponerMotivo('red');
         return false;
       });
@@ -1294,9 +1348,11 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
     return listo.then(function () { soltarCanje = null; return intento(0); }).then(fin, function () { return fin(false); });
   }
   /** «Entrando…» mientras dura el canje: window.SCHOOL_CANJEANDO + evento «school-canjeando». */
-  function marcarCanje(si) {
+  function marcarCanje(si, lento) {
     window.SCHOOL_CANJEANDO = !!si;
-    try { window.dispatchEvent(new CustomEvent('school-canjeando', { detail: { canjeando: !!si } })); } catch (x) { /* sin CustomEvent */ }
+    var detalle = { canjeando: !!si };
+    if (si && lento) detalle.lento = true; // ronda 6: hubo que repetir (Google cortó o tardó)
+    try { window.dispatchEvent(new CustomEvent('school-canjeando', { detail: detalle })); } catch (x) { /* sin CustomEvent */ }
   }
 
   /** Llama a una api_* del servidor. {ok:true, r} → r; {ok:false} → rechazo con .code. */
@@ -2229,6 +2285,11 @@ window.SCHOOL_CONF = {"api":"https://script.google.com/macros/s/AKfycbyRWBCiU2Sj
 // Lo que el puente pide ya en la primera llamada (un solo viaje a Google) y lo que no guarda en la pestaña.
 window.SCHOOL_PRECARGA = ['cursos', 'lecciones', 'progreso', 'preguntas', 'respuestas', 'equipo'];
 window.SCHOOL_SIN_CACHE = ['equipo'];
+// Ronda 6: llegando de la puerta (#c=) la frase de carga es «Entrando…» desde el primer momento (una sola frase).
+(function () {
+  if (window.SCHOOL_CANJEANDO !== true) return;
+  try { var c0 = document.querySelector('#vista .cargando'); if (c0 && c0.lastChild && c0.lastChild.nodeType === 3) c0.lastChild.nodeValue = 'Entrando…'; } catch (x) { /* sin DOM */ }
+})();
 (function () {
   'use strict';
 
@@ -2678,11 +2739,42 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     var p = S.uid ? S.progreso.get(S.uid) : null;
     return limpiarMarcas(p && esObj(p.pasos) ? p.pasos[lid] : null);
   }
-  // Une lista antigua de este navegador (cuenta como la más vieja), marcas locales y servidor.
+  // Ronda 6 · diario de marcas sin confirmar (sessionStorage de ESTA pestaña; solo números).
+  // Si recargas justo después de marcar, la subida se corta: la marca sigue a la vista y se vuelve a
+  // subir en cuanto se lee tu progreso. Sale del diario cuando el servidor tiene una igual o más nueva.
+  var CLAVE_PEND = 'school-pasos-pend-';
+  function clavePend() { return CLAVE_PEND + (S.uid || 'anon'); }
+  function leerPend() {
+    var o = null, out = {};
+    try { o = JSON.parse(sessionStorage.getItem(clavePend()) || 'null'); } catch (e) { o = null; }
+    if (esObj(o)) Object.keys(o).forEach(function (lid) {
+      if (!/^[\w-]{1,120}$/.test(lid)) return;
+      var m = limpiarMarcas(o[lid]);
+      if (Object.keys(m).length) out[lid] = m;
+    });
+    return out;
+  }
+  function guardarPend(p) {
+    try { if (Object.keys(p).length) sessionStorage.setItem(clavePend(), JSON.stringify(p)); else sessionStorage.removeItem(clavePend()); } catch (e) { /* sin almacenamiento */ }
+  }
+  function anotarPend(lid, ci, v) { var p = leerPend(); (p[lid] = p[lid] || {})[ci] = v; guardarPend(p); }
+  function podarPend(subido) {
+    var p = leerPend(), antes = JSON.stringify(p);
+    Object.keys(p).forEach(function (lid) {
+      var srv = marcasServidor(lid), sub = subido && esObj(subido[lid]) ? subido[lid] : {};
+      Object.keys(p[lid]).forEach(function (k) {
+        var v = Math.abs(p[lid][k]);
+        if ((srv[k] && Math.abs(srv[k]) >= v) || (typeof sub[k] === 'number' && Math.abs(sub[k]) >= v)) delete p[lid][k];
+      });
+      if (!Object.keys(p[lid]).length) delete p[lid];
+    });
+    if (JSON.stringify(p) !== antes) guardarPend(p);
+  }
+  // Une lista antigua de este navegador (cuenta como la más vieja), marcas locales, diario y servidor.
   function marcasDe(lid) {
     var out = {}, viejas = leerJson(claveActs(lid), []);
     if (Array.isArray(viejas)) viejas.forEach(function (ci) { if (typeof ci === 'number' && ci >= 0 && ci < 10000 && ci % 1 === 0) out[ci] = 1; });
-    [marcasLocales(lid), marcasServidor(lid)].forEach(function (m) {
+    [marcasLocales(lid), leerPend()[lid] || {}, marcasServidor(lid)].forEach(function (m) {
       Object.keys(m).forEach(function (k) { if (!out[k] || Math.abs(m[k]) >= Math.abs(out[k])) out[k] = m[k]; });
     });
     return out;
@@ -2705,6 +2797,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     var loc = marcasLocales(lid);
     loc[ci] = hecho ? ts : -ts;
     lsSet(claveMarcas(lid), JSON.stringify(loc));
+    anotarPend(lid, ci, loc[ci]);
     guardarCache(lid);
     enviarPasos(true);
     pintarLbar();
@@ -2721,6 +2814,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
         else if (k.indexOf(pb) === 0) out[k.slice(pb.length)] = 1;
       }
     } catch (e) { /* sin almacenamiento */ }
+    Object.keys(leerPend()).forEach(function (lid) { out[lid] = 1; });
     return Object.keys(out);
   }
   // Lo que este navegador sabe y el servidor aún no (o tiene más viejo).
@@ -2747,7 +2841,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     pasosEnVuelo = true; pasosOtraVez = false;
     var ref = S.db.doc('progreso/' + S.uid), t = Date.now();
     (S.progreso.has(S.uid) ? ref.update({ pasos: lote, actualizado: t }) : ref.set({ completadas: {}, pasos: lote, actualizado: t }))
-      .then(function () { pasosEnVuelo = false; pasosFallo = 0; if (pasosOtraVez) enviarPasos(true); },
+      .then(function () { pasosEnVuelo = false; pasosFallo = 0; podarPend(lote); if (pasosOtraVez) enviarPasos(true); },
         function () { pasosEnVuelo = false; pasosFallo = Date.now(); });
   }
   // Al llegar tu progreso: la copia local se pone al día y se sube lo que falte.
@@ -2755,7 +2849,9 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
     if (!S.uid) return;
     var p = S.progreso.get(S.uid);
     if (p && esObj(p.pasos)) Object.keys(p.pasos).forEach(function (lid) { if (esObj(p.pasos[lid])) guardarCache(lid); });
-    enviarPasos(false);
+    podarPend(null);
+    // Con algo en el diario (subida cortada por una recarga) se sube ya, sin esperar al minuto de pausa.
+    enviarPasos(Object.keys(leerPend()).length > 0);
   }
   function cuentaActs(lid, nBloques, completa) {
     var n = actsHechas(lid).filter(function (x) { return x < nBloques; }).length + (completa ? 1 : 0);
@@ -3273,7 +3369,7 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
       yo.appendChild(av);
       if (typeof window.SCHOOL_SALIR === 'function') {
         var salir = h('button', { type: 'button', class: 'btn btn--suave btn--peq yo__salir', 'data-k': 'salir', 'aria-label': 'Salir de la School' }, 'Salir');
-        salir.addEventListener('click', function () { salir.disabled = true; salir.textContent = 'Saliendo…'; window.SCHOOL_SALIR(); });
+        salir.addEventListener('click', function () { salir.disabled = true; salir.textContent = 'Saliendo…'; guardarPend({}); window.SCHOOL_SALIR(); });
         yo.appendChild(salir);
       }
     }
@@ -3365,28 +3461,37 @@ window.SCHOOL_SIN_CACHE = ['equipo'];
   // (v3 con google.script.history archivada en _archive/v3-historia-google/).
   document.getElementById('saltar').addEventListener('click', function (e) { e.preventDefault(); document.getElementById('principal').focus(); });
 
-  // Carga: frase grande desde el primer momento; a los 6 s se añade «Tarda un poco la primera vez».
-  var cargaDesde = 0, cargaReloj = null;
+  // Carga: frase grande desde el primer momento; a los 6 s se añade «Un momento, casi está.».
+  // Ronda 6: si esta carga viene de la puerta (#c=), dice «Entrando…» hasta que la clase está lista
+  // (antes cambiaba a «Cargando tus clases…» a mitad: parecían dos esperas). Si el canje se repite
+  // (Google cortó o tardó), la nota sale ya.
+  var cargaDesde = 0, cargaReloj = null, vinoEntrando = window.SCHOOL_CANJEANDO === true, cargaLenta = false;
+  function verNotaLenta() {
+    var n = document.querySelector('[data-k="cargando-lento"]');
+    if (n) n.hidden = false;
+  }
   try {
     window.addEventListener('school-canjeando', function (ev) {
+      var d = (ev && ev.detail) || {};
+      if (d.canjeando) vinoEntrando = true;
+      if (d.lento) { cargaLenta = true; verNotaLenta(); }
       var t = document.querySelector('[data-k="cargando-txt"]');
-      if (t) t.textContent = (ev && ev.detail && ev.detail.canjeando) ? 'Entrando…' : 'Cargando tus clases…';
+      if (t) t.textContent = vinoEntrando ? 'Entrando…' : 'Cargando tus clases…';
     });
   } catch (x) { /* sin eventos */ }
   function esqueleto() {
     if (!cargaDesde) cargaDesde = Date.now();
-    var pasado = Date.now() - cargaDesde, lenta = pasado >= 6000;
+    var pasado = Date.now() - cargaDesde, lenta = cargaLenta || pasado >= 6000;
     if (!lenta && !cargaReloj) cargaReloj = setTimeout(function () {
       cargaReloj = null;
-      var n = document.querySelector('[data-k="cargando-lento"]');
-      if (n) n.hidden = false;
+      verNotaLenta();
     }, 6000 - pasado);
-    // Mientras el puente canjea la entrada (#c=) se dice «Entrando…»: así se ve que algo pasa.
-    var entrando = window.SCHOOL_CANJEANDO === true;
+    // Si se entra por la puerta (#c=) se dice «Entrando…» de principio a fin: así se ve que algo pasa.
+    var entrando = vinoEntrando || window.SCHOOL_CANJEANDO === true;
     return h('div', { class: 'pila', 'aria-busy': 'true', 'data-k': 'cargando' },
       h('div', { role: 'status' },
         h('p', { class: 'cargando' }, h('span', { class: 'cargando__punto', 'aria-hidden': 'true' }), h('span', { 'data-k': 'cargando-txt' }, entrando ? 'Entrando…' : 'Cargando tus clases…')),
-        h('p', { class: 'cargando__nota', 'data-k': 'cargando-lento', hidden: !lenta }, 'Tarda un poco la primera vez.')),
+        h('p', { class: 'cargando__nota', 'data-k': 'cargando-lento', hidden: !lenta }, 'Un momento, casi está.')),
       h('div', { class: 'esq', style: { height: '44px', width: '60%' } }),
       h('div', { class: 'esq', style: { height: '180px' } }),
       h('div', { class: 'esq', style: { height: '220px' } }));
